@@ -1,19 +1,28 @@
 <template>
-  <button class="zch-button">
-    <slot></slot>
+  <button class="zch-button" :class="`icon-${iconPosition}`">
+    <zch-icon></zch-icon>
+    <span><slot /></span>
   </button>
 </template>
 
 <script>
+import zchIcon from '../Icon'
+
 export default {
+  components: { zchIcon },
   props: {
-    
+    iconPosition: {
+      require: false,
+      type: String,
+      default: 'left'
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 $fontColor: #606266;
+$iconGap: .2em;
 .zch-button {
   $bgColor: #fff;
   $borderColor: #ddd;
@@ -28,7 +37,17 @@ $fontColor: #606266;
   transition: all .2s;
   color: $fontColor;
   cursor: pointer;
-  &:hover {
+  display: inline-flex;
+  vertical-align: middle;
+  outline: none;
+  &.icon-right {
+    svg {
+      order: 1;
+      margin-left: $iconGap;
+      margin-right: 0;
+    }
+  }
+  &:hover, &:focus {
     color: #409eff;
     border-color: #c6e2ff;
     background-color: #ecf5ff;
@@ -38,10 +57,8 @@ $fontColor: #606266;
     border-color: #3a8ee6;
     outline: none;
   }
-  &:focus {
-    color: #409eff;
-    border-color: #c6e2ff;
-    background-color: #ecf5ff;
+  > svg {
+    margin-right: $iconGap;
   }
 }
 </style>
