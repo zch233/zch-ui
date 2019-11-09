@@ -10,6 +10,7 @@
 import zchIcon from '../icon'
 
 export default {
+  name: 'ZchButton',
   components: { zchIcon },
   props: {
     iconPosition: {
