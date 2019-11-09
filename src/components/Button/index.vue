@@ -1,5 +1,5 @@
 <template>
-  <button class="zch-button" :class="[`icon-${iconPosition}`, loading && 'loading']">
+  <button class="zch-button" :disabled="disabled" type="button" :class="[`icon-${iconPosition}`, loading && 'loading', disabled && 'disabled']">
     <zch-icon v-if="loading" icon="loading"></zch-icon>
     <zch-icon v-else :icon="icon"></zch-icon>
     <span><slot /></span>
@@ -29,6 +29,11 @@ export default {
       require: false,
       type: Boolean,
       default: false
+    },
+    disabled: {
+      require: false,
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -54,6 +59,7 @@ $buttonRadius: 4px;
   cursor: pointer;
   display: inline-flex;
   vertical-align: middle;
+  position: relative;
   outline: none;
   &.icon-right {
     svg {
@@ -66,22 +72,26 @@ $buttonRadius: 4px;
     color: #409eff;
     border-color: #c6e2ff;
     background-color: #ecf5ff;
-    position: relative;
     z-index: 1;
   }
   &:active {
     color: #3a8ee6;
     border-color: #3a8ee6;
     outline: none;
-    position: relative;
     z-index: 1;
   }
   > svg {
     margin-right: $iconGap;
   }
+  &.disabled {
+    color: #c0c4cc;
+    cursor: not-allowed;
+    background-image: none;
+    background-color: #fff;
+    border-color: #ebeef5;
+  }
   &.loading {
     pointer-events: none;
-    position: relative;
     &::after {
       pointer-events: none;
       content: "";
