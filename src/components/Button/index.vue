@@ -61,6 +61,16 @@ $buttonRadius: 4px;
   vertical-align: middle;
   position: relative;
   outline: none;
+  > svg {
+    margin-right: $iconGap;
+  }
+  &.icon-left {
+    svg {
+      order: 0;
+      margin-right: $iconGap;
+      margin-left: 0;
+    }
+  }
   &.icon-right {
     svg {
       order: 1;
@@ -79,9 +89,6 @@ $buttonRadius: 4px;
     border-color: #3a8ee6;
     outline: none;
     z-index: 1;
-  }
-  > svg {
-    margin-right: $iconGap;
   }
   &.disabled {
     color: #c0c4cc;
