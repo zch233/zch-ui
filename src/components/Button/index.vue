@@ -1,6 +1,6 @@
 <template>
   <button class="zch-button" :class="`icon-${iconPosition}`">
-    <zch-icon :icon="icon"></zch-icon>
+    <zch-icon v-if="icon" :icon="icon"></zch-icon>
     <span><slot /></span>
   </button>
 </template>
@@ -22,7 +22,7 @@ export default {
     icon: {
       require: false,
       type: String,
-      default: 'default'
+      default: ''
     }
   }
 }
