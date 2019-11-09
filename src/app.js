@@ -77,8 +77,6 @@ const expect = require('chai').expect
 }
 {
   // 测试按钮 disabled
-  // const div = document.createElement('div')
-  // document.body.appendChild(div)
   const Constructor = Vue.extend(zchButton)
   const vm = new Constructor({
     propsData: {
