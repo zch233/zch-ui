@@ -1,6 +1,7 @@
 <template>
-  <button class="zch-button" :class="`icon-${iconPosition}`">
-    <zch-icon v-if="icon" :icon="icon"></zch-icon>
+  <button class="zch-button" :class="[`icon-${iconPosition}`, loading && 'loading']">
+    <zch-icon v-if="loading" icon="loading"></zch-icon>
+    <zch-icon v-else :icon="icon"></zch-icon>
     <span><slot /></span>
   </button>
 </template>
@@ -23,6 +24,11 @@ export default {
       require: false,
       type: String,
       default: ''
+    },
+    loading: {
+      require: false,
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -72,6 +78,28 @@ $buttonRadius: 4px;
   }
   > svg {
     margin-right: $iconGap;
+  }
+  &.loading {
+    pointer-events: none;
+    position: relative;
+    &::after {
+      pointer-events: none;
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      border-radius: inherit;
+      background-color: hsla(0,0%,100%,.35);
+    }
+    > svg {
+      animation: spin 1s infinite linear;
+    }
+  }
+  @keyframes spin {
+    0% { transform: rotate(0) }
+    100% { transform: rotate(360deg) }
   }
 }
 </style>
