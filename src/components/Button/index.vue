@@ -1,5 +1,5 @@
 <template>
-  <button class="zch-button" :disabled="disabled" type="button" :class="[`icon-${iconPosition}`, loading && 'loading', disabled && 'disabled']">
+  <button class="zch-button xxxx" :disabled="disabled" type="button" :class="[`icon-${iconPosition}`, loading && 'loading', disabled && 'disabled']">
     <zch-icon v-if="loading" icon="loading"></zch-icon>
     <zch-icon v-else :icon="icon"></zch-icon>
     <span><slot /></span>
