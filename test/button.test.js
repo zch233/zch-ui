@@ -88,4 +88,19 @@ describe('zchButton', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('按钮 round', () => {
+    const Constructor = Vue.extend(zchButton)
+    const vm = new Constructor({
+      propsData: {
+        round: true
+      }
+    })
+    vm.$mount()
+    const button = vm.$el
+    const classList = button.classList
+    const hasClassRound = classList.contains('round')
+    expect(hasClassRound).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })

@@ -8,11 +8,13 @@
 </head>
 <body>
   <div id="app">
-    <zch-button :disabled="true">主要按钮</zch-button>
-    <zch-button icon="setting" icon-position="right">主要按钮</zch-button>
+    <zch-button>主要按钮</zch-button>
+    <zch-button disabled>禁用按钮</zch-button>
+    <zch-button icon="setting" icon-position="right">图标按钮</zch-button>
+    <zch-button round>圆角按钮</zch-button>
     <zch-button-group icon-position="right">
       <zch-button icon="left">上一页</zch-button>
-      <zch-button icon="setting-fill"></zch-button>
+      <zch-button>按钮组</zch-button>
       <zch-button icon="right" icon-position="right">下一页</zch-button>
     </zch-button-group>
   </div>
