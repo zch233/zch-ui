@@ -13,7 +13,7 @@ jobs: # a collection of steps
           name: add-yarn
           command: 'export PATH="$HOME/.yarn/bin:$PATH"'
       - run:
-          name: install-yarn
+          name: yarn-install
           command: yarn install
       - run: # run tests
           name: test

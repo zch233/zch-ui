@@ -1,22 +1,21 @@
 const expect = chai.expect;
 import Vue from 'vue'
-import zchButton from '../src/components/button'
+import zchButton from '../aaa/index'
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
 
 describe('zchButton', () => {
+  const Constructor = Vue.extend(zchButton)
   it('存在', () => {
     expect(zchButton).to.be.exist
   })
   it('添加按钮 icon ', () => {
-    const Constructor = Vue.extend(zchButton)
     const vm = new Constructor({
       propsData: {
         icon: 'setting'
       }
-    })
-    vm.$mount()
+    }).$mount()
     const useElement = vm.$el.querySelector('use')
     const href = useElement.getAttribute('xlink:href')
     expect(href).to.eq('#icon-setting')
@@ -24,14 +23,12 @@ describe('zchButton', () => {
     vm.$destroy()
   })
   it('按钮 loading', () => {
-    const Constructor = Vue.extend(zchButton)
     const vm = new Constructor({
       propsData: {
         icon: 'settings',
         loading: true
       }
-    })
-    vm.$mount()
+    }).$mount()
     const useElement = vm.$el.querySelector('use')
     const href = useElement.getAttribute('xlink:href')
     expect(href).to.eq('#icon-loading')
@@ -41,7 +38,6 @@ describe('zchButton', () => {
   it('按钮 right iconPosition', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
-    const Constructor = Vue.extend(zchButton)
     const vm = new Constructor({
       propsData: {
         icon: 'right',
@@ -58,7 +54,6 @@ describe('zchButton', () => {
   it('按钮默认 iconPosition', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
-    const Constructor = Vue.extend(zchButton)
     const vm = new Constructor({
       propsData: {
         icon: 'left'
@@ -72,13 +67,11 @@ describe('zchButton', () => {
     vm.$destroy()
   })
   it('按钮 disabled', () => {
-    const Constructor = Vue.extend(zchButton)
     const vm = new Constructor({
       propsData: {
         disabled: true
       }
-    })
-    vm.$mount()
+    }).$mount()
     const button = vm.$el
     const classList = button.classList
     const hasClassDisabled = classList.contains('disabled')
@@ -89,13 +82,11 @@ describe('zchButton', () => {
     vm.$destroy()
   })
   it('按钮 round', () => {
-    const Constructor = Vue.extend(zchButton)
     const vm = new Constructor({
       propsData: {
         round: true
       }
-    })
-    vm.$mount()
+    }).$mount()
     const button = vm.$el
     const classList = button.classList
     const hasClassRound = classList.contains('round')
