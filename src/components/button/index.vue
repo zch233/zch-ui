@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import zchIcon from './icon'
+import zchIcon from './icon/index'
 
 export default {
   name: 'ZchButton',
