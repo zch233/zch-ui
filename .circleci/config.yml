@@ -7,21 +7,14 @@ jobs: # a collection of steps
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
       - run:
-          name: add-yarn
+          name: install-yarn
           command: 'curl -o- -L https://yarnpkg.com/install.sh | bash -s -- -- version 1.19.1'
       - run:
-          name: update-yarn
+          name: add-yarn
           command: 'export PATH="$HOME/.yarn/bin:$PATH"'
-      - restore_cache: # special step to restore the dependency cache
-          # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
-          key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
           name: install-yarn
           command: yarn install
-      - save_cache: # special step to save the dependency cache
-          key: dependency-cache-{{ checksum "package.lock" }}
-          paths:
-            - ./node_modules
       - run: # run tests
           name: test
           command: yarn test
