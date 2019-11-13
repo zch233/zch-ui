@@ -1,6 +1,6 @@
 const expect = chai.expect;
 import Vue from 'vue'
-import zchButton from '../src/aa/index'
+import zchButton from '../src/components/index'
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
