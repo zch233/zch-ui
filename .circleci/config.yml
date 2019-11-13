@@ -16,7 +16,7 @@ jobs: # a collection of steps
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
           key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
-          name: install-npm-wee
+          name: install-yarn
           command: yarn install
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "package.lock" }}
