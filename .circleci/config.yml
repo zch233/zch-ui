@@ -13,6 +13,12 @@ jobs: # a collection of steps
           name: add-yarn
           command: 'export PATH="$HOME/.yarn/bin:$PATH"'
       - run:
+          name: chown
+          command: 'sudo chown root /opt/google/chrome/chrome-sandbox'
+      - run:
+          name: chmod
+          command: 'sudo chmod 4755 /opt/google/chrome/chrome-sandbox'
+      - run:
           name: yarn-install
           command: yarn install
       - run: # run tests
