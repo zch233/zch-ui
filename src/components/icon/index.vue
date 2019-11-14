@@ -8,6 +8,7 @@
 import './svg'
 
 export default {
+  name: 'ZchIcon',
   props: {
     icon: {
       type: String,
