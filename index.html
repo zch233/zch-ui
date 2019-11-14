@@ -8,15 +8,30 @@
 </head>
 <body>
   <div id="app">
-    <zch-button>主要按钮</zch-button>
-    <zch-button disabled>禁用按钮</zch-button>
-    <zch-button icon="setting" icon-position="right">图标按钮</zch-button>
-    <zch-button round>圆角按钮</zch-button>
-    <zch-button-group icon-position="right">
-      <zch-button icon="left">上一页</zch-button>
-      <zch-button>按钮组</zch-button>
-      <zch-button icon="right" icon-position="right">下一页</zch-button>
-    </zch-button-group>
+    <div class="buttonBar">
+      <h1>button：</h1>
+      <zch-button>主要按钮</zch-button>
+      <zch-button disabled>禁用按钮</zch-button>
+      <zch-button icon="setting" icon-position="right">图标按钮</zch-button>
+      <zch-button round>圆角按钮</zch-button>
+      <zch-button square>方形按钮</zch-button>
+      <zch-button-group icon-position="right">
+        <zch-button icon="left">上一页</zch-button>
+        <zch-button>按钮组</zch-button>
+        <zch-button icon="right" icon-position="right">下一页</zch-button>
+      </zch-button-group>
+    </div>
+    <div class="buttonBar">
+      <h1>icon：</h1>
+      <zch-icon icon="setting"></zch-icon>
+      <zch-icon icon="setting-fill"></zch-icon>
+      <zch-icon icon="left"></zch-icon>
+      <zch-icon icon="right"></zch-icon>
+    </div>
+    <div class="buttonBar">
+      <h1>input：</h1>
+      <zch-input></zch-input>
+    </div>
   </div>
   <script src="./src/app.js"></script>
 </body>

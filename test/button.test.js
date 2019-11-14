@@ -94,4 +94,17 @@ describe('zchButton', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('按钮 square', () => {
+    const vm = new Constructor({
+      propsData: {
+        square: true
+      }
+    }).$mount()
+    const button = vm.$el
+    const classList = button.classList
+    const hasClassSquare = classList.contains('square')
+    expect(hasClassSquare).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })

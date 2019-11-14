@@ -1,5 +1,5 @@
 <template>
-  <button class="zch-button xxxx" :disabled="disabled" type="button" :class="[`icon-${iconPosition}`, loading && 'loading', disabled && 'disabled', round && 'round']">
+  <button class="zch-button xxxx" :disabled="disabled" type="button" :class="[`icon-${iconPosition}`, loading && 'loading', disabled && 'disabled', round && 'round', square && 'square']">
     <zch-icon v-if="loading" icon="loading"></zch-icon>
     <zch-icon v-else :icon="icon"></zch-icon>
     <span><slot /></span>
@@ -37,6 +37,11 @@ export default {
       default: false
     },
     round: {
+      require: false,
+      type: Boolean,
+      default: false
+    },
+    square: {
       require: false,
       type: Boolean,
       default: false
@@ -105,6 +110,9 @@ $buttonRadius: 4px;
   }
   &.round {
     border-radius: 1.36em;
+  }
+  &.square {
+    border-radius: 0;
   }
   &.loading {
     pointer-events: none;
