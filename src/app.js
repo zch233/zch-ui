@@ -10,5 +10,12 @@ Vue.component('zch-icon', zchIcon)
 Vue.component('zch-input', zchInput)
 
 new Vue({
-  el: '#app'
+  el: '#app',
+  data() {
+    return {
+      message: 'hi'
+    }
+  },
+  methods: {
+  }
 })

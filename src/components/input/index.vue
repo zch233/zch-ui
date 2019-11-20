@@ -1,6 +1,12 @@
 <template>
   <div class="zch-input">
-    <input type="text">
+    <input
+      @input="$emit('input', $event.target.value)"
+      @fucus="$emit('fucus', $event.target.value)"
+      @change="$emit('change', $event.target.value)"
+      @blur="$emit('blur', $event.target.value)"
+      :value="value"
+      :type="type">
   </div>
 </template>
 
@@ -11,6 +17,11 @@ export default {
     type: {
       type: String,
       default: 'text',
+      required: false
+    },
+    value: {
+      type: String,
+      default: '',
       required: false
     }
   }
