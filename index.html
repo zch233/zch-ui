@@ -21,19 +21,23 @@
         <zch-button icon="right" icon-position="right">下一页</zch-button>
       </zch-button-group>
     </div>
-    <div class="buttonBar">
+    <div class="iconBar">
       <h1>icon：</h1>
       <zch-icon icon="setting"></zch-icon>
       <zch-icon icon="setting-fill"></zch-icon>
       <zch-icon icon="left"></zch-icon>
       <zch-icon icon="right"></zch-icon>
     </div>
-    <div class="buttonBar">
+    <div class="inputBar">
       <h1>input：</h1>
       <zch-input v-model="message"></zch-input>
+      <zch-input disabled placeholder="禁用状态"></zch-input>
+      <zch-input readonly placeholder="只读状态"></zch-input>
+      <zch-input v-model="password" password placeholder="密码状态"></zch-input>
       {{ message }}
     </div>
   </div>
   <script src="./src/app.js"></script>
+  <script src="//at.alicdn.com/t/font_1500551_1pve5lyqn9x.js"></script>
 </body>
 </html>

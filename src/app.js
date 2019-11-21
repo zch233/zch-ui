@@ -13,7 +13,8 @@ new Vue({
   el: '#app',
   data() {
     return {
-      message: 'hi'
+      message: 'hi',
+      password: ''
     }
   },
   methods: {

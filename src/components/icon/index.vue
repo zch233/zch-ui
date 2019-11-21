@@ -2,7 +2,8 @@
   <svg
     v-if="icon"
     class="icon"
-    aria-hidden="true">
+    aria-hidden="true"
+    @click="$emit('click', $event)">
     <use :xlink:href="`#icon-${icon}`"></use>
   </svg>
 </template>
@@ -21,6 +22,7 @@ export default {
   }
 }
 </script>
+
 
 <style lang="scss" scoped>
   .icon {
