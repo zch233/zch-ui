@@ -17,24 +17,32 @@
       @fucus="$emit('fucus', $event.target.value)"
       @blur="$emit('blur', $event.target.value)"
     ></textarea>
-    <input
-      v-else
-      class="zch-input"
-      ref="zchInput"
-      :class="[disabled && 'disabled', readonly && 'readonly']"
-      :value="value"
-      :disabled="disabled"
-      :readonly="readonly"
-      :type="isPassword"
-      :aria-label="label"
-      v-bind="$attrs"
-      @keydown="$emit('keydown', $event.target.value)"
-      @keyup="$emit('keyup', $event.target.value)"
-      @input="$emit('input', $event.target.value)"
-      @change="$emit('change', $event.target.value)"
-      @fucus="$emit('fucus', $event.target.value)"
-      @blur="$emit('blur', $event.target.value)"
-    ><zch-icon v-if="password" class="password" icon="eye" @click="switchPasswordVisible"></zch-icon>
+    <template v-else>
+      <div class="zch-input-prepend" v-if="$slots.prepend">
+        <slot name="prepend"></slot>
+      </div>
+      <input
+        class="zch-input"
+        ref="zchInput"
+        :class="[disabled && 'disabled', readonly && 'readonly']"
+        :value="value"
+        :disabled="disabled"
+        :readonly="readonly"
+        :type="isPassword"
+        :aria-label="label"
+        v-bind="$attrs"
+        @keydown="$emit('keydown', $event.target.value)"
+        @keyup="$emit('keyup', $event.target.value)"
+        @input="$emit('input', $event.target.value)"
+        @change="$emit('change', $event.target.value)"
+        @fucus="$emit('fucus', $event.target.value)"
+        @blur="$emit('blur', $event.target.value)"
+      >
+      <zch-icon v-if="password" class="password" icon="eye" @click="switchPasswordVisible"></zch-icon>
+      <div class="zch-input-append" v-if="$slots.append">
+        <slot name="append"></slot>
+      </div>
+    </template>
   </div>
 </template>
 
