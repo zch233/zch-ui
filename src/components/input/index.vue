@@ -1,21 +1,40 @@
 <template>
   <div class="zch-input-wrapper">
-    <input
-      class="zch-input"
-      ref="zchInput"
+    <textarea
+      v-if="type === 'textarea'"
+      ref="zchTextarea"
+      class="zch-textarea"
       :class="[disabled && 'disabled', readonly && 'readonly']"
+      :value="value"
+      :disabled="disabled"
+      :readonly="readonly"
+      :aria-label="label"
+      v-bind="$attrs"
       @keydown="$emit('keydown', $event.target.value)"
       @keyup="$emit('keyup', $event.target.value)"
       @input="$emit('input', $event.target.value)"
       @change="$emit('change', $event.target.value)"
       @fucus="$emit('fucus', $event.target.value)"
       @blur="$emit('blur', $event.target.value)"
+    ></textarea>
+    <input
+      v-else
+      class="zch-input"
+      ref="zchInput"
+      :class="[disabled && 'disabled', readonly && 'readonly']"
       :value="value"
       :disabled="disabled"
       :readonly="readonly"
-      :placeholder="placeholder"
-      :type="isPassword">
-      <zch-icon v-if="password" class="password" icon="eye" @click="switchPasswordVisible"></zch-icon>
+      :type="isPassword"
+      :aria-label="label"
+      v-bind="$attrs"
+      @keydown="$emit('keydown', $event.target.value)"
+      @keyup="$emit('keyup', $event.target.value)"
+      @input="$emit('input', $event.target.value)"
+      @change="$emit('change', $event.target.value)"
+      @fucus="$emit('fucus', $event.target.value)"
+      @blur="$emit('blur', $event.target.value)"
+    ><zch-icon v-if="password" class="password" icon="eye" @click="switchPasswordVisible"></zch-icon>
   </div>
 </template>
 
@@ -41,21 +60,13 @@ export default {
       default: false,
       required: false
     },
-    placeholder: {
-      type: String,
-      default: '请输入内容',
-      required: false
-    },
-    value: {
-      type: String,
-      default: '',
-      required: false
-    },
     password: {
       type: Boolean,
       default: false,
       required: false
-    }
+    },
+    value: [String, Number],
+    label: String
   },
   data() {
     return {
@@ -73,70 +84,70 @@ export default {
     },
     switchPasswordVisible (e) {
       this.passwordVisible = !this.passwordVisible
-    },
-    x() {
-      console.log('compositionstart')
-    },
-    xx() {
-      console.log('compositionupdate')
-    },
-    xxx() {
-      console.log('compositionend')
-    },
-    xxxx() {
-      console.log('input')
-    },
-    xxxxx() {
-      console.log('keydown')
-    },
-    xxxxxx() {
-     console.log('keyup')
-    },
-    xxxxxxx() {
-     console.log('keypress')
-    }  
+      this.$nextTick(() => {
+        this.getInputElement().focus()
+      })
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+%theSameStyle {
+  background-color: #fff;
+  background-image: none;
+  border-radius: 4px;
+  color: #606266;
+  border: 1px solid #dcdfe6;
+  box-sizing: border-box;
+  font-size: inherit;
+  vertical-align: middle;
+  transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+  width: 100%;
+}
+%disabled {
+  background-color: #f5f7fa;
+  border-color: #e4e7ed;
+  color: #c0c4cc;
+  cursor: not-allowed;
+}
+%readonly {
+  border-color: #e4e7ed;
+  color: #c0c4cc;
+  cursor: auto;
+}
+%hover {
+  border-color: #c0c4cc;
+}
+%focus {
+  outline: none;
+  border-color: #409eff;
+}
+
 .zch-input-wrapper {
   position: relative;
   font-size: 14px;
   display: inline-block;
+  vertical-align: middle;
   .zch-input {
+    @extend %theSameStyle;
     -webkit-appearance: none;
-    background-color: #fff;
-    background-image: none;
-    border-radius: 4px;
-    border: 1px solid #dcdfe6;
-    box-sizing: border-box;
-    color: #606266;
     display: inline-block;
-    font-size: inherit;
     height: 2.9em;
     line-height: 2.9em;
     outline: none;
     padding: 0 15px;
-    transition: all .2s cubic-bezier(.645,.045,.355,1);
-    width: 100%;
     &:hover {
-      border-color: #c0c4cc;
+      @extend %hover;
     }
     &:focus {
-      outline: none;
-      border-color: #409eff;
+      @extend %focus;
     }
     &.disabled {
-      background-color: #f5f7fa;
-      border-color: #e4e7ed;
-      color: #c0c4cc;
-      cursor: not-allowed;
+      @extend %disabled;
     }
     &.readonly {
-      border-color: #e4e7ed;
-      color: #c0c4cc;
-      cursor: auto;
+      @extend %readonly;
     }
   }
   > .password {
@@ -151,6 +162,25 @@ export default {
     user-select: none;
     &:hover {
       fill: #909399;
+    }
+  }
+  .zch-textarea {
+    @extend %theSameStyle;
+    display: block;
+    resize: vertical;
+    padding: 5px 15px;
+    line-height: 1.5;
+    &:hover {
+      @extend %hover;
+    }
+    &:focus {
+      @extend %focus;
+    }
+    &.disabled {
+      @extend %disabled;
+    }
+    &.readonly {
+      @extend %readonly;
     }
   }
 }
