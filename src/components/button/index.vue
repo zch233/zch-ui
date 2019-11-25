@@ -25,11 +25,7 @@ export default {
         return value === 'left' || value === 'right'
       }
     },
-    icon: {
-      require: false,
-      type: String,
-      default: ''
-    },
+    icon: String,
     loading: {
       require: false,
       type: Boolean,
