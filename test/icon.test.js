@@ -98,15 +98,16 @@ describe('zchInput', () => {
     vm.$destroy()
   })
   describe('事件', () => {
-    ['keydown', 'keyup', 'input', 'change'].map(eventName => {
+    ['keydown', 'keyup', 'input', 'change', 'focus', 'blur'].map(eventName => {
       it(`支持 ${eventName} 事件`, () => {
         const callback = sinon.fake()
         const vm = new Constructor({}).$mount()
         vm.$on(eventName, callback)
         const event = new Event(eventName)
+        Object.defineProperty(event, 'target', { value: { value: 'zch', enumerable: true }})
         const inputElement = vm.$el.querySelector('.zch-input')
         inputElement.dispatchEvent(event)
-        expect(callback).to.have.been.called
+        expect(callback).to.have.been.called.calledWith('zch')
       })
     })
   })

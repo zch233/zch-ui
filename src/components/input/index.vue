@@ -35,7 +35,7 @@
         @keyup="$emit('keyup', $event.target.value)"
         @input="$emit('input', $event.target.value)"
         @change="$emit('change', $event.target.value)"
-        @fucus="$emit('fucus', $event.target.value)"
+        @focus="$emit('focus', $event.target.value)"
         @blur="$emit('blur', $event.target.value)"
       >
       <zch-icon v-if="password" class="password" icon="eye" @click="switchPasswordVisible"></zch-icon>
