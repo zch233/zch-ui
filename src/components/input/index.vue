@@ -18,9 +18,9 @@
       @blur="$emit('blur', $event.target.value)"
     ></textarea>
     <template v-else>
-      <div class="zch-input-prepend" v-if="$slots.prepend">
+      <!-- <div class="zch-input-prepend" v-if="$slots.prepend">
         <slot name="prepend"></slot>
-      </div>
+      </div> -->
       <input
         class="zch-input"
         ref="zchInput"
@@ -39,9 +39,9 @@
         @blur="$emit('blur', $event.target.value)"
       >
       <zch-icon v-if="password" class="password" icon="eye" @click="switchPasswordVisible"></zch-icon>
-      <div class="zch-input-append" v-if="$slots.append">
+      <!-- <div class="zch-input-append" v-if="$slots.append">
         <slot name="append"></slot>
-      </div>
+      </div> -->
     </template>
   </div>
 </template>

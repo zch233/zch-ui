@@ -13,10 +13,14 @@ new Vue({
   el: '#app',
   data() {
     return {
-      message: 'hi',
+      message: 23,
       password: ''
     }
   },
   methods: {
+    input(e) {
+      console.log(this.message)
+      console.log(e)
+    }
   }
 })
