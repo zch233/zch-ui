@@ -13,7 +13,7 @@ describe('zchInput', () => {
   it('接受value', () => {
     const vm = new Constructor({
       propsData: {
-        value: 'zch'
+        value: 'zch',
       }
     }).$mount()
     const inputElement = vm.$el.querySelector('.zch-input')
