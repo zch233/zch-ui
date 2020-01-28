@@ -19,7 +19,6 @@ new Vue({
   },
   methods: {
     input(e) {
-      console.log(this.message)
       console.log(e)
     }
   }
