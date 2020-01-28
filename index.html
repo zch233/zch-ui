@@ -35,6 +35,9 @@
       <zch-input readonly placeholder="只读状态"></zch-input>
       <zch-input v-model="password" password placeholder="密码状态"></zch-input>
       <zch-input type="textarea"></zch-input>
+      <zch-input><template slot="prepend">前缀</template></zch-input>
+      <zch-input><template slot="prepend">前缀</template><template slot="append">后缀</template></zch-input>
+      <zch-input><template slot="append">后缀</template></zch-input>
     </div>
   </div>
   <script src="./src/app.js"></script>

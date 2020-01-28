@@ -17,14 +17,14 @@
       @fucus="$emit('fucus', $event.target.value)"
       @blur="$emit('blur', $event.target.value)"
     ></textarea>
-    <template v-else>
-      <!-- <div class="zch-input-prepend" v-if="$slots.prepend">
+    <div :class="{'zch-input-group': $slots.prepend || $slots.append}" v-else>
+      <div class="zch-input-prepend" v-if="$slots.prepend">
         <slot name="prepend"></slot>
-      </div> -->
+      </div>
       <input
         class="zch-input"
         ref="zchInput"
-        :class="[disabled && 'disabled', readonly && 'readonly']"
+        :class="[disabled && 'disabled', readonly && 'readonly', $slots.prepend && 'prepend', $slots.append && 'append']"
         :value="value"
         :disabled="disabled"
         :readonly="readonly"
@@ -39,10 +39,10 @@
         @blur="$emit('blur', $event.target.value)"
       >
       <zch-icon v-if="password" class="password" icon="eye" @click="switchPasswordVisible"></zch-icon>
-      <!-- <div class="zch-input-append" v-if="$slots.append">
+      <div class="zch-input-append" v-if="$slots.append">
         <slot name="append"></slot>
-      </div> -->
-    </template>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -157,8 +157,16 @@ export default {
     &.readonly {
       @extend %readonly;
     }
+    &.prepend {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &.append {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
-  > .password {
+  .password {
     position: absolute;
     right: .4em;
     top: 50%;
@@ -189,6 +197,29 @@ export default {
     }
     &.readonly {
       @extend %readonly;
+    }
+  }
+  .zch-input-group {
+    display: flex;
+    .zch-input-prepend, .zch-input-append {
+      background-color: #f5f7fa;
+      color: #909399;
+      border: 1px solid #dcdfe6;
+      border-radius: 4px;
+      padding: 0 20px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+    }
+    .zch-input-prepend {
+      border-right: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .zch-input-append {
+      border-left: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
   }
 }
