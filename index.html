@@ -30,7 +30,7 @@
     </div>
     <div class="inputBar">
       <h1>input：</h1>
-      <zch-input v-model.trim="message" @input="input"></zch-input>
+      <zch-input @input="input"></zch-input>
       <zch-input disabled placeholder="禁用状态"></zch-input>
       <zch-input readonly placeholder="只读状态"></zch-input>
       <zch-input @blur="input" v-model="password" password placeholder="密码状态"></zch-input @blur="input">
@@ -38,9 +38,10 @@
       <zch-input><template slot="prepend">前缀</template></zch-input>
       <zch-input><template slot="prepend">前缀</template><template slot="append">后缀</template></zch-input>
       <zch-input><template slot="append">后缀</template></zch-input>
+      <zch-input v-model.trim="message" clearable placeholder="可清空"></zch-input v-model.trim="message">
     </div>
   </div>
   <script src="./src/app.js"></script>
-  <script src="//at.alicdn.com/t/font_1500551_1pve5lyqn9x.js"></script>
+  <script src="//at.alicdn.com/t/font_1500551_zesbpccwf9j.js"></script>
 </body>
 </html>

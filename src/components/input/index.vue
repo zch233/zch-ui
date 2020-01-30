@@ -38,7 +38,8 @@
         @focus="$emit('focus', $event.target.value)"
         @blur="$emit('blur', $event.target.value)"
       >
-      <zch-icon v-if="password" class="password" icon="eye" @click="switchPasswordVisible"></zch-icon>
+      <zch-icon v-if="clearable && value.length > 0" class="icon clear" icon="clear" @mousedown.prevent @click="clear"></zch-icon>
+      <zch-icon v-if="password" class="icon password" icon="eye" @click="switchPasswordVisible"></zch-icon>
       <div class="zch-input-append" v-if="$slots.append">
         <slot name="append"></slot>
       </div>
@@ -74,7 +75,8 @@ export default {
       required: false
     },
     value: [String, Number],
-    label: String
+    label: String,
+    clearable: Boolean,
   },
   data() {
     return {
@@ -95,7 +97,12 @@ export default {
       this.$nextTick(() => {
         this.getInputElement().focus()
       })
-    }
+    },
+    clear() {
+      this.$emit('input', '');
+      this.$emit('change', '');
+      this.$emit('clear');
+    },
   }
 }
 </script>
@@ -166,19 +173,24 @@ export default {
       border-bottom-right-radius: 0;
     }
   }
-  .password {
+  .icon {
     position: absolute;
-    right: .4em;
+    cursor: pointer;
     top: 50%;
     transform: translateY(-50%);
     color: #c0c4cc;
     transition: all .3s;
-    cursor: pointer;
     font-size: 1.2em;
     user-select: none;
     &:hover {
       fill: #909399;
     }
+  }
+  .password {
+    right: .4em;
+  }
+  .clear {
+    right: .4em;
   }
   .zch-textarea {
     @extend %theSameStyle;
