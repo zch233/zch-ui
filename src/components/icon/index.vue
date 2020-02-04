@@ -3,7 +3,8 @@
     v-if="icon"
     class="icon"
     aria-hidden="true"
-    @click="$emit('click', $event)">
+    @click="$emit('click', $event)"
+    @mousedown="$emit('mousedown', $event)">
     <use :xlink:href="`#icon-${icon}`"></use>
   </svg>
 </template>
