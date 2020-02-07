@@ -82,7 +82,7 @@ describe('zchInput', () => {
     vm.$el.remove()
     vm.$destroy()
   })
-  it('input 为password状态', () => {
+  it('input 为 password 状态', () => {
     const vm = new Constructor({
       propsData: {
         password: true
@@ -94,6 +94,20 @@ describe('zchInput', () => {
     const type = inputElement.type
     expect(type).to.eq('password')
     expect(icon).to.eq('#icon-eye')
+    vm.$el.remove()
+    vm.$destroy()
+  })
+  it('input 为 clearable 状态', () => {
+    const vm = new Constructor({
+      propsData: {
+        clearable: true,
+        value: 'zch',
+      }
+    }).$mount()
+    const svgElement = vm.$el.querySelector('svg')
+    const useElement = svgElement.querySelector('use')
+    const icon = useElement.getAttribute('xlink:href')
+    expect(icon).to.eq('#icon-clear')
     vm.$el.remove()
     vm.$destroy()
   })

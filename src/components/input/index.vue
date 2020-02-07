@@ -17,7 +17,7 @@
       @fucus="$emit('fucus', $event.target.value)"
       @blur="$emit('blur', $event.target.value)"
     ></textarea>
-    <div :class="{'zch-input-group': $slots.prepend || $slots.append}" v-else>
+    <div :class="{'zch-input-slot': $slots.prepend || $slots.append}" v-else>
       <div class="zch-input-prepend" v-if="$slots.prepend">
         <slot name="prepend"></slot>
       </div>
@@ -69,11 +69,7 @@ export default {
       default: false,
       required: false
     },
-    password: {
-      type: Boolean,
-      default: false,
-      required: false
-    },
+    password: Boolean,
     value: [String, Number],
     label: String,
     clearable: Boolean,
@@ -210,7 +206,7 @@ export default {
       @extend %readonly;
     }
   }
-  .zch-input-group {
+  .zch-input-slot {
     display: flex;
     .zch-input-prepend, .zch-input-append {
       background-color: #f5f7fa;
