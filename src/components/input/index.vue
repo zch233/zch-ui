@@ -10,12 +10,12 @@
       :readonly="readonly"
       :aria-label="label"
       v-bind="$attrs"
-      @keydown="$emit('keydown', $event.target.value)"
-      @keyup="$emit('keyup', $event.target.value)"
-      @input="$emit('input', $event.target.value)"
-      @change="$emit('change', $event.target.value)"
-      @fucus="$emit('fucus', $event.target.value)"
-      @blur="$emit('blur', $event.target.value)"
+      @keydown="keydown"
+      @keyup="keyup"
+      @input="input"
+      @change="change"
+      @fucus="fucus"
+      @blur="blur"
     ></textarea>
     <div :class="{'zch-input-slot': $slots.prepend || $slots.append}" v-else>
       <div class="zch-input-prepend" v-if="$slots.prepend">
@@ -31,12 +31,12 @@
         :type="isPassword"
         :aria-label="label"
         v-bind="$attrs"
-        @keydown="$emit('keydown', $event.target.value)"
-        @keyup="$emit('keyup', $event.target.value)"
-        @input="$emit('input', $event.target.value)"
-        @change="$emit('change', $event.target.value)"
-        @focus="$emit('focus', $event.target.value)"
-        @blur="$emit('blur', $event.target.value)"
+        @keydown="keydown"
+        @keyup="keyup"
+        @input="input"
+        @change="change"
+        @focus="focus"
+        @blur="blur"
       >
       <zch-icon v-if="clearable && value.length > 0" class="icon clear" icon="clear" @mousedown.prevent @click="clear"></zch-icon>
       <zch-icon v-if="password" class="icon password" icon="eye" @click="switchPasswordVisible"></zch-icon>
@@ -85,6 +85,24 @@ export default {
     }
   },
   methods: {
+    keydown(event) {
+      this.$emit('keydown', event.target.value, event)
+    },
+    keyup(event) {
+      this.$emit('keyup', event.target.value, event)
+    },
+    input(event) {
+      this.$emit('input', event.target.value, event)
+    },
+    change(event) {
+      this.$emit('change', event.target.value, event)
+    },
+    focus(event) {
+      this.$emit('focus', event.target.value, event)
+    },
+    blur(event) {
+      this.$emit('blur', event.target.value, event)
+    },
     getInputElement() {
       return this.$refs.zchInput || this.$refs.zchTextarea
     },
