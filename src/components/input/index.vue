@@ -157,6 +157,7 @@ export default {
   position: relative;
   font-size: 14px;
   display: inline-block;
+  vertical-align: top;
   .zch-input {
     @extend %theSameStyle;
     -webkit-appearance: none;
