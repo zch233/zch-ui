@@ -1,12 +1,12 @@
 <template>
-  <div class="zch-row"></div>
+  <div class="zch-col"></div>
 </template>
 
 <script>
 import './svg'
 
 export default {
-  name: 'ZchRow',
+  name: 'ZchCol',
   props: {
     icon: {
       type: String,
