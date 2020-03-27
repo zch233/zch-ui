@@ -1,7 +1,7 @@
 <template>
   <svg
     v-if="icon"
-    class="icon"
+    class="zch-icon"
     aria-hidden="true"
     @click="$emit('click', $event)"
     @mousedown="$emit('mousedown', $event)">
@@ -26,7 +26,7 @@ export default {
 
 
 <style lang="scss" scoped>
-  .icon {
+  .zch-icon {
     width: 1em; height: 1em;
     vertical-align: -0.15em;
     fill: currentColor;
