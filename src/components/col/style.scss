@@ -13,3 +13,21 @@ $class-prefix: zch-col-offset-;
     margin-left: ($n / 24) * 100%;
   }
 }
+@media (max-width: 576px) {
+  $class-prefix: zch-col-phone-;
+  @for $n from 1 through 24 {
+    .#{$class-prefix}#{$n} {
+      width: ($n / 24) * 100%;
+    }
+  }
+  $class-prefix: zch-col-phone-offset-;
+  @for $n from 1 through 24 {
+    .#{$class-prefix}#{$n} {
+      margin-left: ($n / 24) * 100%;
+    }
+  }
+}
+@media (max-width: 768px) {}
+@media (max-width: 992px) {}
+@media (max-width: 1200px) {}
+@media (max-width: 1920px) {}

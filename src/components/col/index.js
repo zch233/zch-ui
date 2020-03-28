@@ -13,6 +13,11 @@ export default {
       type: String,
       default: 'div'
     },
+    phone: [String, Number, Object],
+    pad: [String, Number, Object],
+    narrowPc: [String, Number, Object],
+    pc: [String, Number, Object],
+    widePc: [String, Number, Object],
   },
   computed: {
     gutter() {
@@ -32,7 +37,18 @@ export default {
       return style
     },
     classList () {
-      return [`zch-col-${this.span}`, this.offset && `zch-col-offset-${this.offset}`]
+      const classList = [];
+      ['span', 'offset'].map(v => this[v] && classList.push(v === 'span' ? `zch-col-${this[v]}` : `zch-col-${v}-${this[v]}`));
+      ['phone', 'pad', 'narrowPc', 'pc', 'widePc'].map(size => {
+        if (this[size] === undefined) return
+        console.log(this[size])
+        if (typeof this[size] === 'object') {
+          Object.keys(this[size]).map(v => classList.push(v === 'span' ? `zch-col-${size}-${this[size][v]}` : `zch-col-${size}-${v}-${this[size][v]}`));
+        } else {
+          classList.push(`zch-col-${size}-${this[size]}`)
+        }
+      })
+      return classList
     }
   },
   render(h) {
