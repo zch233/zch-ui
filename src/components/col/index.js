@@ -1,8 +1,5 @@
-<template>
-  <div :class="['zch-col', `zch-col-${span}`, offset && `zch-col-offset-${offset}`]" :style="style"><slot></slot></div>
-</template>
+import './style.scss'
 
-<script>
 export default {
   name: 'ZchCol',
   props: {
@@ -11,7 +8,11 @@ export default {
       default: 24,
       required: false,
     },
-    offset: [String, Number]
+    offset: [String, Number],
+    tag: {
+      type: String,
+      default: 'div'
+    },
   },
   computed: {
     gutter() {
@@ -29,26 +30,15 @@ export default {
         style.paddingRight = gutter
       }
       return style
+    },
+    classList () {
+      return [`zch-col-${this.span}`, this.offset && `zch-col-offset-${this.offset}`]
     }
   },
+  render(h) {
+    return h(this.tag, {
+      class: ['zch-col', ...this.classList],
+      style: this.style,
+    }, this.$slots.default);
+  },
 }
-</script>
-
-
-<style lang="scss" scoped>
-  .zch-col {
-    box-sizing: border-box;
-  }
-  $class-prefix: zch-col-;
-  @for $n from 1 through 24 {
-    .#{$class-prefix}#{$n} {
-      width: ($n / 24) * 100%;
-    }
-  }
-  $class-prefix: zch-col-offset-;
-  @for $n from 1 through 24 {
-    .#{$class-prefix}#{$n} {
-      margin-left: ($n / 24) * 100%;
-    }
-  }
-</style>
