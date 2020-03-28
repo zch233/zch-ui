@@ -27,7 +27,59 @@ $class-prefix: zch-col-offset-;
     }
   }
 }
-@media (max-width: 768px) {}
-@media (max-width: 992px) {}
-@media (max-width: 1200px) {}
-@media (max-width: 1920px) {}
+@media (max-width: 768px) {
+  $class-prefix: zch-col-pad-;
+  @for $n from 1 through 24 {
+    .#{$class-prefix}#{$n} {
+      width: ($n / 24) * 100%;
+    }
+  }
+  $class-prefix: zch-col-pad-offset-;
+  @for $n from 1 through 24 {
+    .#{$class-prefix}#{$n} {
+      margin-left: ($n / 24) * 100%;
+    }
+  }
+}
+@media (max-width: 992px) {
+  $class-prefix: zch-col-narrow-;
+  @for $n from 1 through 24 {
+    .#{$class-prefix}#{$n} {
+      width: ($n / 24) * 100%;
+    }
+  }
+  $class-prefix: zch-col-narrow-offset-;
+  @for $n from 1 through 24 {
+    .#{$class-prefix}#{$n} {
+      margin-left: ($n / 24) * 100%;
+    }
+  }
+}
+@media (max-width: 1200px) {
+  $class-prefix: zch-col-pc-;
+  @for $n from 1 through 24 {
+    .#{$class-prefix}#{$n} {
+      width: ($n / 24) * 100%;
+    }
+  }
+  $class-prefix: zch-col-pc-offset-;
+  @for $n from 1 through 24 {
+    .#{$class-prefix}#{$n} {
+      margin-left: ($n / 24) * 100%;
+    }
+  }
+}
+@media (max-width: 1920px) {
+  $class-prefix: zch-col-widePc-;
+  @for $n from 1 through 24 {
+    .#{$class-prefix}#{$n} {
+      width: ($n / 24) * 100%;
+    }
+  }
+  $class-prefix: zch-col-widePc-offset-;
+  @for $n from 1 through 24 {
+    .#{$class-prefix}#{$n} {
+      margin-left: ($n / 24) * 100%;
+    }
+  }
+}
