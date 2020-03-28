@@ -1,4 +1,5 @@
-<script>
+import './style.scss'
+
 export default {
   name: 'ZchRow',
   componentName: 'ZchRow',
@@ -20,11 +21,6 @@ export default {
       return style
     }
   },
-  mounted () {
-    // this.$children.map(vm => {
-    //   vm.gutter = this.gutter
-    // })
-  },
   render(h) {
     return h(this.tag, {
       class: [ 'zch-row' ],
@@ -32,12 +28,3 @@ export default {
     }, this.$slots.default);
   }
 }
-</script>
-
-
-<style lang="scss" scoped>
-  .zch-row {
-    display: flex;
-    flex-wrap: wrap;
-  }
-</style>
