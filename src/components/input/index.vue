@@ -14,7 +14,7 @@
       @keyup="keyup"
       @input="input"
       @change="change"
-      @fucus="fucus"
+      @focus="focus"
       @blur="blur"
     ></textarea>
     <div :class="{'zch-input-slot': $slots.prepend || $slots.append}" v-else>
