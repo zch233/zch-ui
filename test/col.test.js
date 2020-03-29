@@ -158,4 +158,32 @@ describe('zchCol', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('测试 widePc ', () => {
+    const widePc = 2
+    const vm = new Constructor({
+      propsData: {
+        widePc
+      }
+    }).$mount()
+    const colElement = vm.$el
+    const widePcClass = colElement.classList.contains(`zch-col-widePc-${widePc}`)
+    expect(widePcClass).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
+  it('测试 widePc 为 Object', () => {
+    const widePc = { span: 12, offset: 1 }
+    const vm = new Constructor({
+      propsData: {
+        widePc
+      }
+    }).$mount()
+    const colElement = vm.$el
+    const widePcSpanClass = colElement.classList.contains(`zch-col-widePc-${widePc.span}`)
+    const widePcOffsetClass = colElement.classList.contains(`zch-col-widePc-offset-${widePc.offset}`)
+    expect(widePcSpanClass).to.eq(true)
+    expect(widePcOffsetClass).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })
