@@ -130,4 +130,32 @@ describe('zchCol', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('测试 pc ', () => {
+    const pc = 2
+    const vm = new Constructor({
+      propsData: {
+        pc
+      }
+    }).$mount()
+    const colElement = vm.$el
+    const pcClass = colElement.classList.contains(`zch-col-pc-${pc}`)
+    expect(pcClass).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
+  it('测试 pc 为 Object', () => {
+    const pc = { span: 12, offset: 1 }
+    const vm = new Constructor({
+      propsData: {
+        pc
+      }
+    }).$mount()
+    const colElement = vm.$el
+    const pcSpanClass = colElement.classList.contains(`zch-col-pc-${pc.span}`)
+    const pcOffsetClass = colElement.classList.contains(`zch-col-pc-offset-${pc.offset}`)
+    expect(pcSpanClass).to.eq(true)
+    expect(pcOffsetClass).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })
