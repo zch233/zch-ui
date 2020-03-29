@@ -69,4 +69,19 @@ describe('zchRow', () => {
     div.remove()
     vm.$destroy()
   })
+  it('添加 justify-end ', () => {
+    const div = document.createElement('div')
+    document.body.appendChild(div)
+    const vm = new RowConstructor({
+      propsData: {
+        justify: 'end'
+      },
+    }).$mount(div)
+    const rowElement = vm.$el
+    const alignItems = rowElement.classList.contains('is-justify-end')
+    expect(alignItems).to.eq(true)
+    vm.$el.remove()
+    div.remove()
+    vm.$destroy()
+  })
 })
