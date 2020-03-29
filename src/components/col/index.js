@@ -41,7 +41,6 @@ export default {
       ['span', 'offset'].map(v => this[v] && classList.push(v === 'span' ? `zch-col-${this[v]}` : `zch-col-${v}-${this[v]}`));
       ['phone', 'pad', 'narrowPc', 'pc', 'widePc'].map(size => {
         if (this[size] === undefined) return
-        console.log(this[size])
         if (typeof this[size] === 'object') {
           Object.keys(this[size]).map(v => classList.push(v === 'span' ? `zch-col-${size}-${this[size][v]}` : `zch-col-${size}-${v}-${this[size][v]}`));
         } else {
