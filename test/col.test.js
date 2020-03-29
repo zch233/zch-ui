@@ -46,4 +46,32 @@ describe('zchCol', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('测试 phone ', () => {
+    const phone = 2
+    const vm = new Constructor({
+      propsData: {
+        phone
+      }
+    }).$mount()
+    const colElement = vm.$el
+    const phoneClass = colElement.classList.contains(`zch-col-phone-${phone}`)
+    expect(phoneClass).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
+  it('测试 phone 为 Object', () => {
+    const phone = { span: 12, offset: 1 }
+    const vm = new Constructor({
+      propsData: {
+        phone
+      }
+    }).$mount()
+    const colElement = vm.$el
+    const phoneSpanClass = colElement.classList.contains(`zch-col-phone-${phone.span}`)
+    const phoneOffsetClass = colElement.classList.contains(`zch-col-phone-offset-${phone.offset}`)
+    expect(phoneSpanClass).to.eq(true)
+    expect(phoneOffsetClass).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })
