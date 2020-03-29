@@ -8,7 +8,6 @@ Vue.config.devtools = false
 
 describe('zchRow', () => {
   const RowConstructor = Vue.extend(zchRow)
-  const ColConstructor = Vue.extend(zchCol)
   it('存在', () => {
     expect(zchRow).to.be.exist
   })
@@ -40,5 +39,18 @@ describe('zchRow', () => {
       vm.$destroy()
       done()
     })
+  })
+  it('添加 align ', () => {
+    const div = document.createElement('div')
+    document.body.appendChild(div)
+    const vm = new RowConstructor({
+      propsData: {
+        align: 'center'
+      },
+    }).$mount(div)
+    expect(getComputedStyle(vm.$el).alignItems).to.eq('center')
+    vm.$el.remove()
+    div.remove()
+    vm.$destroy()
   })
 })
