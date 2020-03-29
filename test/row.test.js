@@ -78,8 +78,23 @@ describe('zchRow', () => {
       },
     }).$mount(div)
     const rowElement = vm.$el
-    const alignItems = rowElement.classList.contains('is-justify-end')
-    expect(alignItems).to.eq(true)
+    const justifyContent = rowElement.classList.contains('is-justify-end')
+    expect(justifyContent).to.eq(true)
+    vm.$el.remove()
+    div.remove()
+    vm.$destroy()
+  })
+  it('添加 justify-center ', () => {
+    const div = document.createElement('div')
+    document.body.appendChild(div)
+    const vm = new RowConstructor({
+      propsData: {
+        justify: 'center'
+      },
+    }).$mount(div)
+    const rowElement = vm.$el
+    const justifyContent = rowElement.classList.contains('is-justify-center')
+    expect(justifyContent).to.eq(true)
     vm.$el.remove()
     div.remove()
     vm.$destroy()
