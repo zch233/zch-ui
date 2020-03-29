@@ -10,7 +10,7 @@ describe('zchCol', () => {
   it('存在', () => {
     expect(zchCol).to.be.exist
   })
-  it('添加 tag', () => {
+  it('测试 tag', () => {
     const vm = new Constructor({
       propsData: {
         tag: 'li'
@@ -20,7 +20,7 @@ describe('zchCol', () => {
     vm.$el.remove()
     vm.$destroy()
   })
-  it('添加 span ', () => {
+  it('测试 span ', () => {
     const span = 12
     const vm = new Constructor({
       propsData: {
@@ -33,7 +33,7 @@ describe('zchCol', () => {
     vm.$el.remove()
     vm.$destroy()
   })
-  it('添加 offset ', () => {
+  it('测试 offset ', () => {
     const offset = 2
     const vm = new Constructor({
       propsData: {
