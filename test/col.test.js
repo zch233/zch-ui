@@ -23,4 +23,17 @@ describe('zchCol', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('添加 offset ', () => {
+    const offset = 2
+    const vm = new Constructor({
+      propsData: {
+        offset
+      }
+    }).$mount()
+    const colElement = vm.$el
+    const offsetClass = colElement.classList.contains(`zch-col-offset-${offset}`)
+    expect(offsetClass).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })
