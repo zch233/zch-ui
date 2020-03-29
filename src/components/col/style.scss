@@ -13,42 +13,14 @@ $class-prefix: zch-col-offset-;
     margin-left: ($n / 24) * 100%;
   }
 }
-@media (max-width: 576px) {
-  $class-prefix: zch-col-phone-;
+@media (max-width: 1920px) {
+  $class-prefix: zch-col-widePc-;
   @for $n from 1 through 24 {
     .#{$class-prefix}#{$n} {
       width: ($n / 24) * 100%;
     }
   }
-  $class-prefix: zch-col-phone-offset-;
-  @for $n from 1 through 24 {
-    .#{$class-prefix}#{$n} {
-      margin-left: ($n / 24) * 100%;
-    }
-  }
-}
-@media (max-width: 768px) {
-  $class-prefix: zch-col-pad-;
-  @for $n from 1 through 24 {
-    .#{$class-prefix}#{$n} {
-      width: ($n / 24) * 100%;
-    }
-  }
-  $class-prefix: zch-col-pad-offset-;
-  @for $n from 1 through 24 {
-    .#{$class-prefix}#{$n} {
-      margin-left: ($n / 24) * 100%;
-    }
-  }
-}
-@media (max-width: 992px) {
-  $class-prefix: zch-col-narrow-;
-  @for $n from 1 through 24 {
-    .#{$class-prefix}#{$n} {
-      width: ($n / 24) * 100%;
-    }
-  }
-  $class-prefix: zch-col-narrow-offset-;
+  $class-prefix: zch-col-widePc-offset-;
   @for $n from 1 through 24 {
     .#{$class-prefix}#{$n} {
       margin-left: ($n / 24) * 100%;
@@ -69,14 +41,42 @@ $class-prefix: zch-col-offset-;
     }
   }
 }
-@media (max-width: 1920px) {
-  $class-prefix: zch-col-widePc-;
+@media (max-width: 992px) {
+  $class-prefix: zch-col-narrowPc-;
   @for $n from 1 through 24 {
     .#{$class-prefix}#{$n} {
       width: ($n / 24) * 100%;
     }
   }
-  $class-prefix: zch-col-widePc-offset-;
+  $class-prefix: zch-col-narrow-offset-;
+  @for $n from 1 through 24 {
+    .#{$class-prefix}#{$n} {
+      margin-left: ($n / 24) * 100%;
+    }
+  }
+}
+@media (max-width: 768px) {
+  $class-prefix: zch-col-pad-;
+  @for $n from 1 through 24 {
+    .#{$class-prefix}#{$n} {
+      width: ($n / 24) * 100%;
+    }
+  }
+  $class-prefix: zch-col-pad-offset-;
+  @for $n from 1 through 24 {
+    .#{$class-prefix}#{$n} {
+      margin-left: ($n / 24) * 100%;
+    }
+  }
+}
+@media (max-width: 576px) {
+  $class-prefix: zch-col-phone-;
+  @for $n from 1 through 24 {
+    .#{$class-prefix}#{$n} {
+      width: ($n / 24) * 100%;
+    }
+  }
+  $class-prefix: zch-col-phone-offset-;
   @for $n from 1 through 24 {
     .#{$class-prefix}#{$n} {
       margin-left: ($n / 24) * 100%;
