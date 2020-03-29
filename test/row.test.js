@@ -59,7 +59,7 @@ describe('zchRow', () => {
     document.body.appendChild(div)
     const vm = new RowConstructor({
       propsData: {
-        align: 'center'
+        align: 'bottom'
       },
     }).$mount(div)
     const rowElement = vm.$el
