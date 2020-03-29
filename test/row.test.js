@@ -11,6 +11,16 @@ describe('zchRow', () => {
   it('存在', () => {
     expect(zchRow).to.be.exist
   })
+  it('添加 tag', () => {
+    const vm = new RowConstructor({
+      propsData: {
+        tag: 'ul'
+      },
+    }).$mount()
+    expect(vm.$el.tagName).to.eq('UL')
+    vm.$el.remove()
+    vm.$destroy()
+  })
   it('添加 gutter ', (done) => {
     const div = document.createElement('div')
     document.body.appendChild(div)
