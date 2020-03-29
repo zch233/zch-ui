@@ -54,4 +54,19 @@ describe('zchRow', () => {
     div.remove()
     vm.$destroy()
   })
+  it('添加 align-bottom ', () => {
+    const div = document.createElement('div')
+    document.body.appendChild(div)
+    const vm = new RowConstructor({
+      propsData: {
+        align: 'center'
+      },
+    }).$mount(div)
+    const rowElement = vm.$el
+    const alignItems = rowElement.classList.contains('is-align-bottom')
+    expect(alignItems).to.eq(true)
+    vm.$el.remove()
+    div.remove()
+    vm.$destroy()
+  })
 })
