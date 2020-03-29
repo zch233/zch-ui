@@ -26,21 +26,20 @@ describe('zchRow', () => {
       el: div,
     })
     setTimeout(() => {
-      console.log(vm.$el.outerHTML, 1)
-      const row = vm.$el.querySelector('.zch-row')
-      const cols = vm.$el.querySelectorAll('.zch-col')
-      expect(cols.length).to.eq(2)
-      expect(getComputedStyle(row).marginLeft).to.eq('-10px')
-      expect(getComputedStyle(row).marginRight).to.eq('-10px')
-      expect(getComputedStyle(cols[0]).paddingRight).to.eq('10px')
-      expect(getComputedStyle(cols[1]).paddingLeft).to.eq('10px')
+      const rowElement = vm.$el.querySelector('.zch-row')
+      const colsElements = vm.$el.querySelectorAll('.zch-col')
+      expect(colsElements.length).to.eq(2)
+      expect(getComputedStyle(rowElement).marginLeft).to.eq('-10px')
+      expect(getComputedStyle(rowElement).marginRight).to.eq('-10px')
+      expect(getComputedStyle(colsElements[0]).paddingRight).to.eq('10px')
+      expect(getComputedStyle(colsElements[1]).paddingLeft).to.eq('10px')
       vm.$el.remove()
       div.remove()
       vm.$destroy()
       done()
     })
   })
-  it('添加 align ', () => {
+  it('添加 align-center ', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     const vm = new RowConstructor({
@@ -48,7 +47,9 @@ describe('zchRow', () => {
         align: 'center'
       },
     }).$mount(div)
-    expect(getComputedStyle(vm.$el).alignItems).to.eq('center')
+    const rowElement = vm.$el
+    const alignItems = rowElement.classList.contains('is-align-center')
+    expect(alignItems).to.eq(true)
     vm.$el.remove()
     div.remove()
     vm.$destroy()
