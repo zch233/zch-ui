@@ -11,7 +11,7 @@ describe('zchRow', () => {
   it('存在', () => {
     expect(zchRow).to.be.exist
   })
-  it('添加 tag', () => {
+  it('测试 tag', () => {
     const vm = new RowConstructor({
       propsData: {
         tag: 'ul'
@@ -21,7 +21,7 @@ describe('zchRow', () => {
     vm.$el.remove()
     vm.$destroy()
   })
-  it('添加 gutter ', (done) => {
+  it('测试 gutter ', (done) => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     Vue.component('zch-row', zchRow)
@@ -49,7 +49,7 @@ describe('zchRow', () => {
       done()
     })
   })
-  it('添加 align-center ', () => {
+  it('测试 align-center ', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     const vm = new RowConstructor({
@@ -64,7 +64,7 @@ describe('zchRow', () => {
     div.remove()
     vm.$destroy()
   })
-  it('添加 align-bottom ', () => {
+  it('测试 align-bottom ', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     const vm = new RowConstructor({
@@ -79,7 +79,7 @@ describe('zchRow', () => {
     div.remove()
     vm.$destroy()
   })
-  it('添加 justify-end ', () => {
+  it('测试 justify-end ', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     const vm = new RowConstructor({
@@ -94,7 +94,7 @@ describe('zchRow', () => {
     div.remove()
     vm.$destroy()
   })
-  it('添加 justify-center ', () => {
+  it('测试 justify-center ', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     const vm = new RowConstructor({
@@ -109,7 +109,7 @@ describe('zchRow', () => {
     div.remove()
     vm.$destroy()
   })
-  it('添加 justify-space-around ', () => {
+  it('测试 justify-space-around ', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     const vm = new RowConstructor({
@@ -124,7 +124,7 @@ describe('zchRow', () => {
     div.remove()
     vm.$destroy()
   })
-  it('添加 justify-space-between ', () => {
+  it('测试 justify-space-between ', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     const vm = new RowConstructor({
