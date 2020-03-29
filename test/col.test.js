@@ -102,4 +102,32 @@ describe('zchCol', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('测试 narrowPc ', () => {
+    const narrowPc = 2
+    const vm = new Constructor({
+      propsData: {
+        narrowPc
+      }
+    }).$mount()
+    const colElement = vm.$el
+    const narrowPcClass = colElement.classList.contains(`zch-col-narrowPc-${narrowPc}`)
+    expect(narrowPcClass).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
+  it('测试 narrowPc 为 Object', () => {
+    const narrowPc = { span: 12, offset: 1 }
+    const vm = new Constructor({
+      propsData: {
+        narrowPc
+      }
+    }).$mount()
+    const colElement = vm.$el
+    const narrowPcSpanClass = colElement.classList.contains(`zch-col-narrowPc-${narrowPc.span}`)
+    const narrowPcOffsetClass = colElement.classList.contains(`zch-col-narrowPc-offset-${narrowPc.offset}`)
+    expect(narrowPcSpanClass).to.eq(true)
+    expect(narrowPcOffsetClass).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })
