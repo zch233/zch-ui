@@ -74,4 +74,32 @@ describe('zchCol', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('测试 pad ', () => {
+    const pad = 2
+    const vm = new Constructor({
+      propsData: {
+        pad
+      }
+    }).$mount()
+    const colElement = vm.$el
+    const padClass = colElement.classList.contains(`zch-col-pad-${pad}`)
+    expect(padClass).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
+  it('测试 pad 为 Object', () => {
+    const pad = { span: 12, offset: 1 }
+    const vm = new Constructor({
+      propsData: {
+        pad
+      }
+    }).$mount()
+    const colElement = vm.$el
+    const padSpanClass = colElement.classList.contains(`zch-col-pad-${pad.span}`)
+    const padOffsetClass = colElement.classList.contains(`zch-col-pad-offset-${pad.offset}`)
+    expect(padSpanClass).to.eq(true)
+    expect(padOffsetClass).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })
