@@ -10,6 +10,16 @@ describe('zchCol', () => {
   it('存在', () => {
     expect(zchCol).to.be.exist
   })
+  it('添加 tag', () => {
+    const vm = new Constructor({
+      propsData: {
+        tag: 'li'
+      },
+    }).$mount()
+    expect(vm.$el.tagName).to.eq('LI')
+    vm.$el.remove()
+    vm.$destroy()
+  })
   it('添加 span ', () => {
     const span = 12
     const vm = new Constructor({
