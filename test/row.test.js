@@ -99,4 +99,19 @@ describe('zchRow', () => {
     div.remove()
     vm.$destroy()
   })
+  it('添加 justify-space-around ', () => {
+    const div = document.createElement('div')
+    document.body.appendChild(div)
+    const vm = new RowConstructor({
+      propsData: {
+        justify: 'space-around'
+      },
+    }).$mount(div)
+    const rowElement = vm.$el
+    const justifyContent = rowElement.classList.contains('is-justify-space-around')
+    expect(justifyContent).to.eq(true)
+    vm.$el.remove()
+    div.remove()
+    vm.$destroy()
+  })
 })
