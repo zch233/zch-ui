@@ -7,7 +7,9 @@
 <script>
 export default {
   name: 'ZchLayout',
-  direction: String,
+  props: {
+    direction: String
+  },
   computed: {
     isVertical() {
       if (this.direction === 'vertical') {
