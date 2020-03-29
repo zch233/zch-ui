@@ -9,6 +9,14 @@ export default {
       type: String,
       default: 'div',
     },
+    justify: {
+      type: String,
+      default: 'start'
+    },
+    align: {
+      type: String,
+      default: 'top'
+    }
   },
   computed: {
     style () {
@@ -23,7 +31,7 @@ export default {
   },
   render(h) {
     return h(this.tag, {
-      class: [ 'zch-row' ],
+      class: [ 'zch-row', this.align !== 'top' ? `is-align-${this.align}` : '', this.justify !== 'start' ? `is-justify-${this.justify}` : '' ],
       style: this.style,
     }, this.$slots.default);
   }
