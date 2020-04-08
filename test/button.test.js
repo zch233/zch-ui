@@ -112,7 +112,7 @@ describe('zchButton', () => {
     const callback = sinon.fake()
     vm.$on('click', callback)
     vm.$el.click()
-    expect(callback).to.have.not.been.called
+    expect(callback).to.have.been.called
     vm.$el.remove()
     vm.$destroy()
   })
