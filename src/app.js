@@ -10,7 +10,9 @@ import zchHeader from './components/header'
 import zchContent from './components/content'
 import zchSlide from './components/slide'
 import zchFooter from './components/footer'
+import zchToast from './components/toast/main.js'
 
+Vue.use(zchToast)
 Vue.component('zch-button', zchButton)
 Vue.component('zch-button-group', zchButtonGroup)
 Vue.component('zch-icon', zchIcon)
@@ -34,6 +36,11 @@ new Vue({
   methods: {
     input(e) {
       console.log(e)
+    },
+    xxx () {
+      this.$toast('02103132123')
     }
+  },
+  created () {
   }
 })
