@@ -3,7 +3,8 @@
     class="zch-button xxxx"
     :class="[`icon-${iconPosition}`, loading && 'loading', disabled && 'disabled', round && 'round', square && 'square']"
     :disabled="disabled"
-    type="button">
+    type="button"
+    @click="$emit('click', $event)">
     <zch-icon v-if="loading" icon="loading"></zch-icon>
     <zch-icon v-else :icon="icon"></zch-icon>
     <span><slot /></span>
