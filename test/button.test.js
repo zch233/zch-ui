@@ -107,4 +107,13 @@ describe('zchButton', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('按钮 可以被点击', () => {
+    const vm = new Constructor({}).$mount()
+    const callback = sinon.fake()
+    vm.$on('click', callback)
+    vm.$el.click()
+    expect(callback).to.have.been.called
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })
