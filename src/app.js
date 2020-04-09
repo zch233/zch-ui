@@ -38,7 +38,10 @@ new Vue({
       console.log(e)
     },
     xxx () {
-      this.$toast('02103132123')
+      this.$toast({
+        message: '大撒旦撒旦撒多所多所',
+        type: 'success'
+      })
     }
   },
   created () {
