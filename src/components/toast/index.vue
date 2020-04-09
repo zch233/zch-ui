@@ -1,7 +1,7 @@
 <template>
   <div class="zchToast" :class="[`zchToast-${position}`]">
     <div class="zchToast-wrapper" :class="[`zchToast-wrapper-${position}`, `zchToast-wrapper-${type}`]">
-      <p class="zchToast-content">{{ message }}</p>
+      <p class="zchToast-content" :class="[center && 'center']">{{ message }}</p>
       <zch-icon v-if="showClose" @click="close" icon="close"></zch-icon>
     </div>
   </div>
@@ -16,14 +16,18 @@ export default {
   props: {
     message: String,
     beforeClose: Function,
-    type: String,
+    type: {
+      default: 'default',
+      type: String,
+    },
     showClose: Boolean,
+    center: Boolean,
     position: {
       default: 'top',
       type: String,
     },
     duration: {
-      default: 20000,
+      default: 2000,
       type: Number,
     },
   },
@@ -97,9 +101,7 @@ export default {
     justify-content: space-between;
     border-radius: 4px;
     overflow: hidden;
-    background-color: rgba(50, 50, 51, 0.88);
     padding: 15px 15px 15px 20px;
-    color: #fff;
     font-size: 14px;
     border: 1px solid rgba(50, 50, 51, 0.88);
     min-width: 30em;
@@ -111,6 +113,10 @@ export default {
     }
     &-bottom {
       animation: slide-up .3s;
+    }
+    &-default {
+      background-color: rgba(50, 50, 51, 0.88);
+      color: #fff;
     }
     &-success {
       background-color: #f0f9eb;
@@ -135,6 +141,10 @@ export default {
   }
   &-content {
     margin: 0;
+    flex: 1;
+    &.center {
+      text-align: center;
+    }
   }
 }
 </style>
