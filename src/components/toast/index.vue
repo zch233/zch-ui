@@ -2,8 +2,8 @@
   <div class="zchToast" :class="[`zchToast-${position}`]">
     <div class="zchToast-wrapper" :class="[`zchToast-wrapper-${position}`, `zchToast-wrapper-${type}`]">
       <p v-if="enabledHTML" class="zchToast-content" v-html="message"></p>
-      <p v-else class="zchToast-content" :class="[center && 'center']">{{ message }}</p>
-      <zch-icon v-if="showClose" @click="close" icon="close"></zch-icon>
+      <p v-else class="zchToast-content" :class="[center && 'zchToast-content-center']">{{ message }}</p>
+      <zch-icon class="zchToast-icon" v-if="showClose" @click="close" icon="close"></zch-icon>
     </div>
   </div>
 </template>
@@ -20,6 +20,9 @@ export default {
     type: {
       default: 'default',
       type: String,
+      validator (value) {
+        return ['default', 'success', 'info', 'wraning', 'error'].indexOf(value) >= 0
+      }
     },
     showClose: Boolean,
     center: Boolean,
@@ -27,6 +30,9 @@ export default {
     position: {
       default: 'top',
       type: String,
+      validator (value) {
+        return ['top', 'middle', 'bottom'].indexOf(value) >= 0
+      }
     },
     duration: {
       default: 2000,
@@ -144,7 +150,7 @@ export default {
   &-content {
     margin: 0;
     flex: 1;
-    &.center {
+    &-center {
       text-align: center;
     }
   }
