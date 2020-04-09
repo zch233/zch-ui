@@ -37,10 +37,11 @@ new Vue({
     input(e) {
       console.log(e)
     },
-    xxx () {
+    xxx (position) {
       this.$toast({
         message: '大撒旦撒旦撒多所多所',
-        type: 'success'
+        type: 'success',
+        position
       })
     }
   },

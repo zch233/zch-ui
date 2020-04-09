@@ -10,10 +10,10 @@
   <div id="app">
     <div class="buttonBar">
       <h1>button：</h1>
-      <zch-button @click="xxx">主要按钮</zch-button>
+      <zch-button @click="xxx('top')">主要按钮</zch-button>
       <zch-button disabled>禁用按钮</zch-button>
-      <zch-button icon="setting" icon-position="right">图标按钮</zch-button>
-      <zch-button round>圆角按钮</zch-button>
+      <zch-button @click="xxx('bottom')" icon="setting" icon-position="right">图标按钮</zch-button>
+      <zch-button @click="xxx('middle')" round>圆角按钮</zch-button>
       <zch-button square>方形按钮</zch-button>
       <zch-button-group icon-position="right">
         <zch-button icon="left">上一页</zch-button>

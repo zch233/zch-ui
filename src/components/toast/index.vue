@@ -1,7 +1,9 @@
 <template>
-  <div class="zchToast-wrapper" :class="[`zchToast-wrapper-${position}`, `zchToast-wrapper-${type}`]">
-    <p class="zchToast-content">{{ message }}</p>
-    <zch-icon @click="close" icon="close"></zch-icon>
+  <div class="zchToast" :class="[`zchToast-${position}`]">
+    <div class="zchToast-wrapper" :class="[`zchToast-wrapper-${position}`, `zchToast-wrapper-${type}`]">
+      <p class="zchToast-content">{{ message }}</p>
+      <zch-icon v-if="showClose" @click="close" icon="close"></zch-icon>
+    </div>
   </div>
 </template>
 
@@ -15,20 +17,21 @@ export default {
     message: String,
     beforeClose: Function,
     type: String,
+    showClose: Boolean,
     position: {
       default: 'top',
       type: String,
     },
     duration: {
-      default: 2000,
+      default: 20000,
       type: Number,
     },
   },
   methods: {
     close () {
+      this.beforeClose && this.beforeClose()
       this.$el.remove()
       this.$destroy()
-      this.beforeClose && this.beforeClose()
     },
     keydown(e) {
       if (e.keyCode === 27) { // esc关闭消息
@@ -54,15 +57,44 @@ export default {
 
 
 <style lang="scss" scoped>
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes slide-down {
+  0% { opacity: 0; transform: translateY(-100%); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-up {
+  0% { opacity: 0; transform: translateY(100%); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 .zchToast {
   line-height: 1;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  &-top {
+    top: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    &:nth-child(n + 1) {
+      top: 10px;
+    }
+  }
+  &-bottom {
+    bottom: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  &-middle {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
   &-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
     border-radius: 4px;
     overflow: hidden;
     background-color: rgba(50, 50, 51, 0.88);
@@ -71,6 +103,15 @@ export default {
     font-size: 14px;
     border: 1px solid rgba(50, 50, 51, 0.88);
     min-width: 30em;
+    &-top {
+      animation: slide-down .3s;
+    }
+    &-middle {
+      animation: fade-in .3s;
+    }
+    &-bottom {
+      animation: slide-up .3s;
+    }
     &-success {
       background-color: #f0f9eb;
       border-color: #e1f3d8;
@@ -90,23 +131,6 @@ export default {
       background-color: #fdf6ec;
       border-color: #faecd8;
       color: #e6a23c;
-    }
-    &-top {
-      top: 0;
-      border-top-right-radius: 0;
-      border-top-left-radius: 0;
-      &:nth-child(n + 1) {
-        top: 10px;
-      }
-    }
-    &-bottom {
-      bottom: 0;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-    &-middle {
-      top: 50%;
-      transform: translate(-50%, -50%);
     }
   }
   &-content {
