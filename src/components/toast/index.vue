@@ -1,7 +1,8 @@
 <template>
   <div class="zchToast" :class="[`zchToast-${position}`]">
     <div class="zchToast-wrapper" :class="[`zchToast-wrapper-${position}`, `zchToast-wrapper-${type}`]">
-      <p class="zchToast-content" :class="[center && 'center']">{{ message }}</p>
+      <p v-if="enabledHTML" class="zchToast-content" v-html="message"></p>
+      <p v-else class="zchToast-content" :class="[center && 'center']">{{ message }}</p>
       <zch-icon v-if="showClose" @click="close" icon="close"></zch-icon>
     </div>
   </div>
@@ -22,6 +23,7 @@ export default {
     },
     showClose: Boolean,
     center: Boolean,
+    enabledHTML: Boolean,
     position: {
       default: 'top',
       type: String,

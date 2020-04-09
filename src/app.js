@@ -39,9 +39,10 @@ new Vue({
     },
     xxx (position) {
       this.$toast({
-        message: '大撒旦撒旦撒多所多所',
+        message: '<h1>大撒旦撒旦撒多所多所</h1>',
         type: 'success',
-        position
+        position,
+        enabledHTML: true,
       })
     }
   },
