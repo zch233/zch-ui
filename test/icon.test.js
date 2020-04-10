@@ -36,4 +36,18 @@ describe('zchIcon', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('添加 icon mousedown 事件', () => {
+    const vm = new Constructor({
+      propsData: {
+        icon: 'setting'
+      }
+    }).$mount()
+    const callback = sinon.fake()
+    vm.$on('mousedown', callback)
+    const event = new Event('mousedown');
+    vm.$el.dispatchEvent(event)
+    expect(callback).to.have.been.called
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })
