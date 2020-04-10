@@ -65,14 +65,18 @@ describe('ZchToast', () => {
       })
     })
   })
-  it('测试 showClose', () => {
+  it('测试 showClose 且 主动close', () => {
     const vm = new RowConstructor({
       propsData: {
         showClose: true,
       },
     }).$mount()
-    const useElement = vm.$el.querySelector('.zchToast-icon').querySelector('use')
-    expect(useElement.getAttribute('xlink:href')).to.eq('#icon-close')
+    const svgElement = vm.$el.querySelector('.zchToast-icon')
+    expect(svgElement.querySelector('use').getAttribute('xlink:href')).to.eq('#icon-close')
+    const callback = sinon.fake()
+    vm.$on('click', callback)
+    svgElement.click()
+    expect(callback).to.have.been.called
     vm.$el.remove()
     vm.$destroy()
   })

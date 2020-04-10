@@ -22,4 +22,18 @@ describe('zchIcon', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('添加 icon click 事件', () => {
+    const vm = new Constructor({
+      propsData: {
+        icon: 'setting'
+      }
+    }).$mount()
+    const callback = sinon.fake()
+    vm.$on('click', callback)
+    const event = new Event('click');
+    vm.$el.dispatchEvent(event)
+    expect(callback).to.have.been.called
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })
