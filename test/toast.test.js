@@ -83,6 +83,22 @@ describe('ZchToast', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('测试 showClose 且 调用beforeClose 且 自动关闭', (done) => {
+    const beforeClose = sinon.fake()
+    const vm = new RowConstructor({
+      propsData: {
+        beforeClose,
+        duration: 100
+      },
+    }).$mount()
+    setTimeout(() => {
+      expect(document.body.contains(vm.$el)).to.eq(false)
+      expect(beforeClose).to.have.been.called
+      vm.$el.remove()
+      vm.$destroy()
+      done()
+    }, 1000)
+  })
   it('测试 center', () => {
     const vm = new RowConstructor({
       propsData: {
