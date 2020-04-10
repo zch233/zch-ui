@@ -154,5 +154,8 @@ export default {
       text-align: center;
     }
   }
+  &-icon {
+    cursor: pointer;
+  }
 }
 </style>

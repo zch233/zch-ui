@@ -42,6 +42,7 @@ new Vue({
         message: '<h1>大撒旦撒旦撒多所多所</h1>',
         type: 'success',
         position,
+        showClose: true,
       })
     }
   },
