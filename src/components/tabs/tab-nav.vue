@@ -1,5 +1,5 @@
 <template>
-  <div class="zchTabNav" @click="handleNavClick" :class="[active && 'zchTabNav-active', pane.disabled && 'zchTabNav-disabled']">
+  <div class="zchTabNav" :data-name="pane.name" @click="handleNavClick" :class="[active && 'zchTabNav-active', pane.disabled && 'zchTabNav-disabled']">
     <div v-if="pane.labelEnabledHtml" v-html="pane.label"></div>
     <div v-else>{{ pane.label }}</div>
   </div>
@@ -18,14 +18,14 @@ export default {
   },
   inject: ['eventBus'],
   created () {
-    this.eventBus.$on('click', value => {
+    this.eventBus && this.eventBus.$on('click', value => {
       this.active = value === this.pane.name
     })
   },
   methods: {
     handleNavClick () {
       if (this.pane.disabled) return
-      this.eventBus.$emit('click', this.pane.name, this)
+      this.eventBus && this.eventBus.$emit('click', this.pane.name, this)
     }
   }
 }

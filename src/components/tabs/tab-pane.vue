@@ -20,7 +20,7 @@ export default {
     }
   },
   created () {
-    this.eventBus.$on('click', value => {
+    this.eventBus && this.eventBus.$on('click', value => {
       this.active = value === this.name
     })
   },

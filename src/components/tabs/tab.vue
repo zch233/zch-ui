@@ -50,7 +50,6 @@ export default {
       const paneSlots = this.$slots.default.filter(vnode => vnode.tag && vnode.componentOptions && vnode.componentOptions.Ctor.options.name === 'ZchTabPane');
       this.panes = paneSlots.map(({ componentInstance }) => componentInstance)
       this.$nextTick(() => {
-        console.log(this.$refs.zchTabNav)
         this.$refs.zchTabNav.map(v => {
           v.pane.name === this.value && this.eventBus.$emit('click', this.value, v)
         })
