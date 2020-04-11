@@ -36,7 +36,7 @@ describe('ZchToast', () => {
     vm.$destroy()
   })
   describe('测试 type', () => {
-    ['default', 'success', 'info', 'wraning', 'error'].map(type => {
+    ['default', 'success', 'info', 'warning', 'error'].map(type => {
       it(type, () => {
         const vm = new RowConstructor({
           propsData: {
