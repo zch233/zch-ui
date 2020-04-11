@@ -8,6 +8,16 @@
 </head>
 <body>
   <div id="app">
+    <div class="tabsBar">
+      <h1>tabs：</h1>
+      <zch-tab v-model="activeName">
+        <zch-tab-pane label="title1" label-enabled-html name="title1">
+          111
+        </zch-tab-pane>
+        <zch-tab-pane label="title22" label-enabled-html name="title2">2222</zch-tab-pane>
+        <zch-tab-pane label="title333" label-enabled-html name="title3">3333</zch-tab-pane>
+      </zch-tab>
+    </div>
     <div class="buttonBar">
       <h1>button：</h1>
       <zch-button @click="xxx('top')">主要按钮</zch-button>

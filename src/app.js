@@ -11,6 +11,8 @@ import zchContent from './components/content'
 import zchSlide from './components/slide'
 import zchFooter from './components/footer'
 import zchToast from './components/toast/main.js'
+import zchTab from './components/tabs/tab'
+import zchTabPane from './components/tabs/tab-pane'
 
 Vue.use(zchToast)
 Vue.component('zch-button', zchButton)
@@ -24,13 +26,16 @@ Vue.component('zch-header', zchHeader)
 Vue.component('zch-content', zchContent)
 Vue.component('zch-slide', zchSlide)
 Vue.component('zch-footer', zchFooter)
+Vue.component('zch-tab', zchTab)
+Vue.component('zch-tab-pane', zchTabPane)
 
 new Vue({
   el: '#app',
   data() {
     return {
       message: '',
-      password: ''
+      password: '',
+      activeName: 'title2',
     }
   },
   methods: {
