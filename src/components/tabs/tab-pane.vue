@@ -11,7 +11,10 @@ export default {
     label: [String, Number],
     labelEnabledHtml: Boolean,
     disabled: Boolean,
-    name: [String, Number],
+    name: {
+      require: true,
+      type: [String, Number],
+    },
   },
   inject: ['eventBus'],
   data () {
