@@ -12,7 +12,7 @@ export default {
     labelEnabledHtml: Boolean,
     disabled: Boolean,
     name: {
-      require: true,
+      required: true,
       type: [String, Number],
     },
   },
