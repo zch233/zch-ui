@@ -18,9 +18,9 @@ describe('ZchTab', () => {
     Vue.component('zch-tab-pane', ZchTabPane)
     div.innerHTML = `
       <zch-tab v-model="activeName">
-        <zch-tab-pane label="title1" name="title1"111</zch-tab-pane>
-        <zch-tab-pane label="title22" name="title2">2222</zch-tab-pane>
-        <zch-tab-pane label="title333" name="title3">3333</zch-tab-pane>
+        <zch-tab-pane name="title1"111</zch-tab-pane>
+        <zch-tab-pane name="title2">2222</zch-tab-pane>
+        <zch-tab-pane name="title3">3333</zch-tab-pane>
       </zch-tab>
     `
     const activeName = 'title2'
