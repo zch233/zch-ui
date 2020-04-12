@@ -42,6 +42,12 @@ new Vue({
     input(e) {
       console.log(e)
     },
+    hClick(e) {
+      console.log(e, 'click')
+    },
+    hChange(e) {
+      console.log(e, 'change')
+    },
     xxx (position) {
       this.$toast({
         message: '<h1>大撒旦撒旦撒多所多所</h1>',

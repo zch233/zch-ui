@@ -39,6 +39,8 @@ export default {
     this.calcPaneInstances()
     this.eventBus.$on('click', (value, { $el: navElement }) => {
       this.$emit('input', value)
+      this.$emit('click', value)
+      if (value !== this.value) this.$emit('change', value)
       const { width, left } = navElement.getBoundingClientRect()
       const { left: tabLeft } = this.$el.getBoundingClientRect()
       this.$refs.zchTabBar.$el.style.width = `${width}px`
