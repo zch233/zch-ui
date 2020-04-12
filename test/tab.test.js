@@ -33,15 +33,12 @@ describe('ZchTab', () => {
       }
     })
     setTimeout(() => {
-      console.log(vm.$el)
       const navElement = vm.$el.querySelector(`.zchTabNav[data-name="${activeName}"]`)
       expect(navElement.classList.contains('zchTabNav-active')).to.eq(true)
       done()
+      div.remove()
       vm.$el.remove()
       vm.$destroy()
     })
-    // expect(true).to.eq(false)
-    // vm.$el.remove()
-    // vm.$destroy()
   })
 })
