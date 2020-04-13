@@ -13,6 +13,7 @@ import zchFooter from './components/footer'
 import zchToast from './components/toast/main.js'
 import zchTab from './components/tabs/tab'
 import zchTabPane from './components/tabs/tab-pane'
+import zchPopover from './components/popover'
 
 Vue.use(zchToast)
 Vue.component('zch-button', zchButton)
@@ -28,6 +29,7 @@ Vue.component('zch-slide', zchSlide)
 Vue.component('zch-footer', zchFooter)
 Vue.component('zch-tab', zchTab)
 Vue.component('zch-tab-pane', zchTabPane)
+Vue.component('zch-popover', zchPopover)
 
 new Vue({
   el: '#app',
