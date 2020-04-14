@@ -1,7 +1,10 @@
 <template>
   <div class="zchPopover">
-    <div ref="popover" class="zchPopover-popover" v-if="popover">1</div>
-    <div class="contentWrapper" @click="handleClick">
+    <div ref="popover" class="zchPopover-popover" v-if="popover">
+      <slot name="title"></slot>
+      <slot name="content"></slot>
+    </div>
+    <div ref="userContent" class="userContentWrapper" @click="handleClick">
       <slot></slot>
     </div>
   </div>
@@ -17,16 +20,28 @@ export default {
   },
   methods: {
     openPoppver () {
+      console.log('show')
       this.popover = true
     },
     closePoppver () {
+      console.log('hide')
       this.popover = false
+      document.removeEventListener('click', this.clickDocument)
+    },
+    clickDocument (e) {
+      if (this.$refs.userContent)
+      this.closePoppver()
     },
     handleClick () {
-      this.openPoppver()
-      this.$nextTick(() => {
-        document.body.appendChild(this.$refs.popover)
-      })
+      if (this.popover) {
+        this.closePoppver()
+      } else {
+        this.openPoppver()
+        this.$nextTick(() => {
+          document.body.appendChild(this.$refs.popover)
+          document.addEventListener('click', this.clickDocument)
+        })
+      }
     }
   }
 }
@@ -37,9 +52,11 @@ export default {
 .zchPopover {
   &-popover {
     position: absolute;
+    top: 0;
+    left: 0;
   }
 }
-.contentWrapper {
+.userContentWrapper {
   display: inline-block;
 }
 </style>
