@@ -8,7 +8,7 @@ import zchCol from './components/col'
 import zchLayout from './components/layout'
 import zchHeader from './components/header'
 import zchContent from './components/content'
-import zchSlide from './components/slide'
+import zchSide from './components/side'
 import zchFooter from './components/footer'
 import zchToast from './components/toast/main.js'
 import zchTab from './components/tabs/tab'
@@ -25,7 +25,7 @@ Vue.component('zch-col', zchCol)
 Vue.component('zch-layout', zchLayout)
 Vue.component('zch-header', zchHeader)
 Vue.component('zch-content', zchContent)
-Vue.component('zch-slide', zchSlide)
+Vue.component('zch-side', zchSide)
 Vue.component('zch-footer', zchFooter)
 Vue.component('zch-tab', zchTab)
 Vue.component('zch-tab-pane', zchTabPane)
