@@ -10,41 +10,21 @@
   <div id="app">
     <div class="popover" style="padding-left: 100px;padding-top: 100px;">
       <h1>popover：</h1>
-      <zch-popover>
-        <template slot="title">
-          title
-        </template>
-        <template slot="content">
-          这是一段浮层
-        </template>
-        <zch-button>主要按钮</zch-button>
-      </zch-popover>
       <zch-popover position="left">
-        <template slot="title">
-          title
-        </template>
-        <template slot="content">
-          这是一段浮层
-        </template>
-        <zch-button>主要按钮</zch-button>
+        <template slot="content">这是一段浮层</template>
+        <zch-button>left</zch-button>
+      </zch-popover>
+      <zch-popover>
+        <template slot="content">这是一段浮层</template>
+        <zch-button>top</zch-button>
       </zch-popover>
       <zch-popover position="bottom">
-        <template slot="title">
-          title
-        </template>
-        <template slot="content">
-          这是一段浮层
-        </template>
-        <zch-button>主要按钮</zch-button>
+        <template slot="content">这是一段浮层</template>
+        <zch-button>bottom</zch-button>
       </zch-popover>
       <zch-popover position="right">
-        <template slot="title">
-          title
-        </template>
-        <template slot="content">
-          这是一段浮层
-        </template>
-        <zch-button>主要按钮</zch-button>
+        <template slot="content">这是一段浮层</template>
+        <zch-button>right</zch-button>
       </zch-popover>
     </div>
     <div class="tabsBar">

@@ -53,6 +53,19 @@ export default {
       if (this.$refs.popoverContent.contains(e.target)) return
       this.closePoppver()
     },
+    setPopoverPosition () {
+      const { left, top, width, height } = this.$refs.userContent.getBoundingClientRect()
+      const { width: popoverContentWidth, height: popoverContentHeight } = this.$refs.popoverContent.getBoundingClientRect()
+      const map = {
+        top: { top: top + scrollY, left: left + scrollX - (popoverContentWidth - width) / 2 },
+        left: { top: top + scrollY - (popoverContentHeight - height) / 2, left: left + scrollX },
+        bottom: { top:top + scrollY + height, left: left + scrollX - (popoverContentWidth - width) / 2 },
+        right: { top: top + scrollY - (popoverContentHeight - height) / 2, left: left + scrollX + width },
+      }
+      const position = map[this.position]
+      this.$refs.popoverContent.style.top = position.top + 'px'
+      this.$refs.popoverContent.style.left = position.left + 'px'
+    },
     handleClick () {
       if (this.popover) {
         this.closePoppver()
@@ -60,21 +73,7 @@ export default {
         this.openPoppver()
         this.$nextTick(() => {
           document.body.appendChild(this.$refs.popoverContent)
-          const { left, top, width, height } = this.$refs.userContent.getBoundingClientRect()
-          const { width: popoverContentWidth, height: popoverContentHeight } = this.$refs.popoverContent.getBoundingClientRect()
-          if (this.position === 'top') {
-            this.$refs.popoverContent.style.top = top + scrollY + 'px'
-            this.$refs.popoverContent.style.left = left + scrollX - (popoverContentWidth - width) / 2 + 'px'
-          } else if (this.position === 'left') {
-            this.$refs.popoverContent.style.top = top + scrollY - (popoverContentHeight - height) / 2 + 'px'
-            this.$refs.popoverContent.style.left = left + scrollX + 'px'
-          } else if (this.position === 'bottom') {
-            this.$refs.popoverContent.style.top = top + scrollY + height + 'px'
-            this.$refs.popoverContent.style.left = left + scrollX - (popoverContentWidth - width) / 2 + 'px'
-          } else if (this.position === 'right') {
-            this.$refs.popoverContent.style.top = top + scrollY - (popoverContentHeight - height) / 2 + 'px'
-            this.$refs.popoverContent.style.left = left + scrollX + width + 'px'
-          }
+          this.setPopoverPosition()
           setTimeout(() => {
             document.addEventListener('click', this.clickDocument)
           })
