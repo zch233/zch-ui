@@ -1,6 +1,6 @@
 <template>
   <div class="zchPopover">
-    <div ref="popover" class="zchPopover-popover" v-if="popover">
+    <div ref="popoverContent" class="zchPopover-popover" v-if="popover">
       <slot name="title"></slot>
       <slot name="content"></slot>
     </div>
@@ -29,7 +29,10 @@ export default {
       document.removeEventListener('click', this.clickDocument)
     },
     clickDocument (e) {
-      if (this.$refs.userContent)
+      console.log(this.$refs.userContent.contains(e.target))
+      console.log(this.$refs.popoverContent.contains(e.target))
+      if (this.$refs.userContent.contains(e.target)) return
+      if (this.$refs.popoverContent.contains(e.target)) return
       this.closePoppver()
     },
     handleClick () {
@@ -38,8 +41,10 @@ export default {
       } else {
         this.openPoppver()
         this.$nextTick(() => {
-          document.body.appendChild(this.$refs.popover)
-          document.addEventListener('click', this.clickDocument)
+          document.body.appendChild(this.$refs.popoverContent)
+          setTimeout(() => {
+            document.addEventListener('click', this.clickDocument)
+          })
         })
       }
     }
