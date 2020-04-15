@@ -8,21 +8,22 @@
 </head>
 <body>
   <div id="app">
-    <div class="popover">
+    <div class="popover" style="padding-left: 100px;padding-top: 100px;">
       <h1>popover：</h1>
       <zch-popover>
-        <template slot="content">
-          popover
+        <template slot="title">
+          title
         </template>
-        点我
+        <template slot="content">
+          这是一段浮层这是一段浮层这是一段浮层
+        </template>
+        <zch-button>主要按钮</zch-button>
       </zch-popover>
     </div>
     <div class="tabsBar">
       <h1>tabs：</h1>
       <zch-tab v-model="activeName" @click="hClick" @change="hChange">
-        <zch-tab-pane label="title1" label-enabled-html name="title1">
-          111
-        </zch-tab-pane>
+        <zch-tab-pane label="title1" label-enabled-html name="title1">1111</zch-tab-pane>
         <zch-tab-pane label="title22" label-enabled-html name="title2">2222</zch-tab-pane>
         <zch-tab-pane label="title333" label-enabled-html name="title3">3333</zch-tab-pane>
       </zch-tab>
