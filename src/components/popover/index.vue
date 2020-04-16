@@ -10,7 +10,7 @@
         </div>
       </div>
     </div>
-    <div ref="userContent" class="userContentWrapper" @click="handleClick">
+    <div ref="userContent" class="userContentWrapper">
       <slot></slot>
     </div>
   </div>
@@ -27,6 +27,13 @@ export default {
         return ['top', 'left', 'bottom', 'right'].indexOf(value) >= 0
       }
     },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator (value) {
+        return ['click', 'hover'].indexOf(value) >= 0
+      }
+    }
   },
   data () {
     return {
@@ -34,21 +41,43 @@ export default {
     }
   },
   mounted () {
-    console.log(this)
+    if (this.trigger === 'click') {
+      this.$refs.userContent.addEventListener('click', this.openPoppver)
+    } else {
+      this.$refs.userContent.addEventListener('mouseenter', this.openPoppver)
+      this.$refs.userContent.addEventListener('mouseleave', this.closePoppver)
+    }
+  },
+  destroyed () {
+    if (this.trigger === 'click') {
+      this.$refs.userContent.removeEventListener('click', this.openPoppver)
+    } else {
+      this.$refs.userContent.removeEventListener('mouseenter', this.openPoppver)
+      this.$refs.popoverContent.removeEventListener('mouseenter', this.openPoppver)
+      this.$refs.userContent.removeEventListener('mouseleave', this.closePoppver)
+      this.$refs.popoverContent.removeEventListener('mouseleave', this.closePoppver)
+    }
   },
   methods: {
     openPoppver () {
-      console.log('show')
       this.popover = true
+      this.$nextTick(() => {
+        document.body.appendChild(this.$refs.popoverContent)
+        this.setPopoverPosition()
+        this.trigger === 'click' && document.addEventListener('click', this.clickDocument)
+      })
     },
     closePoppver () {
-      console.log('hide')
-      this.popover = false
-      document.removeEventListener('click', this.clickDocument)
+      if (this.trigger === 'click') {
+        this.popover = false
+        document.removeEventListener('click', this.clickDocument)
+      } else {
+        setTimeout(() => {
+          this.popover = false
+        }, 500)
+      }
     },
     clickDocument (e) {
-      console.log(this.$refs.userContent.contains(e.target))
-      console.log(this.$refs.popoverContent.contains(e.target))
       if (this.$refs.userContent.contains(e.target)) return
       if (this.$refs.popoverContent.contains(e.target)) return
       this.closePoppver()
@@ -71,13 +100,6 @@ export default {
         this.closePoppver()
       } else {
         this.openPoppver()
-        this.$nextTick(() => {
-          document.body.appendChild(this.$refs.popoverContent)
-          this.setPopoverPosition()
-          setTimeout(() => {
-            document.addEventListener('click', this.clickDocument)
-          })
-        })
       }
     }
   }
@@ -87,11 +109,11 @@ export default {
 
 <style lang="scss" scoped>
 $gap: 14px;
+$arrowWidth: 1.3px;
 .zchPopover {
   display: inline-block;
   &-popoverWrapper {
     position: absolute;
-    min-width: 177px;
     filter: drop-shadow(0 2px 9px rgba(0,0,0,.1));
     &-top {
       transform: translateY(-100%);
@@ -117,7 +139,7 @@ $gap: 14px;
     &::before, &::after {
       content: '';
       position: absolute;
-      border: 7px solid transparent;
+      border: ($gap / 2) solid transparent;
     }
     &-top-arrow, &-bottom-arrow {
       &::before, &::after {
@@ -137,7 +159,7 @@ $gap: 14px;
         border-top-color: #ddd;
       }
       &::after {
-        top: calc(100% - 1.3px);
+        top: calc(100% - #{$arrowWidth});
         border-top-color: #fff;
       }
     }
@@ -147,7 +169,7 @@ $gap: 14px;
         border-left-color: #ddd;
       }
       &::after {
-        left: calc(100% - 1.3px);
+        left: calc(100% - #{$arrowWidth});
         border-left-color: #fff;
       }
     }
@@ -157,7 +179,7 @@ $gap: 14px;
         border-bottom-color: #ddd;
       }
       &::after {
-        bottom: calc(100% - 1.3px);
+        bottom: calc(100% - #{$arrowWidth});
         border-bottom-color: #fff;
       }
     }
@@ -167,7 +189,7 @@ $gap: 14px;
         border-right-color: #ddd;
       }
       &::after {
-        right: calc(100% - 1.3px);
+        right: calc(100% - #{$arrowWidth});
         border-right-color: #fff;
       }
     }

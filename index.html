@@ -8,7 +8,7 @@
 </head>
 <body>
   <div id="app">
-    <div class="popover" style="padding-left: 100px;padding-top: 100px;">
+    <div class="popover" style="padding-left: 150px;padding-top: 150px;">
       <h1>popover：</h1>
       <zch-popover position="left">
         <template slot="content">这是一段浮层</template>
@@ -23,6 +23,25 @@
         <zch-button>bottom</zch-button>
       </zch-popover>
       <zch-popover position="right">
+        <template slot="content">这是一段浮层</template>
+        <zch-button>right</zch-button>
+      </zch-popover>
+    </div>
+    <div class="popover" style="padding-left: 150px;padding-top: 150px;">
+      <h1>popover：</h1>
+      <zch-popover trigger="hover" position="left">
+        <template slot="content">这是一段浮层</template>
+        <zch-button>left</zch-button>
+      </zch-popover>
+      <zch-popover trigger="hover">
+        <template slot="content">这是一段浮层</template>
+        <zch-button>top</zch-button>
+      </zch-popover>
+      <zch-popover trigger="hover" position="bottom">
+        <template slot="content">这是一段浮层</template>
+        <zch-button>bottom</zch-button>
+      </zch-popover>
+      <zch-popover trigger="hover" position="right">
         <template slot="content">这是一段浮层</template>
         <zch-button>right</zch-button>
       </zch-popover>
