@@ -53,9 +53,7 @@ export default {
       this.$refs.userContent.removeEventListener('click', this.openPoppver)
     } else {
       this.$refs.userContent.removeEventListener('mouseenter', this.openPoppver)
-      this.$refs.popoverContent.removeEventListener('mouseenter', this.openPoppver)
       this.$refs.userContent.removeEventListener('mouseleave', this.closePoppver)
-      this.$refs.popoverContent.removeEventListener('mouseleave', this.closePoppver)
     }
   },
   methods: {
@@ -72,7 +70,7 @@ export default {
         this.popover = false
         document.removeEventListener('click', this.clickDocument)
       } else {
-        setTimeout(() => {
+        this.popoverTimerId = setTimeout(() => {
           this.popover = false
         }, 500)
       }
