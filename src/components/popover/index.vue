@@ -1,15 +1,15 @@
 <template>
   <div class="zchPopover">
-    <div ref="popoverContent" class="zchPopover-popoverWrapper" :class="`zchPopover-popoverWrapper-${position}`" v-if="popover">
-      <div class="zchPopover-popover" :class="`zchPopover-popover-${position}-arrow`">
-        <div class="zchPopover-popover-title" v-show="$slots.title">
-          <slot name="title"></slot>
-        </div>
-        <div class="zchPopover-popover-content">
-          <slot name="content"></slot>
+      <div ref="popoverContent" class="zchPopover-popoverWrapper" :class="`zchPopover-popoverWrapper-${position}`" v-if="popover">
+        <div class="zchPopover-popover" :class="`zchPopover-popover-${position}-arrow`">
+          <div class="zchPopover-popover-title" v-show="$slots.title">
+            <slot name="title"></slot>
+          </div>
+          <div class="zchPopover-popover-content">
+            <slot name="content"></slot>
+          </div>
         </div>
       </div>
-    </div>
     <div ref="userContent" class="userContentWrapper">
       <slot></slot>
     </div>
@@ -42,7 +42,7 @@ export default {
   },
   mounted () {
     if (this.trigger === 'click') {
-      this.$refs.userContent.addEventListener('click', this.openPoppver)
+      this.$refs.userContent.addEventListener('click', this.handleClick)
     } else {
       this.$refs.userContent.addEventListener('mouseenter', this.openPoppver)
       this.$refs.userContent.addEventListener('mouseleave', this.closePoppver)
@@ -66,14 +66,8 @@ export default {
       })
     },
     closePoppver () {
-      if (this.trigger === 'click') {
-        this.popover = false
-        document.removeEventListener('click', this.clickDocument)
-      } else {
-        this.popoverTimerId = setTimeout(() => {
-          this.popover = false
-        }, 500)
-      }
+      this.popover = false
+      this.trigger === 'click' && document.removeEventListener('click', this.clickDocument)
     },
     clickDocument (e) {
       if (this.$refs.userContent.contains(e.target)) return
