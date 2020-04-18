@@ -1,5 +1,6 @@
 <template>
   <div class="zchPopover">
+    <transition name="fade">
       <div ref="popoverContent" class="zchPopover-popoverWrapper" :class="`zchPopover-popoverWrapper-${position}`" v-if="popover">
         <div class="zchPopover-popover" :class="`zchPopover-popover-${position}-arrow`">
           <div class="zchPopover-popover-title" v-show="$slots.title">
@@ -10,6 +11,7 @@
           </div>
         </div>
       </div>
+    </transition>
     <div ref="userContent" class="userContentWrapper">
       <slot></slot>
     </div>
@@ -102,6 +104,12 @@ export default {
 <style lang="scss" scoped>
 $gap: 14px;
 $arrowWidth: 1.3px;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 .zchPopover {
   display: inline-block;
   &-popoverWrapper {
