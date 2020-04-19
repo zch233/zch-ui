@@ -34,4 +34,15 @@ describe('zchCollapseItem', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('测试 disabled ', () => {
+    const vm = new Constructor({
+      propsData: {
+        disabled: true,
+      }
+    }).$mount()
+    const titleElement = vm.$el.querySelector('.zch-collapse-item-title-wrapper')
+    expect(titleElement.classList.contains('disabled')).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })
