@@ -1,6 +1,6 @@
 <template>
   <button
-    class="zch-button xxxx"
+    class="zch-button"
     :class="[`icon-${iconPosition}`, loading && 'loading', disabled && 'disabled', round && 'round', square && 'square']"
     :disabled="disabled"
     type="button"
