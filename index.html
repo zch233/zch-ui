@@ -8,8 +8,20 @@
 </head>
 <body>
   <div id="app">
+    <div class="collapse" style="padding-left: 150px;padding-top: 150px;">
+      <h1>collapse：</h1>
+      <zch-collapse v-model="activeCollapse">
+        <zch-collapse-item title="title1">
+          <div>sasasa</div>
+          内容111
+        </zch-collapse-item>
+        <zch-collapse-item title="title2">
+          内容222
+        </zch-collapse-item>
+      </zch-collapse>
+    </div>
     <div class="popover" style="padding-left: 150px;padding-top: 150px;">
-      <h1>popover：</h1>
+      <h1>popover(click)：</h1>
       <zch-popover position="left">
         <template slot="content">这是一段浮层</template>
         <zch-button>left</zch-button>
@@ -28,7 +40,7 @@
       </zch-popover>
     </div>
     <div class="popover" style="padding-left: 150px;padding-top: 150px;">
-      <h1>popover：</h1>
+      <h1>popover(hover)：</h1>
       <zch-popover trigger="hover" position="left">
         <template slot="content">这是一段浮层</template>
         <zch-button>left</zch-button>
@@ -48,7 +60,7 @@
     </div>
     <div class="tabsBar">
       <h1>tabs：</h1>
-      <zch-tab v-model="activeName" @click="hClick" @change="hChange">
+      <zch-tab v-model="activeTab" @click="hClick" @change="hChange">
         <zch-tab-pane label="title1" label-enabled-html name="title1">1111</zch-tab-pane>
         <zch-tab-pane label="title22" label-enabled-html name="title2">2222</zch-tab-pane>
         <zch-tab-pane label="title333" label-enabled-html name="title3">3333</zch-tab-pane>

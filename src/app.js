@@ -14,6 +14,8 @@ import zchToast from './components/toast/main.js'
 import zchTab from './components/tabs/tab'
 import zchTabPane from './components/tabs/tab-pane'
 import zchPopover from './components/popover'
+import zchCollapse from './components/collapse/collapse'
+import zchCollapseItem from './components/collapse/collapse-item'
 
 Vue.use(zchToast)
 Vue.component('zch-button', zchButton)
@@ -30,6 +32,8 @@ Vue.component('zch-footer', zchFooter)
 Vue.component('zch-tab', zchTab)
 Vue.component('zch-tab-pane', zchTabPane)
 Vue.component('zch-popover', zchPopover)
+Vue.component('zch-collapse', zchCollapse)
+Vue.component('zch-collapse-item', zchCollapseItem)
 
 new Vue({
   el: '#app',
@@ -37,7 +41,8 @@ new Vue({
     return {
       message: '',
       password: '',
-      activeName: 'title2',
+      activeTab: 'title2',
+      activeCollapse: 'title1'
     }
   },
   methods: {
