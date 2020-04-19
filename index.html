@@ -10,16 +10,18 @@
   <div id="app">
     <div class="collapse" style="padding-left: 150px;padding-top: 150px;">
       <h1>collapse：</h1>
-      <zch-collapse v-model="activeCollapse" accordion>
+      <zch-collapse v-model="activeCollapse">
         <zch-collapse-item title="title1" name="title1">
-          <div slot="title">sasasa</div>
           内容111
         </zch-collapse-item>
         <zch-collapse-item title="title2" name="title2">
           内容222
         </zch-collapse-item>
-        <zch-collapse-item title="title3" name="title3" disabled>
+        <zch-collapse-item title="title3" name="title3">
           内容333
+        </zch-collapse-item>
+        <zch-collapse-item title="title4" name="title4">
+          内容444
         </zch-collapse-item>
       </zch-collapse>
     </div>

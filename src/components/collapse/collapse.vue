@@ -13,7 +13,6 @@ export default {
     value: {
       required: true,
       type: [Array, Number, String],
-      default: [],
     },
     accordion: Boolean,
   },
