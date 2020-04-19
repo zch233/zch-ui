@@ -3,8 +3,8 @@
     <transition name="fade">
       <div ref="popoverContent" class="zchPopover-popoverWrapper" :class="`zchPopover-popoverWrapper-${position}`" v-if="popover">
         <div class="zchPopover-popover" :class="`zchPopover-popover-${position}-arrow`">
-          <div class="zchPopover-popover-title" v-show="$slots.title">
-            <slot name="title"></slot>
+          <div class="zchPopover-popover-title" v-show="$slots.title | title">
+            <slot name="title">{{ title }}</slot>
           </div>
           <div class="zchPopover-popover-content">
             <slot name="content"></slot>
@@ -35,7 +35,8 @@ export default {
       validator (value) {
         return ['click', 'hover'].indexOf(value) >= 0
       }
-    }
+    },
+    title: String,
   },
   data () {
     return {
