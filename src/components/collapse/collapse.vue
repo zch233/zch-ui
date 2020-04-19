@@ -26,7 +26,6 @@ export default {
     value: {
       immediate: true,
       handler () {
-        console.log(this.value)
         this.activeItems = [].concat(this.value)
       }
     }
