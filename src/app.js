@@ -42,7 +42,7 @@ new Vue({
       message: '',
       password: '',
       activeTab: 'title2',
-      activeCollapse: 'title1'
+      activeCollapse: ['title1', 'title2']
     }
   },
   methods: {

@@ -12,25 +12,41 @@ export default {
   props: {
     value: {
       required: true,
-      type: [Array, Number, String]
+      type: [Array, Number, String],
+      default: [],
     }
   },
   data () {
     return {
-      eventBus: new Vue(),
+      activeItems: [],
+    }
+  },
+  watch: {
+    value: {
+      immediate: true,
+      handler () {
+        console.log(this.value)
+        this.activeItems = [].concat(this.value)
+      }
     }
   },
   provide () {
     return {
-      eventBus: this.eventBus
+      collapse: this,
     }
+  },
+  mounted () {
+    this.$on('item-click', vm => {
+      let activeItems = this.activeItems.slice(0);
+      let index = activeItems.indexOf(vm.name);
+      if (index > -1) {
+        activeItems.splice(index, 1);
+      } else {
+        activeItems.push(vm.name);
+      }
+      this.$emit('input', activeItems)
+      this.$emit('change', activeItems)
+    })
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.zch-collapse {
-  display: flex;
-  flex-direction: column;
-}
-</style>

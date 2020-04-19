@@ -38,6 +38,7 @@ export default {
   padding: 0 10px;
   height: 40px;
   transition: all .3s;
+  font-size: 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
