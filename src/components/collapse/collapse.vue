@@ -14,7 +14,8 @@ export default {
       required: true,
       type: [Array, Number, String],
       default: [],
-    }
+    },
+    accordion: Boolean,
   },
   data () {
     return {
@@ -38,11 +39,15 @@ export default {
   mounted () {
     this.$on('item-click', vm => {
       let activeItems = this.activeItems.slice(0);
-      let index = activeItems.indexOf(vm.name);
-      if (index > -1) {
-        activeItems.splice(index, 1);
+      if (this.accordion) {
+        activeItems = [vm.name]
       } else {
-        activeItems.push(vm.name);
+        let index = activeItems.indexOf(vm.name);
+        if (index > -1) {
+          activeItems.splice(index, 1);
+        } else {
+          activeItems.push(vm.name);
+        }
       }
       this.$emit('input', activeItems)
       this.$emit('change', activeItems)
