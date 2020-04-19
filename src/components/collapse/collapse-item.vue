@@ -1,11 +1,11 @@
 <template>
-  <div class="zch-collapse-item">
+  <div class="zch-collapse-item" :data-name="name">
     <div class="zch-collapse-item-title" @click="handleClick" :class="[disabled && 'disabled']">
       <slot name="title">{{ title }}</slot>
       <zch-icon icon="rightArrow" :class="{ active: contentVisible }"></zch-icon>
     </div>
     <transition name="fade">
-      <div v-show="contentVisible" class="zch-collapse-item-content">
+      <div v-show="contentVisible" class="zch-collapse-item-content" :class="{ active: contentVisible }">
         <slot></slot>
       </div>
     </transition>
