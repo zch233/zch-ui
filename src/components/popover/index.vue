@@ -53,10 +53,10 @@ export default {
   },
   destroyed () {
     if (this.trigger === 'click') {
-      this.$refs.userContent.removeEventListener('click', this.openPoppver)
+      this.$refs.userContent && this.$refs.userContent.removeEventListener('click', this.openPoppver)
     } else {
-      this.$refs.userContent.removeEventListener('mouseenter', this.openPoppver)
-      this.$refs.userContent.removeEventListener('mouseleave', this.closePoppver)
+      this.$refs.userContent && this.$refs.userContent.removeEventListener('mouseenter', this.openPoppver)
+      this.$refs.userContent && this.$refs.userContent.removeEventListener('mouseleave', this.closePoppver)
     }
   },
   methods: {
