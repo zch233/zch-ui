@@ -45,7 +45,7 @@ describe('zchCollapse', () => {
       vm.$destroy()
     })
   })
-  xit('没有 accordion ', (done) => {
+  it('没有 accordion ', (done) => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     div.innerHTML = `
@@ -73,7 +73,16 @@ describe('zchCollapse', () => {
       }
     })
     const titleElements = vm.$el.querySelectorAll('.zch-collapse-item-title-wrapper');
-    [...titleElements].map(element => element.click())
+    let index = 0
+    const dispatchClick = () => {
+      titleElements[index].click()
+      index += 1
+      if (index >= titleElements.length) return
+      vm.$nextTick(() => {
+        dispatchClick()
+      })
+    }
+    dispatchClick()
     setTimeout(() => {
       const contentElements = vm.$el.querySelectorAll('.zch-collapse-item-content')
       const activeContents = [...contentElements].filter(v => v.classList.contains('active'))
@@ -112,7 +121,16 @@ describe('zchCollapse', () => {
       }
     })
     const titleElements = vm.$el.querySelectorAll('.zch-collapse-item-title-wrapper');
-    [...titleElements].map(element => element.click())
+    let index = 0
+    const dispatchClick = () => {
+      titleElements[index].click()
+      index += 1
+      if (index >= titleElements.length) return
+      vm.$nextTick(() => {
+        dispatchClick()
+      })
+    }
+    dispatchClick()
     setTimeout(() => {
       const contentElements = vm.$el.querySelectorAll('.zch-collapse-item-content')
       const activeContents = [...contentElements].filter(v => v.classList.contains('active'))
