@@ -15,7 +15,6 @@
     "docs:build": "vuepress build docs"
   },
   "dependencies": {
-    "element-ui": "^2.13.0",
     "vue": "^2.6.10",
     "vue-hot-reload-api": "^2.3.4"
   },
