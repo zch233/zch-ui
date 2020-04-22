@@ -1138,10 +1138,17 @@
     markdown-it-table-of-contents "^0.4.0"
     prismjs "^1.13.0"
 
-"@vuepress/plugin-active-header-links@1.4.1":
+"@vuepress/plugin-active-header-links@1.4.1", "@vuepress/plugin-active-header-links@^1.4.1":
   version "1.4.1"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-active-header-links/download/@vuepress/plugin-active-header-links-1.4.1.tgz#36c6952230f12056d18c63229e0e499c6ef74fe5"
   integrity sha1-NsaVIjDxIFbRjGMing5JnG73T+U=
+  dependencies:
+    lodash.debounce "^4.0.8"
+
+"@vuepress/plugin-back-to-top@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.npm.taobao.org/@vuepress/plugin-back-to-top/download/@vuepress/plugin-back-to-top-1.4.1.tgz#80b310be5f8ebc13504904e9bafda1c8f0984d52"
+  integrity sha1-gLMQvl+OvBNQSQTpuv2hyPCYTVI=
   dependencies:
     lodash.debounce "^4.0.8"
 
@@ -1152,7 +1159,7 @@
   dependencies:
     cross-spawn "^6.0.5"
 
-"@vuepress/plugin-nprogress@1.4.1":
+"@vuepress/plugin-nprogress@1.4.1", "@vuepress/plugin-nprogress@^1.4.1":
   version "1.4.1"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-nprogress/download/@vuepress/plugin-nprogress-1.4.1.tgz#2a16217091102a2b4fddc1b09f5854ac4f80f992"
   integrity sha1-KhYhcJEQKitP3cGwn1hUrE+A+ZI=
