@@ -10,7 +10,9 @@
     "dev-test1": "parcel watch test/* --no-cache",
     "dev-test2": "karma start",
     "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
-    "build": "parcel build index.js --no-cache --no-minify"
+    "build": "parcel build index.js --no-cache --no-minify",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "element-ui": "^2.13.0",
@@ -34,6 +36,7 @@
     "sass": "^1.23.3",
     "sinon": "^7.5.0",
     "sinon-chai": "^3.3.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "vuepress": "^1.4.1"
   }
 }
