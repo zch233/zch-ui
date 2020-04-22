@@ -25,23 +25,35 @@ module.exports = {
           title: '通用',
           collapsable: false,
           children: [
-            { title: '按钮', path: '/components/basic/button/' }
+            { title: 'Layout 布局', path: '/components/basic/layout/' },
+            { title: 'Container 布局容器', path: '/components/basic/container/' },
+            { title: 'Icon 图标', path: '/components/basic/icon/' },
+            { title: 'Button 按钮', path: '/components/basic/button/' },
           ]
         },
         {
           title: '数据录入',
           collapsable: false,
-          children: [ /* ... */ ]
+          children: [
+            { title: 'Input 输入框', path: '/components/form/input/' },
+          ]
         },
         {
           title: '数据展示',
           collapsable: false,
-          children: [ /* ... */ ]
+          children: [
+            { title: 'Tag 标签', path: '/components/data/tag/' },
+            { title: 'Tabs 标签页', path: '/components/data/tabs/' },
+          ]
         },
         {
           title: '反馈',
           collapsable: false,
-          children: [ /* ... */ ]
+          children: [
+            { title: 'Popover 弹出框', path: '/components/others/popover/' },
+            { title: 'Collapse 折叠面板', path: '/components/others/collapse/' },
+            { title: 'Toast 消息提示', path: '/components/others/toast/' },
+          ]
         },
       ],
     }
