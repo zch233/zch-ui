@@ -33,6 +33,7 @@ export default {
 .zchTag {
   display: inline-flex;
   align-items: center;
+  vertical-align: middle;
   color: #409eff;
   background-color: #ecf5ff;
   border: 1px solid #d9ecff;
