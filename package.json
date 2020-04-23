@@ -1,6 +1,6 @@
 {
   "name": "zch-gulu",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/index.js",
   "repository": "git@github.com:zch233/zch-ui.git",
   "author": "zhangchao <529743595@qq.com>",

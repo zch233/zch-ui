@@ -1,40 +1,40 @@
-import zchButton from './src/components/button'
-import zchButtonGroup from './src/components/button-group'
-import zchIcon from './src/components/icon'
-import zchInput from './src/components/input'
-import zchRow from './src/components/row'
-import zchCol from './src/components/col'
-import zchLayout from './src/components/layout'
-import zchHeader from './src/components/header'
-import zchContent from './src/components/content'
-import zchSide from './src/components/side'
-import zchFooter from './src/components/footer'
-import zchToast from './src/components/toast/main.js'
-import zchTab from './src/components/tabs/tab'
-import zchTabPane from './src/components/tabs/tab-pane'
-import zchPopover from './src/components/popover'
-import zchCollapse from './src/components/collapse/collapse'
-import zchCollapseItem from './src/components/collapse/collapse-item'
-import zchTag from './src/components/tag'
+import ZchButton from './src/components/button'
+import ZchButtonGroup from './src/components/button-group'
+import ZchIcon from './src/components/icon'
+import ZchInput from './src/components/input'
+import ZchRow from './src/components/row'
+import ZchCol from './src/components/col'
+import ZchLayout from './src/components/layout'
+import ZchHeader from './src/components/header'
+import ZchContent from './src/components/content'
+import ZchSide from './src/components/side'
+import ZchFooter from './src/components/footer'
+import ZchToast from './src/components/toast/main.js'
+import ZchTab from './src/components/tabs/tab'
+import ZchTabPane from './src/components/tabs/tab-pane'
+import ZchPopover from './src/components/popover'
+import ZchCollapse from './src/components/collapse/collapse'
+import ZchCollapseItem from './src/components/collapse/collapse-item'
+import ZchTag from './src/components/tag'
 
 
 export {
-  zchButton,
-  zchButtonGroup,
-  zchIcon,
-  zchInput,
-  zchRow,
-  zchCol,
-  zchLayout,
-  zchHeader,
-  zchContent,
-  zchSide,
-  zchFooter,
-  zchToast,
-  zchTab,
-  zchTabPane,
-  zchPopover,
-  zchCollapse,
-  zchCollapseItem,
-  zchTag,
+  ZchButton,
+  ZchButtonGroup,
+  ZchIcon,
+  ZchInput,
+  ZchRow,
+  ZchCol,
+  ZchLayout,
+  ZchHeader,
+  ZchContent,
+  ZchSide,
+  ZchFooter,
+  ZchToast,
+  ZchTab,
+  ZchTabPane,
+  ZchPopover,
+  ZchCollapse,
+  ZchCollapseItem,
+  ZchTag,
 }
