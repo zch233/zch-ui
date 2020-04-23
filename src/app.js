@@ -16,6 +16,7 @@ import zchTabPane from './components/tabs/tab-pane'
 import zchPopover from './components/popover'
 import zchCollapse from './components/collapse/collapse'
 import zchCollapseItem from './components/collapse/collapse-item'
+import zchTag from './components/tag'
 
 Vue.use(zchToast)
 Vue.component('zch-button', zchButton)
@@ -34,6 +35,7 @@ Vue.component('zch-tab-pane', zchTabPane)
 Vue.component('zch-popover', zchPopover)
 Vue.component('zch-collapse', zchCollapse)
 Vue.component('zch-collapse-item', zchCollapseItem)
+Vue.component('zch-tag', zchTag)
 
 new Vue({
   el: '#app',
