@@ -87,4 +87,21 @@ describe('ZchTag', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('测试 close 事件', () => {
+    const vm = new RowConstructor({
+      propsData: {
+        closeable: true,
+      },
+    }).$mount()
+    const iconCallback = sinon.fake()
+    // const tagCallback = sinon.fake()
+    vm.$on('close', iconCallback)
+    // vm.$on('click', tagCallback)
+    const event = new Event('click')
+    vm.$el.querySelector('.zchTag-close').dispatchEvent(event)
+    expect(iconCallback).to.have.been.called
+    // expect(tagCallback).to.not.have.been.called // 事件冒泡不知道怎么测试
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })
