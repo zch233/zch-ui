@@ -35,6 +35,20 @@ describe('ZchTag', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('测试 color', () => {
+    const color = 'rgb(233, 233, 233)'
+    const vm = new RowConstructor({
+      propsData: {
+        color
+      },
+    }).$mount()
+    const style = vm.$el.style
+    expect(style['background-color']).to.eq(color)
+    expect(style['border-color']).to.eq(color)
+    expect(style['color']).to.eq('rgb(255, 255, 255)')
+    vm.$el.remove()
+    vm.$destroy()
+  })
   describe('测试 type', () => {
     ['success', 'info', 'warning', 'error', 'magenta', 'red', 'orange', 'gold', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple'].map(type => {
       it(type, () => {
