@@ -77,4 +77,14 @@ describe('ZchTag', () => {
       })
     })
   })
+  it('测试 tagClick 事件', () => {
+    const vm = new RowConstructor({}).$mount()
+    const callback = sinon.fake()
+    const event = new Event('click')
+    vm.$on('click', callback)
+    vm.$el.dispatchEvent(event)
+    expect(callback).to.have.been.called
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })

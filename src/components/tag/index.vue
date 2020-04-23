@@ -1,5 +1,5 @@
 <template>
-  <div @click="$emit('click', $event)" class="zchTag" :class="[size && `size-${size}`, type && `type-${type}`]" :style="color && customStyle">
+  <div @click="xxx" class="zchTag" :class="[size && `size-${size}`, type && `type-${type}`]" :style="color && customStyle">
     <zch-icon v-if="icon" class="zchTag-preIcon" :icon="icon"></zch-icon>
     <div class="zchTag-content"><slot></slot></div>
     <zch-icon @click.stop="$emit('close', $event)" v-if="closeable" class="zchTag-close" icon="close"></zch-icon>
@@ -25,6 +25,12 @@ export default {
       return `background-color: ${color}; border-color: ${color}; color: #fff;`
     },
   },
+  methods: {
+    xxx () {
+      console.log(111)
+      this.$emit('click', this.$event)
+    }
+  }
 }
 </script>
 
