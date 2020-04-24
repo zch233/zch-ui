@@ -107,6 +107,19 @@ describe('zchButton', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('按钮 circle', () => {
+    const vm = new Constructor({
+      propsData: {
+        circle: true
+      }
+    }).$mount()
+    const button = vm.$el
+    const classList = button.classList
+    const hasClassCircle = classList.contains('circle')
+    expect(hasClassCircle).to.eq(true)
+    vm.$el.remove()
+    vm.$destroy()
+  })
   it('按钮 可以被点击', () => {
     const vm = new Constructor({}).$mount()
     const callback = sinon.fake()
