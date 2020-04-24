@@ -16,7 +16,7 @@ module.exports = {
         text: '选择语言',
         items: [ { text: '简体中文', link: '?Chinese' }, { text: 'English', link: '?English' } ]
       },
-      { text: 'NPM', link: 'https://www.npmjs.com/package/zch-gulu', target:'_blank' },
+      { text: 'npm', link: 'https://www.npmjs.com/package/zch-gulu', target:'_blank' },
       { text: 'GitHub', link: 'https://github.com/zch233/zch-ui', target:'_blank' },
     ],
     sidebar: {
