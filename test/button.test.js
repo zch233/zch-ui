@@ -130,4 +130,18 @@ describe('zchButton', () => {
       })
     })
   })
+  describe('测试 type', () => {
+    ['success', 'info', 'warning', 'error', 'magenta', 'red', 'orange', 'gold', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple'].map(type => {
+      it(type, () => {
+        const vm = new Constructor({
+          propsData: {
+            type
+          },
+        }).$mount()
+        expect(vm.$el.classList.contains(`type-${type}`)).to.eq(true)
+        vm.$el.remove()
+        vm.$destroy()
+      })
+    })
+  })
 })

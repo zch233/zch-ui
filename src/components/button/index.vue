@@ -83,6 +83,31 @@ $buttonRadius: 4px;
     font-size: 14px;
     padding: .8em 1.6em;
   }
+  &.type-primary {
+    color: #fff;
+    background-color: #409eff;
+    border-color: #409eff;
+  }
+  &.type-success {
+    color: #fff;
+    background-color: #67c23a;
+    border-color: #67c23a;
+  }
+  &.type-info {
+    color: #fff;
+    background-color: #909399;
+    border-color: #909399;
+  }
+  &.type-warning {
+    color: #fff;
+    background-color: #e6a23c;
+    border-color: #e6a23c;
+  }
+  &.type-error {
+    color: #fff;
+    background-color: #f56c6c;
+    border-color: #f56c6c;
+  }
   > svg {
     margin-right: $iconGap;
   }
