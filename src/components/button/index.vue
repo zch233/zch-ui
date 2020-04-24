@@ -6,7 +6,7 @@
     type="button"
     @click="$emit('click', $event)">
     <zch-icon v-if="loading" icon="loading"></zch-icon>
-    <zch-icon v-else :icon="icon"></zch-icon>
+    <zch-icon v-if="icon && !loading" :icon="icon"></zch-icon>
     <span><slot /></span>
   </button>
 </template>
