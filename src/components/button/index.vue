@@ -46,11 +46,11 @@ $buttonRadius: 4px;
   $bgColor: #fff;
   $borderColor: #ddd;
   $fontSize: 12px;
-  padding: .6em 1.2em;
+  padding: .9em 1.2em;
   border: 1px solid $borderColor;
   background-color: $bgColor;
   font-size: $fontSize;
-  line-height: 1.4;
+  line-height: 1;
   border-radius: $buttonRadius;
   white-space: nowrap;
   transition: all .2s;
@@ -58,18 +58,19 @@ $buttonRadius: 4px;
   cursor: pointer;
   display: inline-flex;
   vertical-align: middle;
+  align-items: center;
   position: relative;
   outline: none;
   &.size-mini {
     font-size: 10px;
-    padding: .3em .6em;
+    padding: .7em .6em;
     &.circle {
       padding: .5em;
     }
   }
   &.size-large {
     font-size: 14px;
-    padding: .8em 1.6em;
+    padding: 1.1em 1.6em;
     &.circle {
       padding: .94em;
     }
@@ -88,6 +89,11 @@ $buttonRadius: 4px;
       border-color: #3a8ee6;
       color: #fff;
     }
+    &.disabled {
+      color: #fff;
+      background-color: #a0cfff;
+      border-color: #a0cfff;
+    }
   }
   &.type-success {
     color: #fff;
@@ -102,6 +108,11 @@ $buttonRadius: 4px;
       background: #5daf34;
       border-color: #5daf34;
       color: #fff;
+    }
+    &.disabled {
+      color: #fff;
+      background-color: #b3e19d;
+      border-color: #b3e19d;
     }
   }
   &.type-info {
@@ -118,6 +129,11 @@ $buttonRadius: 4px;
       border-color: #82848a;
       color: #fff;
     }
+    &.disabled {
+      color: #fff;
+      background-color: #c8c9cc;
+      border-color: #c8c9cc;
+    }
   }
   &.type-warning {
     color: #fff;
@@ -132,6 +148,11 @@ $buttonRadius: 4px;
       background: #cf9236;
       border-color: #cf9236;
       color: #fff;
+    }
+    &.disabled {
+      color: #fff;
+      background-color: #f3d19e;
+      border-color: #f3d19e;
     }
   }
   &.type-error {
@@ -148,6 +169,14 @@ $buttonRadius: 4px;
       border-color: #dd6161;
       color: #fff;
     }
+    &.disabled {
+      color: #fff;
+      background-color: #fab6b6;
+      border-color: #fab6b6;
+    }
+  }
+  > svg {
+    font-size: 1.1em;
   }
   > svg:first-child:last-child {
     margin: 0;
