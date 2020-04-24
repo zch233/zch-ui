@@ -3,6 +3,10 @@
   "version": "0.0.9",
   "main": "dist/index.js",
   "repository": "git@github.com:zch233/zch-ui.git",
+  "bugs": {
+    "url": "https://github.com/zch233/zch-ui/issues"
+  },
+  "homepage": "https://github.com/zch233/zch-ui/blob/master/README.md",
   "author": "zhangchao <529743595@qq.com>",
   "license": "MIT",
   "scripts": {
