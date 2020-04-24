@@ -131,7 +131,7 @@ describe('zchButton', () => {
     })
   })
   describe('测试 type', () => {
-    ['success', 'info', 'warning', 'error', 'magenta', 'red', 'orange', 'gold', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple'].map(type => {
+    ['primary', 'success', 'info', 'warning', 'error'].map(type => {
       it(type, () => {
         const vm = new Constructor({
           propsData: {

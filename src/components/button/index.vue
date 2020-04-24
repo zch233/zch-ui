@@ -1,13 +1,13 @@
 <template>
   <button
     class="zch-button"
-    :class="[`icon-${iconPosition}`, loading && 'loading', disabled && 'disabled', round && 'round', square && 'square', size && `size-${size}`, type && `type-${type}`]"
+    :class="[`icon-${iconPosition}`, loading && 'loading', disabled && 'disabled', round && 'round', square && 'square', size && `size-${size}`, type && `type-${type}`, circle && 'circle']"
     :disabled="disabled"
     type="button"
     @click="$emit('click', $event)">
     <zch-icon v-if="loading" icon="loading"></zch-icon>
     <zch-icon v-if="icon && !loading" :icon="icon"></zch-icon>
-    <span><slot /></span>
+    <span v-if="$slots.default"><slot /></span>
   </button>
 </template>
 
@@ -27,29 +27,14 @@ export default {
       }
     },
     icon: String,
-    loading: {
-      require: false,
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      require: false,
-      type: Boolean,
-      default: false
-    },
-    round: {
-      require: false,
-      type: Boolean,
-      default: false
-    },
-    square: {
-      require: false,
-      type: Boolean,
-      default: false
-    },
+    loading: Boolean,
+    disabled: Boolean,
+    round: Boolean,
+    square: Boolean,
+    circle: Boolean,
     size: String,
     type: String,
-  }
+  },
 }
 </script>
 
@@ -78,38 +63,94 @@ $buttonRadius: 4px;
   &.size-mini {
     font-size: 10px;
     padding: .3em .6em;
+    &.circle {
+      padding: .5em;
+    }
   }
   &.size-large {
     font-size: 14px;
     padding: .8em 1.6em;
+    &.circle {
+      padding: .94em;
+    }
   }
   &.type-primary {
     color: #fff;
     background-color: #409eff;
     border-color: #409eff;
+    &:hover, &:focus {
+      background: #66b1ff;
+      border-color: #66b1ff;
+      color: #fff;
+    }
+    &:active {
+      background: #3a8ee6;
+      border-color: #3a8ee6;
+      color: #fff;
+    }
   }
   &.type-success {
     color: #fff;
     background-color: #67c23a;
     border-color: #67c23a;
+    &:hover, &:focus {
+      background: #85ce61;
+      border-color: #85ce61;
+      color: #fff;
+    }
+    &:active {
+      background: #5daf34;
+      border-color: #5daf34;
+      color: #fff;
+    }
   }
   &.type-info {
     color: #fff;
     background-color: #909399;
     border-color: #909399;
+    &:hover, &:focus {
+      background: #a6a9ad;
+      border-color: #a6a9ad;
+      color: #fff;
+    }
+    &:active {
+      background: #82848a;
+      border-color: #82848a;
+      color: #fff;
+    }
   }
   &.type-warning {
     color: #fff;
     background-color: #e6a23c;
     border-color: #e6a23c;
+    &:hover, &:focus {
+      background: #ebb563;
+      border-color: #ebb563;
+      color: #fff;
+    }
+    &:active {
+      background: #cf9236;
+      border-color: #cf9236;
+      color: #fff;
+    }
   }
   &.type-error {
     color: #fff;
     background-color: #f56c6c;
     border-color: #f56c6c;
+    &:hover, &:focus {
+      background: #f78989;
+      border-color: #f78989;
+      color: #fff;
+    }
+    &:active {
+      background: #dd6161;
+      border-color: #dd6161;
+      color: #fff;
+    }
   }
-  > svg {
-    margin-right: $iconGap;
+  > svg:first-child:last-child {
+    margin: 0;
   }
   &.icon-left {
     svg {
@@ -149,6 +190,10 @@ $buttonRadius: 4px;
   }
   &.square {
     border-radius: 0;
+  }
+  &.circle {
+    border-radius: 50%;
+    padding: 0.76em;
   }
   &.loading {
     pointer-events: none;
