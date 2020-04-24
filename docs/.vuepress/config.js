@@ -11,7 +11,7 @@ module.exports = {
     displayAllHeaders: true,
     nav: [
       { text: '首页', link: '/' },
-      { text: '组件', link: '/components/' },
+      { text: '组件', link: '/components/basic/layout/' },
       {
         text: '选择语言',
         items: [ { text: '简体中文', link: '?Chinese' }, { text: 'English', link: '?English' } ]
@@ -21,6 +21,10 @@ module.exports = {
     ],
     sidebar: {
       '/components/': [
+        {
+          path: '/components/introduce/',
+          title: '开始',
+        },
         {
           title: '通用',
           collapsable: false,
