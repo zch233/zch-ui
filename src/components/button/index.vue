@@ -1,7 +1,7 @@
 <template>
   <button
     class="zch-button"
-    :class="[`icon-${iconPosition}`, loading && 'loading', disabled && 'disabled', round && 'round', square && 'square', size && `zch-button-${size}`]"
+    :class="[`icon-${iconPosition}`, loading && 'loading', disabled && 'disabled', round && 'round', square && 'square', size && `size-${size}`, type && `type-${type}`]"
     :disabled="disabled"
     type="button"
     @click="$emit('click', $event)">
@@ -48,6 +48,7 @@ export default {
       default: false
     },
     size: String,
+    type: String,
   }
 }
 </script>
@@ -74,11 +75,11 @@ $buttonRadius: 4px;
   vertical-align: middle;
   position: relative;
   outline: none;
-  &-mini {
+  &.size-mini {
     font-size: 10px;
     padding: .3em .6em;
   }
-  &-large {
+  &.size-large {
     font-size: 14px;
     padding: .8em 1.6em;
   }
