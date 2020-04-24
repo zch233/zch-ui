@@ -116,4 +116,18 @@ describe('zchButton', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  describe('测试 size', () => {
+    ['large', 'mini'].map(size => {
+      it(size, () => {
+        const vm = new Constructor({
+          propsData: {
+            size
+          },
+        }).$mount()
+        expect(vm.$el.classList.contains(`zch-button-${size}`)).to.eq(true)
+        vm.$el.remove()
+        vm.$destroy()
+      })
+    })
+  })
 })
