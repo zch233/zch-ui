@@ -31,6 +31,7 @@
     "@vuepress/plugin-back-to-top": "^1.4.1",
     "@vuepress/plugin-nprogress": "^1.4.1",
     "chai": "^4.2.0",
+    "highlight.js": "^10.0.0",
     "karma": "^4.4.1",
     "karma-chai": "^0.1.0",
     "karma-chai-spies": "^0.1.4",
