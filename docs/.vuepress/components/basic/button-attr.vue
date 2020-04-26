@@ -24,49 +24,49 @@
               <td class="des">尺寸</td>
               <td class="type">String</td>
               <td>large / mini</td>
-              <td>——</td>
+              <td>—</td>
             </tr>
             <tr>
               <td>type</td>
               <td class="des">类型</td>
               <td class="type">String</td>
               <td>primary / success / warning / danger / info</td>
-              <td>——</td>
+              <td>—</td>
             </tr>
             <tr>
               <td>round</td>
               <td class="des">是否圆角按钮</td>
               <td class="type">Boolean</td>
-              <td>——</td>
+              <td>—</td>
               <td>false</td>
             </tr>
             <tr>
               <td>circle</td>
               <td class="des">是否圆形按钮</td>
               <td class="type">Boolean</td>
-              <td>——</td>
+              <td>—</td>
               <td>false</td>
             </tr>
             <tr>
               <td>loading</td>
               <td class="des">是否加载中状态</td>
               <td class="type">Boolean</td>
-              <td>——</td>
+              <td>—</td>
               <td>false</td>
             </tr>
             <tr>
               <td>disabled</td>
               <td class="des">是否禁用状态</td>
               <td class="type">Boolean</td>
-              <td>——</td>
+              <td>—</td>
               <td>false</td>
             </tr>
             <tr>
               <td>icon</td>
               <td class="des">图标类名</td>
               <td class="type">String</td>
-              <td>——</td>
-              <td>——</td>
+              <td>—</td>
+              <td>—</td>
             </tr>
             <tr>
               <td>native-type</td>

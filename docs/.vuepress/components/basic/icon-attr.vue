@@ -18,8 +18,8 @@
               <td>icon</td>
               <td class="des">名称</td>
               <td class="type">String</td>
-              <td>——</td>
-              <td>——</td>
+              <td>—</td>
+              <td>—</td>
             </tr>
           </tbody>
         </table>

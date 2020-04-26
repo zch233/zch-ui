@@ -9,6 +9,8 @@
       :disabled="disabled"
       :readonly="readonly"
       :aria-label="label"
+      :rows="rows"
+      :cols="cols"
       v-bind="$attrs"
       @keydown="keydown"
       @keyup="keyup"
@@ -72,6 +74,8 @@ export default {
     password: Boolean,
     value: [String, Number],
     label: String,
+    cols: Number,
+    rows: Number,
     clearable: Boolean,
   },
   data() {
