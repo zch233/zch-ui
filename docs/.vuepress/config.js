@@ -29,8 +29,8 @@ module.exports = {
           title: '通用',
           collapsable: false,
           children: [
-            { title: 'Layout 布局', path: '/components/basic/layout/' },
-            { title: 'Container 布局容器', path: '/components/basic/container/' },
+            { title: 'Grid 栅格', path: '/components/basic/grid/' },
+            { title: 'Layout 布局容器', path: '/components/basic/layout/' },
             { title: 'Icon 图标', path: '/components/basic/icon/' },
             { title: 'Button 按钮', path: '/components/basic/button/' },
           ]

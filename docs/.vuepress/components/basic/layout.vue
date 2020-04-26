@@ -1,249 +1,65 @@
-<template>
+<template id="tem">
   <div>
-    <h3>基础布局</h3>
-    <h5>通过基础的 24 分栏，迅速简便地创建布局。</h5>
+    <h3>使用方法</h3>
+    <h5 v-for="item in des" :key="item">{{ item }}</h5>
     <div class="block">
       <div class="source">
-        <zch-row>
-          <zch-col span="24"><div class="dark">col24</div></zch-col>
-        </zch-row>
+        <zch-icon icon="share"></zch-icon>
+        <zch-icon icon="delete"></zch-icon>
+        <zch-icon icon="edit"></zch-icon>
+        <zch-icon icon="search"></zch-icon>
       </div>
-      <div class="source">
-        <zch-row>
-          <zch-col span="12"><div class="dark">col12</div></zch-col>
-          <zch-col span="12"><div class="light">col12</div></zch-col>
-        </zch-row>
-      </div>
-      <div class="source">
-        <zch-row>
-          <zch-col span="8"><div class="dark">col8</div></zch-col>
-          <zch-col span="8"><div class="light">col8</div></zch-col>
-          <zch-col span="8"><div class="dark">col8</div></zch-col>
-        </zch-row>
-      </div>
-      <div class="source">
-        <zch-row>
-          <zch-col span="6"><div class="dark">col6</div></zch-col>
-          <zch-col span="6"><div class="light">col6</div></zch-col>
-          <zch-col span="6"><div class="dark">col6</div></zch-col>
-          <zch-col span="6"><div class="light">col6</div></zch-col>
-        </zch-row>
-      </div>
-      <code-bar title="通过 row 和 col 组件，并通过 col 组件的 span 属性我们就可以自由地组合布局。" :code="code1"></code-bar>
+      <code-bar title="直接通过设置属性 icon 为 iconName 来使用即可。例如：" :code="code1"></code-bar>
     </div>
-    <h3>分栏间隔</h3>
-    <h5>分栏之间存在间隔。</h5>
-    <div class="block">
-      <div class="source">
-        <zch-row gutter="20">
-          <zch-col span="6"><div class="dark">col6</div></zch-col>
-          <zch-col span="6"><div class="light">col6</div></zch-col>
-          <zch-col span="6"><div class="dark">col6</div></zch-col>
-          <zch-col span="6"><div class="light">col6</div></zch-col>
-        </zch-row>
+    <h3>图标集合</h3>
+    <div class="block icon">
+      <div class="source icon">
+        <div v-for="item in iconList" :key="item" @click="copyIcon(item)">
+          <zch-icon :icon="item"></zch-icon>
+          <p>{{ item }}</p>
+        </div>
       </div>
-      <code-bar title="Row 组件 提供 gutter 属性来指定每一栏之间的间隔，默认间隔为 0。" :code="code2"></code-bar>
-    </div>
-    <h3>混合布局</h3>
-    <h5>通过基础的 1/24 分栏任意扩展组合形成较为复杂的混合布局。</h5>
-    <div class="block">
-      <div class="source">
-        <zch-row gutter="20">
-          <zch-col span="16"><div class="dark">col16</div></zch-col>
-          <zch-col span="8"><div class="light">col8</div></zch-col>
-        </zch-row>
-      </div>
-      <div class="source">
-        <zch-row gutter="20">
-          <zch-col span="8"><div class="dark">col8</div></zch-col>
-          <zch-col span="8"><div class="light">col8</div></zch-col>
-          <zch-col span="4"><div class="dark">col4</div></zch-col>
-          <zch-col span="4"><div class="light">col4</div></zch-col>
-        </zch-row>
-      </div>
-      <div class="source">
-        <zch-row gutter="20">
-          <zch-col span="4"><div class="dark">col4</div></zch-col>
-          <zch-col span="16"><div class="light">col16</div></zch-col>
-          <zch-col span="4"><div class="dark">col4</div></zch-col>
-        </zch-row>
-      </div>
-      <code-bar :code="code3"></code-bar>
-    </div>
-    <h3>分栏偏移</h3>
-    <h5>支持偏移指定的栏数。</h5>
-    <div class="block">
-      <div class="source">
-        <zch-row>
-          <zch-col span="6"><div class="dark">col6</div></zch-col>
-          <zch-col span="6" offset="6"><div class="light">col6</div></zch-col>
-        </zch-row>
-      </div>
-      <div class="source">
-        <zch-row>
-          <zch-col span="6" offset="6"><div class="dark">col6</div></zch-col>
-          <zch-col span="6" offset="6"><div class="light">col6</div></zch-col>
-        </zch-row>
-      </div>
-      <div class="source">
-        <zch-row>
-          <zch-col span="12" offset="6"><div class="dark">col12</div></zch-col>
-        </zch-row>
-      </div>
-      <code-bar title="通过制定 col 组件的 offset 属性可以指定分栏偏移的栏数。" :code="code4"></code-bar>
-    </div>
-    <h3>响应式布局</h3>
-    <h5>参照了 Bootstrap 的 响应式设计，预设了五个响应尺寸：phone、pad、narrowPc、pc 和 widePc。</h5>
-    <div class="block">
-      <div class="source">
-        <zch-row gutter="10">
-          <zch-col :phone="8" :pad="6" :narrow-pc="4" :pc="3" :wide-pc="1"><div class="dark">R</div></zch-col>
-          <zch-col :phone="4" :pad="6" :narrow-pc="8" :pc="9" :wide-pc="11"><div class="light">R</div></zch-col>
-          <zch-col :phone="4" :pad="6" :narrow-pc="8" :pc="9" :wide-pc="11"><div class="light">R</div></zch-col>
-          <zch-col :phone="8" :pad="6" :narrow-pc="4" :pc="3" :wide-pc="1"><div class="light">R</div></zch-col>
-        </zch-row>
-      </div>
-      <code-bar :code="code5"></code-bar>
     </div>
   </div>
 </template>
 
 <script>
-import ZchRow from "../../../../src/components/row/index";
-import ZchCol from "../../../../src/components/col/index";
+import ZchIcon from "../../../../src/components/icon/index";
 import CodeBar from "../utils/CodeBar";
 import "../style.scss";
 
 export default {
-  name: "ButtonExample",
+  name: "IconExample",
   components: {
-    ZchRow,
-    ZchCol,
+    ZchIcon,
     CodeBar
   },
   data() {
     return {
+      des: [
+        '用于布局的容器组件，方便快速搭建页面的基本结构：',
+        '<zch-layout>：外层容器。当子元素中包含 <zch-header> 或 <zch-footer> 时，全部子元素会垂直上下排列，否则会水平左右排列。',
+        '<zch-header>：顶栏容器。',
+        '<zch-aside>：侧边栏容器。',
+        '<zch-content>：主要区域容器。',
+        '<zch-footer>：底栏容器。',
+      ],
       code1: `
         <div class="source">
-          <zch-row>
-            <zch-col span="24"><div class="dark">col24</div></zch-col>
-          </zch-row>
-        </div>
-
-        <div class="source">
-          <zch-row>
-            <zch-col span="12"><div class="dark">col12</div></zch-col>
-            <zch-col span="12"><div class="light">col12</div></zch-col>
-          </zch-row>
-        </div>
-
-        <div class="source">
-          <zch-row>
-            <zch-col span="8"><div class="dark">col8</div></zch-col>
-            <zch-col span="8"><div class="light">col8</div></zch-col>
-            <zch-col span="8"><div class="dark">col8</div></zch-col>
-          </zch-row>
-        </div>
-
-        <div class="source">
-          <zch-row>
-            <zch-col span="6"><div class="dark">col6</div></zch-col>
-            <zch-col span="6"><div class="light">col6</div></zch-col>
-            <zch-col span="6"><div class="dark">col6</div></zch-col>
-            <zch-col span="6"><div class="light">col6</div></zch-col>
-          </zch-row>
+          <zch-icon icon="share"></zch-icon>
+          <zch-icon icon="delete"></zch-icon>
+          <zch-icon icon="edit"></zch-icon>
+          <zch-icon icon="search"></zch-icon>
         </div>
       `
         .replace(/^ {8}/gm, "")
         .trim(),
-      code2: `
-        <div class="source" gutter="20">
-          <zch-row>
-            <zch-col span="6"><div class="dark">col6</div></zch-col>
-            <zch-col span="6"><div class="light">col6</div></zch-col>
-            <zch-col span="6"><div class="dark">col6</div></zch-col>
-            <zch-col span="6"><div class="light">col6</div></zch-col>
-          </zch-row>
-        </div>
-      `
-        .replace(/^ {8}/gm, "")
-        .trim(),
-      code3: `
-        <div class="source">
-          <zch-row gutter="20">
-            <zch-col span="16"><div class="dark">col16</div></zch-col>
-            <zch-col span="8"><div class="light">col8</div></zch-col>
-          </zch-row>
-        </div>
-        <div class="source">
-          <zch-row gutter="20">
-            <zch-col span="8"><div class="dark">col8</div></zch-col>
-            <zch-col span="8"><div class="light">col8</div></zch-col>
-            <zch-col span="4"><div class="dark">col4</div></zch-col>
-            <zch-col span="4"><div class="light">col4</div></zch-col>
-          </zch-row>
-        </div>
-        <div class="source">
-          <zch-row gutter="20">
-            <zch-col span="4"><div class="dark">col4</div></zch-col>
-            <zch-col span="16"><div class="light">col16</div></zch-col>
-            <zch-col span="4"><div class="dark">col4</div></zch-col>
-          </zch-row>
-        </div>
-      `
-        .replace(/^ {8}/gm, "")
-        .trim(),
-      code4: `
-        <div class="source">
-          <zch-row>
-            <zch-col span="6"><div class="dark">col6</div></zch-col>
-            <zch-col span="6" offset="6"><div class="light">col6</div></zch-col>
-          </zch-row>
-        </div>
-        <div class="source">
-          <zch-row>
-            <zch-col span="6" offset="6"><div class="dark">col6</div></zch-col>
-            <zch-col span="6" offset="6"><div class="light">col6</div></zch-col>
-          </zch-row>
-        </div>
-        <div class="source">
-          <zch-row>
-            <zch-col span="12" offset="6"><div class="dark">col12</div></zch-col>
-          </zch-row>
-        </div>
-      `
-        .replace(/^ {8}/gm, "")
-        .trim(),
-      code5: `
-        <div class="source">
-          <zch-row gutter="10">
-            <zch-col :phone="8" :pad="6" :narrow-pc="4" :pc="3" :wide-pc="1"><div class="dark">R</div></zch-col>
-            <zch-col :phone="4" :pad="6" :narrow-pc="8" :pc="9" :wide-pc="11"><div class="light">R</div></zch-col>
-            <zch-col :phone="4" :pad="6" :narrow-pc="8" :pc="9" :wide-pc="11"><div class="light">R</div></zch-col>
-            <zch-col :phone="8" :pad="6" :narrow-pc="4" :pc="3" :wide-pc="1"><div class="light">R</div></zch-col>
-          </zch-row>
-        </div>
-      `
-        .replace(/^ {8}/gm, "")
-        .trim(),
+      iconList: ["calculator", "minus-square-fill", "insertrowright", "interation", "close-square-fill", "formatpainter-fill", "check-square", "codelibrary-fill", "insertrowleft", "border", "left-square-fill", "translate", "border-outer", "play-square-fill", "deleterow", "border-top", "up-square-fill", "sisternode", "border-bottom", "right-square-fill", "Field-number", "border-left", "plus-square-fill", "Field-String", "border-right", "accountbook-fill", "Function", "border-inner", "carryout-fill", "Field-time", "border-verticle", "calendar-fill", "GIF", "border-horizontal", "calculator-fill", "Partition", "radius-bottomleft", "interation-fill", "index", "radius-bottomright", "project-fill", "Storedprocedure", "radius-upleft", "detail-fill", "Field-Binary", "radius-upright", "save-fill", "Console-SQL", "radius-setting", "wallet-fill", "icon-test", "adduser", "control-fill", "aim", "deleteteam", "layout-fill", "compress", "deleteuser", "appstore-fill", "expend", "addteam", "mobile-fill", "folder-view", "user", "tablet-fill", "file-GIF", "team", "book-fill", "group", "areachart", "redenvelope-fill", "send", "linechart", "safetycertificate-f", "Report", "barchart", "propertysafety-fill", "View", "pointmap", "insurance-fill", "shortcut", "container", "securityscan-fill", "ungroup", "database", "file-exclamation-fil", "sever", "file-add-fill", "mobile", "file-fill", "tablet", "file-excel-fill", "redenvelope", "file-markdown-fill", "book", "file-text-fill", "filedone", "file-ppt-fill", "reconciliation", "file-unknown-fill", "file-exception", "file-word-fill", "filesync", "file-zip-fill", "filesearch", "file-pdf-fill", "solution", "file-image-fill", "fileprotect", "diff-fill", "file-add", "file-copy-fill", "file-excel", "snippets-fill", "file-exclamation", "batchfolding-fill", "file-pdf", "reconciliation-fill", "file-image", "folder-add-fill", "file-markdown", "folder-fill", "file-unknown", "folder-open-fill", "file-ppt", "database-fill", "file-word", "container-fill", "file", "sever-fill", "file-zip", "calendar-check-fill", "file-text", "image-fill", "file-copy", "idcard-fill", "snippets", "creditcard-fill", "audit", "fund-fill", "diff", "read-fill", "Batchfolding", "contacts-fill", "securityscan", "delete-fill", "propertysafety", "notification-fill", "safetycertificate", "flag-fill", "insurance", "moneycollect-fill", "alert", "medicinebox-fill", "delete", "rest-fill", "hourglass", "shopping-fill", "bulb", "skin-fill", "experiment", "video-fill", "bell", "sound-fill", "trophy", "bulb-fill", "rest", "bell-fill", "USB", "filter-fill", "skin", "fire-fill", "home", "funnelplot-fill", "bank", "gift-fill", "filter", "hourglass-fill", "funnelplot", "home-fill", "like", "trophy-fill", "unlike", "location-fill", "unlock", "cloud-fill", "lock", "customerservice-fill", "customerservice", "experiment-fill", "flag", "eye-fill", "moneycollect", "like-fill", "medicinebox", "lock-fill", "shop", "unlike-fill", "rocket", "star-fill", "shopping", "unlock-fill", "folder", "alert-fill", "folder-open", "api-fill", "folder-add", "highlight-fill", "deploymentunit", "phone-fill", "accountbook", "edit-fill", "contacts", "pushpin-fill", "carryout", "rocket-fill", "calendar-check", "thunderbolt-fill", "calendar", "tag-fill", "scan", "wrench-fill", "select", "tags-fill", "boxplot", "bank-fill", "build", "camera-fill", "sliders", "error-fill", "laptop", "crown-fill", "barcode", "mail-fill", "camera", "car-fill", "cluster", "printer-fill", "gateway", "shop-fill", "car", "setting-fill1", "printer", "USB-fill", "read", "golden-fill", "cloud-server", "build-fill", "cloud-upload", "boxplot-fill", "cloud", "sliders-fill", "cloud-download", "alibaba", "cloud-sync", "alibabacloud", "video", "antdesign", "notification", "ant-cloud", "sound", "behance", "radarchart", "googleplus", "qrcode", "medium", "fund", "google", "image", "IE", "mail", "amazon", "table", "slack", "idcard", "alipay", "creditcard", "taobao", "heart", "zhihu", "block", "HTML", "error", "linkedin", "star", "yahoo", "gold", "facebook", "heatmap", "skype", "wifi", "CodeSandbox", "attachment", "chrome", "edit", "codepen", "key", "aliwangwang", "api", "apple", "disconnect", "android", "highlight", "sketch", "monitor", "Gitlab", "link", "dribbble", "man", "instagram", "percentage", "reddit", "pushpin", "windows", "phone", "yuque", "shake", "Youtube", "tag", "Gitlab-fill", "wrench", "dropbox", "tags", "dingtalk", "scissor", "android-fill", "mr", "apple-fill", "share", "HTML-fill", "branches", "windows-fill", "fork", "QQ", "shrink", "twitter", "arrawsalt", "skype-fill", "verticalright", "weibo", "verticalleft", "yuque-fill", "right1", "Youtube-fill", "left1", "yahoo-fill", "up", "wechat-fill", "down", "chrome-fill", "fullscreen", "alipay-circle-fill", "fullscreen-exit", "aliwangwang-fill", "doubleleft", "behance-circle-fill", "doubleright", "amazon-circle-fill", "arrowright", "codepen-circle-fill", "arrowup", "CodeSandbox-circle-f", "arrowleft", "dropbox-circle-fill", "arrowdown", "github-fill", "upload", "dribbble-circle-fill", "colum-height", "googleplus-circle-f", "vertical-align-botto", "medium-circle-fill", "vertical-align-middl", "QQ-circle-fill", "totop", "IE-circle-fill", "vertical-align-top", "google-circle-fill", "download", "dingtalk-circle-fill", "sort-descending", "sketch-circle-fill", "sort-ascending", "slack-circle-fill", "fall", "twitter-circle-fill", "swap", "taobao-circle-fill", "stock", "weibo-circle-fill", "rise", "zhihu-circle-fill", "indent", "reddit-circle-fill", "outdent", "alipay-square-fill", "menu", "dingtalk-square-fill", "unorderedlist", "CodeSandbox-square-f", "orderedlist", "behance-square-fill", "align-right", "amazon-square-fill", "align-center", "codepen-square-fill", "align-left", "dribbble-square-fill", "pic-center", "dropbox-square-fill", "pic-right", "facebook-fill", "pic-left", "googleplus-square-f", "bold", "google-square-fill", "font-colors", "instagram-fill", "exclaimination", "IE-square-fill", "check-circle", "font-size", "medium-square-fill", "CI", "infomation", "linkedin-fill", "Dollar", "line-height", "QQ-square-fill", "compass", "strikethrough", "reddit-square-fill", "close-circle", "underline", "twitter-square-fill", "frown", "number", "sketch-square-fill", "info-circle", "italic", "slack-square-fill", "left-circle", "code", "taobao-square-fill", "down-circle", "column-width", "weibo-square-fill", "EURO", "check", "zhihu-square-fill", "copyright", "ellipsis", "zoomout", "minus-circle", "dash", "apartment", "meh", "close", "audio", "plus-circle", "enter", "audio-fill", "play-circle", "line", "robot", "question-circle", "minus", "zoomin", "Pound", "question", "robot-fill", "right-circle", "rollback", "bug-fill", "smile", "small-dash", "bug", "trademark", "pause", "audiostatic", "time-circle", "bg-colors", "comment", "timeout", "crown", "signal-fill", "earth", "drag", "verified", "YUAN", "desktop", "shortcut-fill", "up-circle", "gift", "videocameraadd", "warning-circle", "stop", "switchuser", "sync", "fire", "whatsapp", "transaction", "thunderbolt", "appstoreadd", "undo", "check-circle-fill", "caret-down", "redo", "left-circle-fill", "backward", "reload", "down-circle-fill", "caret-up", "reloadtime", "minus-circle-fill", "caret-right", "message", "close-circle-fill", "caret-left", "dashboard", "info-circle-fill", "fast-backward", "issuesclose", "up-circle-fill", "forward", "poweroff", "right-circle-fill", "fast-forward", "logout", "plus-circle-fill", "search", "piechart", "question-circle-fill", "retweet", "setting1", "EURO-circle-fill", "login", "eye1", "frown-fill", "step-backward", "location", "copyright-circle-fil", "step-forward", "edit-square", "CI-circle-fill", "swap-right", "export", "compass-fill", "swap-left", "save", "Dollar-circle-fill", "woman", "Import", "poweroff-circle-fill", "plus", "appstore", "meh-fill", "eyeclose-fill", "close-square", "play-circle-fill", "eye-close", "down-square", "Pound-circle-fill", "clear1", "layout", "smile-fill", "collapse", "left-square", "stop-fill", "expand", "play-square", "warning-circle-fill", "deletecolumn", "control", "time-circle-fill", "merge-cells", "codelibrary", "trademark-circle-fil", "subnode", "detail", "YUAN-circle-fill", "rotate-left", "minus-square", "heart-fill", "rotate-right", "plus-square", "piechart-circle-fil", "insertrowbelow", "right-square", "dashboard-fill", "insertrowabove", "project", "message-fill", "table1", "wallet", "check-square-fill", "solit-cells", "up-square", "down-square-fill", "formatpainter", "rightArrow", "close1", "clear", "eye", "loading", "right", "left", "default", "setting-fill", "setting"],
     };
-  }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-.dark,
-.light {
-  line-height: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-}
-.dark {
-  background-color: #0092ff;
-}
-.light {
-  background-color: rgba(0, 146, 255, 0.75);
-}
+
 </style>
