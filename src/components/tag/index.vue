@@ -55,74 +55,200 @@ export default {
     padding: 0 5px;
   }
   &.type-success {
+    $color: #67c23a;
     background-color: #f0f9eb;
     border-color: #e1f3d8;
-    color: #67c23a;
+    color: $color;
+    .zchTag-close {
+      fill: $color;
+      transition: all .1s;
+      &:hover {
+        fill: #fff;
+        background-color: $color;
+      }
+    }
   }
   &.type-info {
+    $color: #909399;
     background-color: #f4f4f5;
     border-color: #e9e9eb;
-    color: #909399;
+    color: $color;
+    .zchTag-close {
+      fill: $color;
+      transition: all .1s;
+      &:hover {
+        fill: #fff;
+        background-color: $color;
+      }
+    }
   }
   &.type-warning {
+    $color: #e6a23c;
     background-color: #fdf6ec;
     border-color: #faecd8;
-    color: #e6a23c;
+    color: $color;
+    .zchTag-close {
+      fill: $color;
+      transition: all .1s;
+      &:hover {
+        fill: #fff;
+        background-color: $color;
+      }
+    }
   }
   &.type-danger {
+    $color: #f56c6c;
     background-color: #fef0f0;
     border-color: #fde2e2;
-    color: #f56c6c;
+    color: $color;
+    .zchTag-close {
+      fill: $color;
+      transition: all .1s;
+      &:hover {
+        fill: #fff;
+        background-color: $color;
+      }
+    }
   }
-  &.color-magenta {
-    color: #eb2f96;
-    background: #fff0f6;
+  &.type-magenta {
+    $color: #eb2f96;
+    background-color: #fff0f6;
     border-color: #ffadd2;
+    color: $color;
+    .zchTag-close {
+      fill: $color;
+      transition: all .1s;
+      &:hover {
+        fill: #fff;
+        background-color: $color;
+      }
+    }
   }
-  &.color-red {
-    color: #f5222d;
-    background: #fff1f0;
+  &.type-red {
+    $color: #f5222d;
+    background-color: #fff1f0;
     border-color: #ffa39e;
+    color: $color;
+    .zchTag-close {
+      fill: $color;
+      transition: all .1s;
+      &:hover {
+        fill: #fff;
+        background-color: $color;
+      }
+    }
   }
-  &.color-orange {
-    color: #fa541c;
-    background: #fff2e8;
+  &.type-orange {
+    $color: #fa541c;
+    background-color: #fff2e8;
     border-color: #ffbb96;
+    color: $color;
+    .zchTag-close {
+      fill: $color;
+      transition: all .1s;
+      &:hover {
+        fill: #fff;
+        background-color: $color;
+      }
+    }
   }
-  &.color-gold {
-    color: #faad14;
+  &.type-gold {
+    $color: #faad14;
     background: #fffbe6;
     border-color: #ffe58f;
+    color: $color;
+    .zchTag-close {
+      fill: $color;
+      transition: all .1s;
+      &:hover {
+        fill: #fff;
+        background-color: $color;
+      }
+    }
   }
-  &.color-lime {
-    color: #a0d911;
-    background: #fcffe6;
+  &.type-lime {
+    $color: #a0d911;
+    background-color: #fcffe6;
     border-color: #eaff8f;
+    color: $color;
+    .zchTag-close {
+      fill: $color;
+      transition: all .1s;
+      &:hover {
+        fill: #fff;
+        background-color: $color;
+      }
+    }
   }
-  &.color-green {
-    color: #52c41a;
-    background: #f6ffed;
+  &.type-green {
+    $color: #52c41a;
+    background-color: #f6ffed;
     border-color: #b7eb8f;
+    color: $color;
+    .zchTag-close {
+      fill: $color;
+      transition: all .1s;
+      &:hover {
+        fill: #fff;
+        background-color: $color;
+      }
+    }
   }
-  &.color-cyan {
-    color: #13c2c2;
-    background: #e6fffb;
+  &.type-cyan {
+    $color: #13c2c2;
+    background-color: #e6fffb;
     border-color: #87e8de;
+    color: $color;
+    .zchTag-close {
+      fill: $color;
+      transition: all .1s;
+      &:hover {
+        fill: #fff;
+        background-color: $color;
+      }
+    }
   }
-  &.color-blue {
-    color: #1890ff;
+  &.type-blue {
+    $color: #1890ff;
     background: #e6f7ff;
     border-color: #91d5ff;
+    color: $color;
+    .zchTag-close {
+      fill: $color;
+      transition: all .1s;
+      &:hover {
+        fill: #fff;
+        background-color: $color;
+      }
+    }
   }
-  &.color-geekblue {
-    color: #2f54eb;
-    background: #f0f5ff;
+  &.type-geekblue {
+    $color: #2f54eb;
+    background-color: #f0f5ff;
     border-color: #adc6ff;
+    color: $color;
+    .zchTag-close {
+      fill: $color;
+      transition: all .1s;
+      &:hover {
+        fill: #fff;
+        background-color: $color;
+      }
+    }
   }
-  &.color-purple {
-    color: #722ed1;
-    background: #f9f0ff;
+  &.type-purple {
+    $color: #722ed1;
+    background-color: #f9f0ff;
     border-color: #d3adf7;
+    color: $color;
+    .zchTag-close {
+      fill: $color;
+      transition: all .1s;
+      &:hover {
+        fill: #fff;
+        background-color: $color;
+      }
+    }
   }
   &-preIcon {
     font-size: 1.2em;

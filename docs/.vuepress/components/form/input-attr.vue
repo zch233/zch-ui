@@ -122,27 +122,18 @@
         <table>
           <thead>
             <tr>
-              <th>参数</th>
+              <th>name</th>
               <th class="des">说明</th>
-              <th class="type">类型</th>
-              <th>可选值</th>
-              <th>默认值</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>prepend</td>
               <td class="des">输入框前置内容，只对 <span class="code">type="text"</span> 有效</td>
-              <td class="type">—</td>
-              <td>—</td>
-              <td>—</td>
             </tr>
             <tr>
               <td>append</td>
               <td class="des">输入框后置内容，只对 <span class="code">type="text"</span> 有效</td>
-              <td class="type">—</td>
-              <td>—</td>
-              <td>—</td>
             </tr>
           </tbody>
         </table>
@@ -154,61 +145,45 @@
         <table>
           <thead>
             <tr>
-              <th>参数</th>
+              <th>事件名称</th>
               <th class="des">说明</th>
-              <th class="type">类型</th>
-              <th>可选值</th>
-              <th>默认值</th>
+              <th>回调参数</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>blur</td>
               <td class="des">在 Input 失去焦点时触发</td>
-              <td class="type">—</td>
-              <td>—</td>
               <td>(value: String | Number)</td>
             </tr>
             <tr>
               <td>focus</td>
               <td class="des">在 Input 获得焦点时触发</td>
-              <td class="type">—</td>
-              <td>—</td>
               <td>(value: String | Number)</td>
             </tr>
             <tr>
               <td>change</td>
               <td class="des">在 Input 改变时触发</td>
-              <td class="type">—</td>
-              <td>—</td>
               <td>(value: String | Number)</td>
             </tr>
             <tr>
               <td>input</td>
               <td class="des">在 Input 输入时触发</td>
-              <td class="type">—</td>
-              <td>—</td>
               <td>(value: String | Number)</td>
             </tr>
             <tr>
               <td>clear</td>
               <td class="des">在点击由 <span class="code">clearable</span> 属性生成的清空按钮时触发</td>
-              <td class="type">—</td>
-              <td>—</td>
               <td>—</td>
             </tr>
             <tr>
               <td>keyup</td>
               <td class="des">在 Input 输入键盘弹起时触发</td>
-              <td class="type">—</td>
-              <td>—</td>
               <td>(value: String | Number)</td>
             </tr>
             <tr>
               <td>keydown</td>
               <td class="des">在 Input 输入键盘按下时触发</td>
-              <td class="type">—</td>
-              <td>—</td>
               <td>(value: String | Number)</td>
             </tr>
           </tbody>
