@@ -33,4 +33,4 @@ import 'zch-gulu/dist/index.css'
 
 ## 提交代码
 
-如果您觉得还不错，请 star
+如果您觉得还不错，请 **star**
