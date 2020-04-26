@@ -1,7 +1,7 @@
-# collapse
+# Collapse 折叠面板
 
 <ClientOnly>
-  <basic-button></basic-button>
+  <others-collapse></others-collapse>
 </ClientOnly>
 
-<basic-button-attr></basic-button-attr>
+<others-collapse-attr></others-collapse-attr>

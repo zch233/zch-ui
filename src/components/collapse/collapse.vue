@@ -38,7 +38,7 @@ export default {
     this.$on('item-click', vm => {
       let activeItems = this.activeItems.slice(0);
       if (this.accordion) {
-        activeItems = [vm.name]
+        activeItems = activeItems.length === 0 ? [vm.name] : []
       } else {
         let index = activeItems.indexOf(vm.name);
         if (index > -1) {
