@@ -1,7 +1,7 @@
-# tag
+# Tag 标签
 
 <ClientOnly>
-  <basic-button></basic-button>
+  <data-tag></data-tag>
 </ClientOnly>
 
-<basic-button-attr></basic-button-attr>
+<data-tag-attr></data-tag-attr>
