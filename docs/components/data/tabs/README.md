@@ -1,7 +1,7 @@
-# tabs
+# Tabs 标签页
 
 <ClientOnly>
-  <basic-button></basic-button>
+  <data-tabs></data-tabs>
 </ClientOnly>
 
-<basic-button-attr></basic-button-attr>
+<data-tabs-attr></data-tabs-attr>
