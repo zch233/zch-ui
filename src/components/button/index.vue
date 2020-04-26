@@ -77,7 +77,7 @@ $buttonRadius: 4px;
   }
   &.size-large {
     font-size: 14px;
-    padding: 1.1em 1.6em;
+    padding: .92em 1.44em;
     &.circle {
       padding: .94em;
     }
