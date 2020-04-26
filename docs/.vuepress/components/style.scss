@@ -19,3 +19,21 @@
   margin: 0;
   padding: 0.2em 0.4em;
 }
+.dark,
+.light,
+.middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 1em 2em;
+}
+.dark {
+  background-color: #0092ff;
+}
+.light {
+  background-color: rgba(0, 146, 255, 0.75);
+}
+.middle {
+  background-color: #3ba0e9;
+}

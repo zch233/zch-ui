@@ -1,7 +1,7 @@
 <template>
   <div class="base">
     <section>
-      <h1>Attributes</h1>
+      <h1>Layout Attributes</h1>
       <div class="attr">
         <table>
           <thead>
@@ -15,11 +15,11 @@
           </thead>
           <tbody>
             <tr>
-              <td>icon</td>
-              <td class="des">名称</td>
+              <td>direction</td>
+              <td class="des">子元素的排列方向</td>
               <td class="type">String</td>
-              <td>——</td>
-              <td>——</td>
+              <td>horizontal / vertical</td>
+              <td>子元素中有 zch-side 时为 horizontal，否则为 vertical</td>
             </tr>
           </tbody>
         </table>

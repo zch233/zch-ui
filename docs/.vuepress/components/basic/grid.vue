@@ -230,20 +230,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.dark,
-.light {
-  line-height: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-}
-.dark {
-  background-color: #0092ff;
-}
-.light {
-  background-color: rgba(0, 146, 255, 0.75);
-}
-</style>
