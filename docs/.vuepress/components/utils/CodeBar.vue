@@ -6,6 +6,7 @@
       v-on:leave="leave"
     >
       <pre v-show="codeVisible" ref="code">
+        <p v-if="title" class="title">{{ title }}</p>
         <code>{{ code }}</code>
       </pre>
     </transition>
@@ -27,6 +28,7 @@ export default {
   components: { ZchIcon },
   props: {
     code: String,
+    title: String,
   },
   directives: {
     highlight: {
@@ -80,7 +82,17 @@ export default {
     padding-top: 0;
     padding-bottom: 0;
     opacity: 0;
+    overflow: hidden;
   }
+}
+.title {
+  margin: 0;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  border: 1px solid #ebebeb;
+  border-radius: 3px;
+  color: #ebebeb;
+  font-size: 12px;
 }
 .codeExpand {
   text-align: center;

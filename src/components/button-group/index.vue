@@ -6,28 +6,28 @@
 
 <script>
 export default {
-  name: 'ZchButtonGroup'
-}
+  name: "ZchButtonGroup"
+};
 </script>
 
 <style lang="scss" scoped>
-  $buttonRadius: 4px;
- .zch-button-group {
-   display: inline-flex;
-   vertical-align: middle;
-   :not(:first-child) {
-     margin-left: -1px;
-   }
-   > * {
-     border-radius: 0;
-   }
-   :first-child {
-     border-top-left-radius: $buttonRadius;
-     border-bottom-left-radius: $buttonRadius;
-   }
-   :last-child {
-     border-top-right-radius: $buttonRadius;
-     border-bottom-right-radius: $buttonRadius;
-   }
- }
+$buttonRadius: 4px;
+.zch-button-group {
+  display: inline-flex;
+  vertical-align: middle;
+  :not(:first-child) {
+    margin-left: -1px;
+  }
+  > * {
+    border-radius: 0;
+  }
+  :first-child {
+    border-top-left-radius: $buttonRadius;
+    border-bottom-left-radius: $buttonRadius;
+  }
+  :last-child {
+    border-top-right-radius: $buttonRadius;
+    border-bottom-right-radius: $buttonRadius;
+  }
+}
 </style>
