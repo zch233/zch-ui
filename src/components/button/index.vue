@@ -3,7 +3,7 @@
     class="zch-button"
     :class="[`icon-${iconPosition}`, loading && 'loading', disabled && 'disabled', round && 'round', square && 'square', size && `size-${size}`, type && `type-${type}`, circle && 'circle']"
     :disabled="disabled"
-    type="button"
+    :type="nativeType"
     @click="$emit('click', $event)">
     <zch-icon v-if="loading" icon="loading"></zch-icon>
     <zch-icon v-if="icon && !loading" :icon="icon"></zch-icon>
@@ -24,6 +24,13 @@ export default {
       default: 'left',
       validator(value) {
         return value === 'left' || value === 'right'
+      }
+    },
+    nativeType: {
+      type: String,
+      default: 'button',
+      validator(value) {
+        return ['button', 'submit', 'reset'].indexOf(value) >= 0
       }
     },
     icon: String,

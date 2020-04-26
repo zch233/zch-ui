@@ -120,6 +120,17 @@ describe('zchButton', () => {
     vm.$el.remove()
     vm.$destroy()
   })
+  it('按钮 nativeType', () => {
+      const nativeType = 'submit'
+      const vm = new Constructor({
+      propsData: {
+        nativeType
+      }
+    }).$mount()
+    expect(vm.$el.getAttribute('type')).to.eq(nativeType)
+    vm.$el.remove()
+    vm.$destroy()
+  })
   it('按钮 可以被点击', () => {
     const vm = new Constructor({}).$mount()
     const callback = sinon.fake()
