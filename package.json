@@ -19,6 +19,7 @@
     "docs:build": "vuepress build docs"
   },
   "dependencies": {
+    "velocity-animate": "^1.5.2",
     "vue": "^2.6.10",
     "vue-hot-reload-api": "^2.3.4"
   },
