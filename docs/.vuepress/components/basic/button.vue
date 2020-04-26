@@ -101,7 +101,6 @@ import ZchButton from '../../../../src/components/button/index'
 import ZchButtonGroup from '../../../../src/components/button-group/index'
 import CodeBar from '../utils/CodeBar'
 import '../style.scss'
-import Vue from 'vue'
 
 export default {
   name: 'ButtonExample',
@@ -188,7 +187,7 @@ export default {
           <zch-button>默认按钮</zch-button>
           <zch-button size="mini">小型按钮</zch-button>
         </div>
-        
+
         <div class="source">
           <zch-button round size="large">大型按钮</zch-button>
           <zch-button round>默认按钮</zch-button>
