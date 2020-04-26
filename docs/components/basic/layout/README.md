@@ -1,7 +1,7 @@
 # Layout 布局
 
 <ClientOnly>
-  <basic-button></basic-button>
+  <basic-layout></basic-layout>
 </ClientOnly>
 
-<basic-button-attr></basic-button-attr>
+<basic-layout-attr></basic-layout-attr>

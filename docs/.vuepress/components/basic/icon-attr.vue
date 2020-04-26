@@ -1,12 +1,7 @@
 <template>
   <div class="base">
     <section>
-      <h2>Attributes</h2>
-      <p class="des">
-        组件将被渲染为
-        <span class="code">button</span> 标签，因此你可以使用所有的
-        <span class="code">button</span> 原生属性。
-      </p>
+      <h1>Attributes</h1>
       <div class="attr">
         <table>
           <thead>

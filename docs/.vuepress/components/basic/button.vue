@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4>基础用法</h4>
+    <h3>基础用法</h3>
     <div class="block">
       <div class="source">
         <zch-button>默认按钮</zch-button>
@@ -26,7 +26,7 @@
       </div>
       <code-bar title="使用 type、round 和 circle 属性来定义 Button 的样式。" :code="code1"></code-bar>
     </div>
-    <h4>禁用状态</h4>
+    <h3>禁用状态</h3>
     <div class="block">
       <div class="source">
         <zch-button disabled>默认按钮</zch-button>
@@ -44,7 +44,7 @@
       </div>
       <code-bar title="你可以使用 disabled 属性来定义按钮是否可用，它接受一个 Boolean 值。" :code="code2"></code-bar>
     </div>
-    <h4>图标按钮</h4>
+    <h3>图标按钮</h3>
     <div class="block">
       <div class="source">
         <zch-button icon="search"></zch-button>
@@ -57,7 +57,7 @@
       </div>
       <code-bar title="设置 icon 属性即可，icon 的列表可以参考 icon 组件，也可以设置在文字右边的 icon ，只要使用 zch-icon 标签即可，可以使用自定义图标。" :code="code3"></code-bar>
     </div>
-    <h4>按钮组</h4>
+    <h3>按钮组</h3>
     <div class="block">
       <div class="source">
         <zch-button-group>
@@ -72,14 +72,14 @@
       </div>
       <code-bar title="使用 <zch-button-group> 标签来嵌套你的按钮。" :code="code4"></code-bar>
     </div>
-    <h4>加载中</h4>
+    <h3>加载中</h3>
     <div class="block">
       <div class="source">
         <zch-button loading icon="search">Loading</zch-button>
       </div>
       <code-bar title="要设置为 loading 状态，只要设置 loading 属性为 true 即可。" :code="code5"></code-bar>
     </div>
-    <h4>不同尺寸</h4>
+    <h3>不同尺寸</h3>
     <div class="block">
       <div class="source">
         <zch-button size="large">大型按钮</zch-button>

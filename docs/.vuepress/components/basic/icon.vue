@@ -1,6 +1,6 @@
 <template id="tem">
   <div>
-    <h4>使用方法</h4>
+    <h3>使用方法</h3>
     <div class="block">
       <div class="source">
         <zch-icon icon="share"></zch-icon>
@@ -10,7 +10,7 @@
       </div>
       <code-bar title="直接通过设置属性 icon 为 iconName 来使用即可。例如：" :code="code1"></code-bar>
     </div>
-    <h4>图标集合</h4>
+    <h3>图标集合</h3>
     <div class="block icon">
       <div class="source icon">
         <div v-for="item in iconList" :key="item" @click="copyIcon(item)">
