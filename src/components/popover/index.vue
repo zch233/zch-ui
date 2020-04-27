@@ -49,17 +49,17 @@ export default {
           this.popover = value
         } else {
           this.$emit('input', value)
-          if (value === false) {
-            this.$emit('close', this._popover)
-            this.trigger === 'click' && document.removeEventListener('click', this.clickDocument)
-          } else {
-            setTimeout(() => {
-              document.body.appendChild(this.$refs.popoverContent)
-              this.setPopoverPosition()
-              this.$emit('open', this._popover)
-              this.trigger === 'click' && document.addEventListener('click', this.clickDocument)
-            })
-          }
+        }
+        if (value === false) {
+          this.$emit('close', this._popover)
+          this.trigger === 'click' && document.removeEventListener('click', this.clickDocument)
+        } else {
+          setTimeout(() => {
+            document.body.appendChild(this.$refs.popoverContent)
+            this.setPopoverPosition()
+            this.$emit('open', this._popover)
+            this.trigger === 'click' && document.addEventListener('click', this.clickDocument)
+          })
         }
       },
       get () {
@@ -77,7 +77,7 @@ export default {
       this.$refs.userContent.addEventListener('click', this.handleClick)
     } else {
       this.$refs.userContent.addEventListener('mouseenter', this.openPoppver)
-      this.$refs.userContent.addEventListener('mouseleave', this.closePoppver)
+      this.$refs.userContent.addEventListener('mouseleave', this.controlClosePoppver)
     }
   },
   destroyed () {
@@ -85,29 +85,37 @@ export default {
       this.$refs.userContent && this.$refs.userContent.removeEventListener('click', this.openPoppver)
     } else {
       this.$refs.userContent && this.$refs.userContent.removeEventListener('mouseenter', this.openPoppver)
-      this.$refs.userContent && this.$refs.userContent.removeEventListener('mouseleave', this.closePoppver)
+      this.$refs.userContent && this.$refs.userContent.removeEventListener('mouseleave', this.controlClosePoppver)
+      this.$refs.popoverContent && this.$refs.popoverContent.removeEventListener('mouseenter', this.clearPopoverContentTimer)
+      this.$refs.popoverContent && this.$refs.popoverContent.removeEventListener('mouseleave', this.delayClose)
     }
   },
   methods: {
     openPoppver () {
+      if (this._popover === true) return
       this._popover = true
-      setTimeout(() => {
-        document.body.appendChild(this.$refs.popoverContent)
-        this.setPopoverPosition()
-        this.$emit('open', this._popover)
-        this.trigger === 'click' && document.addEventListener('click', this.clickDocument)
-      })
     },
-    closePoppver () {
-      this._popover = false
-      this.$emit('close', this._popover)
-      this.trigger === 'click' && document.removeEventListener('click', this.clickDocument)
+    clearPopoverContentTimer () {
+      clearTimeout(this.timerId)
+    },
+    delayClose () {
+      this.timerId = setTimeout(() => (this._popover = false), 200)
+    },
+    controlClosePoppver () {
+      if (this.trigger === 'click') {
+        this._popover = false
+      } else {
+        if (this._popover === false) return
+        this.delayClose()
+        this.$refs.popoverContent.addEventListener('mouseenter', this.clearPopoverContentTimer)
+        this.$refs.popoverContent.addEventListener('mouseleave', this.delayClose)
+      }
     },
     clickDocument (e) {
       if (this.value !== undefined) return
       if (this.$refs.userContent.contains(e.target)) return
       if (this.$refs.popoverContent.contains(e.target)) return
-      this.closePoppver()
+      this.controlClosePoppver()
     },
     setPopoverPosition () {
       const { left, top, width, height } = this.$refs.userContent.getBoundingClientRect()
@@ -123,9 +131,8 @@ export default {
       this.$refs.popoverContent.style.left = position.left + 'px'
     },
     handleClick () {
-      console.log(12312312321)
       if (this._popover) {
-        this.closePoppver()
+        this.controlClosePoppver()
       } else {
         this.openPoppver()
       }
@@ -139,7 +146,7 @@ export default {
 $gap: 14px;
 $arrowWidth: 1.3px;
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .1s;
+  transition: opacity .3s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
