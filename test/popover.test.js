@@ -30,7 +30,7 @@ describe('zchPopover', () => {
       expect(popoverElement.classList.contains('zchPopover-popoverWrapper-left')).to.eq(true)
       expect(popoverElement.querySelector('.zchPopover-popover').classList.contains('zchPopover-popover-left-arrow')).to.eq(true)
       done()
-    })
+    }, 1000)
   })
   xit('测试 trigger', () => {})
 })
