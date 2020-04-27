@@ -6,7 +6,11 @@
       </div>
       <zch-icon icon="rightArrow" :class="{ active: contentVisible }"></zch-icon>
     </div>
-    <transition name="fade">
+    <transition
+      v-on:before-enter="beforeEnter"
+      v-on:enter="enter"
+      v-on:leave="leave"
+    >
       <div v-show="contentVisible" class="zch-collapse-item-content" :class="{ active: contentVisible }">
         <slot></slot>
       </div>
@@ -16,6 +20,7 @@
 
 <script>
 import ZchIcon from '../icon'
+import Velocity from 'velocity-animate'
 
 export default {
   name: 'ZchCollapseItem',
@@ -39,17 +44,24 @@ export default {
       if (this.disabled) return
       this.collapse && this.collapse.$emit('item-click', this)
     },
+    beforeEnter (el) {
+      el.style.opacity = 0
+      el.style.transform = 'translateY(-100%)'
+    },
+    enter (el, done) {
+      Velocity(el, { opacity: 1, transform: 'translateY(0)' }, { duration: 300 })
+    },
+    leave (el, done) {
+      Velocity(el, {
+        transform: 'translateY(-100%)',
+        opacity: 0
+      }, { complete: done })
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-// .fade-enter-active, .fade-leave-active {
-//   transition: all .5s;
-// }
-// .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-//   height: 0;
-// }
 .zch-collapse-item {
   color: #303133;
   border-bottom: 1px solid #ebeef5;
