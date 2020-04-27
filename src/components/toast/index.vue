@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     close () {
-      this.beforeClose && this.beforeClose()
+      this.beforeClose && this.beforeClose(this)
       this.$emit('click', this)
       this.$el.remove()
       this.$destroy()
