@@ -128,5 +128,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.dark,
+.light,
+.middle {
+  padding: 1em 6em;
+}
 </style>
