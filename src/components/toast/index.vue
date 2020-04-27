@@ -35,7 +35,7 @@ export default {
       }
     },
     duration: {
-      default: 2000,
+      default: 3000,
       type: Number,
     },
   },

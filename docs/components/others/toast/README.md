@@ -1,7 +1,7 @@
-# toast
+# Toast 消息提示
 
 <ClientOnly>
-  <basic-button></basic-button>
+  <others-toast></others-toast>
 </ClientOnly>
 
-<basic-button-attr></basic-button-attr>
+<others-toast-attr></others-toast-attr>
