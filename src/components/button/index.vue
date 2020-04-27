@@ -70,7 +70,7 @@ $buttonRadius: 4px;
   outline: none;
   &.size-mini {
     font-size: 10px;
-    padding: .7em .6em;
+    padding: .5em .6em;
     &.circle {
       padding: .5em;
     }

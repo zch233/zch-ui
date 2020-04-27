@@ -1,7 +1,7 @@
-# popover
+# Popover 弹出框
 
 <ClientOnly>
-  <basic-button></basic-button>
+  <others-popover></others-popover>
 </ClientOnly>
 
-<basic-button-attr></basic-button-attr>
+<others-popover-attr></others-popover-attr>

@@ -1,9 +1,9 @@
 <template>
   <div class="zchPopover">
     <transition name="fade">
-      <div ref="popoverContent" class="zchPopover-popoverWrapper" :class="`zchPopover-popoverWrapper-${position}`" v-if="popover">
+      <div ref="popoverContent" class="zchPopover-popoverWrapper" :class="`zchPopover-popoverWrapper-${position}`" v-if="_popover">
         <div class="zchPopover-popover" :class="`zchPopover-popover-${position}-arrow`">
-          <div class="zchPopover-popover-title" v-show="$slots.title | title">
+          <div class="zchPopover-popover-title" v-show="$slots.title || title">
             <slot name="title">{{ title }}</slot>
           </div>
           <div class="zchPopover-popover-content">
@@ -22,6 +22,10 @@
 export default {
   name: 'ZchPopover',
   props: {
+    value: {
+      type: Boolean,
+      default: undefined
+    },
     position: {
       type: String,
       default: 'top',
@@ -31,12 +35,22 @@ export default {
     },
     trigger: {
       type: String,
-      default: 'click',
+      default: 'hover',
       validator (value) {
         return ['click', 'hover'].indexOf(value) >= 0
       }
     },
     title: String,
+  },
+  computed: {
+    _popover: {
+      set (value) {
+        this.value === undefined ? (this.popover = value) : this.$emit('input', value)
+      },
+      get () {
+        return this.value === undefined ? this.popover : this.value
+      }
+    }
   },
   data () {
     return {
@@ -61,15 +75,17 @@ export default {
   },
   methods: {
     openPoppver () {
-      this.popover = true
-      this.$nextTick(() => {
+      this._popover = true
+      setTimeout(() => {
         document.body.appendChild(this.$refs.popoverContent)
         this.setPopoverPosition()
+        this.$emit('open', this._popover)
         this.trigger === 'click' && document.addEventListener('click', this.clickDocument)
       })
     },
     closePoppver () {
-      this.popover = false
+      this._popover = false
+      this.$emit('close', this._popover)
       this.trigger === 'click' && document.removeEventListener('click', this.clickDocument)
     },
     clickDocument (e) {
@@ -91,7 +107,7 @@ export default {
       this.$refs.popoverContent.style.left = position.left + 'px'
     },
     handleClick () {
-      if (this.popover) {
+      if (this._popover) {
         this.closePoppver()
       } else {
         this.openPoppver()
@@ -115,6 +131,7 @@ $arrowWidth: 1.3px;
   display: inline-block;
   &-popoverWrapper {
     position: absolute;
+    z-index: 1000;
     filter: drop-shadow(0 2px 9px rgba(0,0,0,.1));
     &-top {
       transform: translateY(-100%);
@@ -199,6 +216,7 @@ $arrowWidth: 1.3px;
       color: rgba(0,0,0,.85);
       font-weight: 500;
       border-bottom: 1px solid #f0f0f0;
+      line-height: 1.5;
     }
     &-content {
       padding: 12px 16px;
