@@ -45,7 +45,22 @@ export default {
   computed: {
     _popover: {
       set (value) {
-        this.value === undefined ? (this.popover = value) : this.$emit('input', value)
+        if (this.value === undefined) {
+          this.popover = value
+        } else {
+          this.$emit('input', value)
+          if (value === false) {
+            this.$emit('close', this._popover)
+            this.trigger === 'click' && document.removeEventListener('click', this.clickDocument)
+          } else {
+            setTimeout(() => {
+              document.body.appendChild(this.$refs.popoverContent)
+              this.setPopoverPosition()
+              this.$emit('open', this._popover)
+              this.trigger === 'click' && document.addEventListener('click', this.clickDocument)
+            })
+          }
+        }
       },
       get () {
         return this.value === undefined ? this.popover : this.value
@@ -89,6 +104,7 @@ export default {
       this.trigger === 'click' && document.removeEventListener('click', this.clickDocument)
     },
     clickDocument (e) {
+      if (this.value !== undefined) return
       if (this.$refs.userContent.contains(e.target)) return
       if (this.$refs.popoverContent.contains(e.target)) return
       this.closePoppver()
@@ -107,6 +123,7 @@ export default {
       this.$refs.popoverContent.style.left = position.left + 'px'
     },
     handleClick () {
+      console.log(12312312321)
       if (this._popover) {
         this.closePoppver()
       } else {

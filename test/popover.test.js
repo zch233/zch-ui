@@ -15,7 +15,7 @@ describe('zchPopover', () => {
     document.body.appendChild(div)
     Vue.component('zch-popover', zchPopover)
     div.innerHTML = `
-      <zch-popover position="left" ref="test">
+      <zch-popover position="left" ref="test" trigger="click">
         <template slot="content">这是一段浮层</template>
         <button>left</button>
       </zch-popover>
@@ -25,12 +25,11 @@ describe('zchPopover', () => {
     })
     vm.$el.querySelector('button').click()
     setTimeout(() => {
-      console.log(vm.$refs.test.$refs)
       const popoverElement = vm.$refs.test.$refs.popoverContent
       expect(popoverElement.classList.contains('zchPopover-popoverWrapper-left')).to.eq(true)
       expect(popoverElement.querySelector('.zchPopover-popover').classList.contains('zchPopover-popover-left-arrow')).to.eq(true)
       done()
-    }, 1000)
+    })
   })
   xit('测试 trigger', () => {})
 })
