@@ -24,7 +24,8 @@ describe('zchPopover', () => {
       el: div,
     })
     vm.$el.querySelector('button').click()
-    vm.$nextTick(() => {
+    setTimeout(() => {
+      console.log(vm.$refs.test.$refs)
       const popoverElement = vm.$refs.test.$refs.popoverContent
       expect(popoverElement.classList.contains('zchPopover-popoverWrapper-left')).to.eq(true)
       expect(popoverElement.querySelector('.zchPopover-popover').classList.contains('zchPopover-popover-left-arrow')).to.eq(true)

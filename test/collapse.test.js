@@ -139,6 +139,6 @@ describe('zchCollapse', () => {
       div.remove()
       vm.$el.remove()
       vm.$destroy()
-    })
+    }, 1500)
   })
 })
