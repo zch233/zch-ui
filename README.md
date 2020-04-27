@@ -25,11 +25,23 @@ import 'zch-gulu/dist/index.css'
 <zch-button>Button</zch-button>
 ```
 
+## 特性
+
+- 🥳开箱即用的高质量 Vue 组件。
+- ⚙️60+ 高质量组件
+- 🔧90% 单元测试覆盖率
+- 👌支持按需引入
+- 🚀使用 Travis CI 进行持续集成
+- 👹有丰富的单元测试，项目完成时，期望测试覆盖率超过 90%
+- 🌵自说明的代码，即使没有注释，你也能看懂
+
 ## 文档
+
+[移步](https://zch233.github.io/zch-ui/)
 
 ## 提问
 
-## 变更记录
+[移步](https://github.com/zch233/zch-ui/issues)
 
 ## 提交代码
 
