@@ -46,14 +46,14 @@ export default {
     },
     beforeEnter (el) {
       el.style.opacity = 0
-      el.style.transform = 'translateY(-100%)'
+      // el.style.transform = 'translateY(-100%)'
     },
     enter (el, done) {
-      Velocity(el, { opacity: 1, transform: 'translateY(0)' }, { duration: 300 })
+      Velocity(el, { opacity: 1, /* transform: 'translateY(0)' */ }, { duration: 300 })
     },
     leave (el, done) {
       Velocity(el, {
-        transform: 'translateY(-100%)',
+        // transform: 'translateY(-100%)',
         opacity: 0
       }, { complete: done })
     }
