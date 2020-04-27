@@ -57,7 +57,7 @@ import CodeBar from "../utils/CodeBar";
 import "../style.scss";
 
 export default {
-  name: "IconExample",
+  name: "LayoutExample",
   components: {
     ZchLayout,
     ZchHeader,

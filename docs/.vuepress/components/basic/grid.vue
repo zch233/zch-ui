@@ -115,7 +115,7 @@ import CodeBar from "../utils/CodeBar";
 import "../style.scss";
 
 export default {
-  name: "ButtonExample",
+  name: "GridExample",
   components: {
     ZchRow,
     ZchCol,

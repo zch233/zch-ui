@@ -36,7 +36,7 @@ import CodeBar from "../utils/CodeBar";
 import "../style.scss";
 
 export default {
-  name: "IconExample",
+  name: "TabsExample",
   components: {
     ZchTab,
     ZchTabPane,
