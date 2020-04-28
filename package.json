@@ -14,26 +14,30 @@
     "docs:build": "vuepress build docs",
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test": "karma start --single-run",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "velocity-animate": "^1.5.2",
     "vue": "^2.6.10"
   },
-  "alias": {
-    "vue": "./node_modules/vue/dist/vue.common.js"
-  },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.3.1",
     "@vue/cli-plugin-unit-mocha": "^4.3.1",
     "@vue/cli-service": "^4.3.1",
-    "@vue/test-utils": "^1.0.0-beta.33",
+    "@vue/test-utils": "^1.0.0-beta.20",
     "@vuepress/plugin-active-header-links": "^1.4.1",
     "@vuepress/plugin-back-to-top": "^1.4.1",
     "@vuepress/plugin-nprogress": "^1.4.1",
     "chai": "^4.2.0",
     "highlight.js": "^10.0.0",
-    "mocha": "^6.2.2",
+    "karma": "^5.0.2",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-mocha": "^2.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "^0.0.32",
+    "karma-webpack": "^4.0.2",
+    "mocha": "^7.1.2",
     "node-sass": "^4.14.0",
     "sass-loader": "^8.0.2",
     "sinon": "^7.5.0",
