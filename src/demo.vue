@@ -101,7 +101,7 @@
       <zch-input @input="input"></zch-input>
       <zch-input disabled placeholder="禁用状态"></zch-input>
       <zch-input readonly placeholder="只读状态"></zch-input>
-      <zch-input v-model="password" password placeholder="密码状态"></zch-input @blur="input">
+      <zch-input v-model="password" password placeholder="密码状态"></zch-input>
       <zch-input type="textarea"></zch-input>
       <zch-input><template slot="prepend">前缀</template></zch-input>
       <zch-input><template slot="prepend">前缀</template><template slot="append">后缀</template></zch-input>
