@@ -61,7 +61,8 @@ describe('zchCollapse', () => {
     for (let i=0;i<domList.length;i++) {
       await domList.at(i).trigger('click')
     }
-    const activeDomList = wrapper.vm.$el.querySelectorAll('.zch-collapse-item-content.active')
+    await wrapper.vm.$nextTick()
+    const activeDomList = wrapper.findAll('.zch-collapse-item-content.active')
     expect(domList.length).to.eq(activeDomList.length)
   })
   it('接受 accordion ', async () => {
@@ -91,7 +92,8 @@ describe('zchCollapse', () => {
     for (let i=0;i<domList.length;i++) {
       await domList.at(i).trigger('click')
     }
-    const activeDomList = wrapper.vm.$el.querySelectorAll('.zch-collapse-item-content.active')
+    await wrapper.vm.$nextTick()
+    const activeDomList = wrapper.findAll('.zch-collapse-item-content.active')
     expect(activeDomList.length).to.eq(1)
   })
 })
