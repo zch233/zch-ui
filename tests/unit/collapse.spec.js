@@ -5,8 +5,7 @@ import {shallowMount, mount} from '@vue/test-utils'
 import zchCollapse from '@/components/collapse/collapse'
 import zchCollapseItem from '@/components/collapse/collapse-item'
 chai.use(sinonChai)
-// Vue.component('zch-collapse', zchCollapse)
-// Vue.component('zch-collapse-item', zchCollapseItem)
+
 describe('zchCollapse', () => {
   it('存在', () => {
     expect(zchCollapse).to.be.exist
