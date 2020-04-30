@@ -168,6 +168,7 @@
       zchHeader,
       zchContent,
       zchSide,
+      zchFooter,
       zchTab,
       zchTabPane,
       zchPopover,
