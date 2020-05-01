@@ -12,7 +12,7 @@ describe('zchCollapseItem', () => {
   })
   it('测试 title ', () => {
     const title = 'zch233'
-    const wrapper = mount(zchCollapseItem, {
+    const wrapper = shallowMount(zchCollapseItem, {
       provide: () => ({
         collapse: false
       }),
@@ -26,7 +26,7 @@ describe('zchCollapseItem', () => {
   })
   it('测试 name ', () => {
     const name = 'zch233'
-    const wrapper = mount(zchCollapseItem, {
+    const wrapper = shallowMount(zchCollapseItem, {
       provide: () => ({
         collapse: false
       }),
@@ -37,7 +37,7 @@ describe('zchCollapseItem', () => {
     expect(wrapper.attributes('data-name')).to.eq(name)
   })
   it('测试 disabled ', () => {
-    const wrapper = mount(zchCollapseItem, {
+    const wrapper = shallowMount(zchCollapseItem, {
       provide: () => ({
         collapse: false
       }),
