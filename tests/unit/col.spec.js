@@ -10,7 +10,7 @@ describe('ZchCol', () => {
     expect(ZchCol).to.be.exist
   })
   it('测试 tag', () => {
-    const wrapper = mount(ZchCol, {
+    const wrapper = shallowMount(ZchCol, {
       propsData: {
         tag: 'li'
       }
@@ -19,7 +19,7 @@ describe('ZchCol', () => {
   })
   it('测试 span ', () => {
     const span = 12
-    const wrapper = mount(ZchCol, {
+    const wrapper = shallowMount(ZchCol, {
       propsData: {
         span
       }
@@ -29,7 +29,7 @@ describe('ZchCol', () => {
   })
   it('测试 offset ', () => {
     const offset = 2
-    const wrapper = mount(ZchCol, {
+    const wrapper = shallowMount(ZchCol, {
       propsData: {
         offset
       }
@@ -39,7 +39,7 @@ describe('ZchCol', () => {
   })
   it('测试 phone ', () => {
     const phone = 2
-    const wrapper = mount(ZchCol, {
+    const wrapper = shallowMount(ZchCol, {
       propsData: {
         phone
       }
@@ -49,7 +49,7 @@ describe('ZchCol', () => {
   })
   it('测试 phone 为 Object', () => {
     const phone = { span: 12, offset: 1 }
-    const wrapper = mount(ZchCol, {
+    const wrapper = shallowMount(ZchCol, {
       propsData: {
         phone
       }
@@ -60,7 +60,7 @@ describe('ZchCol', () => {
   })
   it('测试 pad ', () => {
     const pad = 2
-    const wrapper = mount(ZchCol, {
+    const wrapper = shallowMount(ZchCol, {
       propsData: {
         pad
       }
@@ -70,7 +70,7 @@ describe('ZchCol', () => {
   })
   it('测试 pad 为 Object', () => {
     const pad = { span: 12, offset: 1 }
-    const wrapper = mount(ZchCol, {
+    const wrapper = shallowMount(ZchCol, {
       propsData: {
         pad
       }
@@ -81,7 +81,7 @@ describe('ZchCol', () => {
   })
   it('测试 narrowPc ', () => {
     const narrowPc = 2
-    const wrapper = mount(ZchCol, {
+    const wrapper = shallowMount(ZchCol, {
       propsData: {
         narrowPc
       }
@@ -91,7 +91,7 @@ describe('ZchCol', () => {
   })
   it('测试 narrowPc 为 Object', () => {
     const narrowPc = { span: 12, offset: 1 }
-    const wrapper = mount(ZchCol, {
+    const wrapper = shallowMount(ZchCol, {
       propsData: {
         narrowPc
       }
@@ -102,7 +102,7 @@ describe('ZchCol', () => {
   })
   it('测试 pc ', () => {
     const pc = 2
-    const wrapper = mount(ZchCol, {
+    const wrapper = shallowMount(ZchCol, {
       propsData: {
         pc
       }
@@ -112,7 +112,7 @@ describe('ZchCol', () => {
   })
   it('测试 pc 为 Object', () => {
     const pc = { span: 12, offset: 1 }
-    const wrapper = mount(ZchCol, {
+    const wrapper = shallowMount(ZchCol, {
       propsData: {
         pc
       }
@@ -123,7 +123,7 @@ describe('ZchCol', () => {
   })
   it('测试 widePc ', () => {
     const widePc = 2
-    const wrapper = mount(ZchCol, {
+    const wrapper = shallowMount(ZchCol, {
       propsData: {
         widePc
       }
@@ -133,7 +133,7 @@ describe('ZchCol', () => {
   })
   it('测试 widePc 为 Object', () => {
     const widePc = { span: 12, offset: 1 }
-    const wrapper = mount(ZchCol, {
+    const wrapper = shallowMount(ZchCol, {
       propsData: {
         widePc
       }
