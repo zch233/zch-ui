@@ -7,7 +7,7 @@
             <slot name="title">{{ title }}</slot>
           </div>
           <div class="zchPopover-popover-content">
-            <slot name="content"></slot>
+            <slot name="content">{{ content }}</slot>
           </div>
         </div>
       </div>
@@ -41,6 +41,7 @@ export default {
       }
     },
     title: String,
+    content: String,
   },
   computed: {
     _popover: {
