@@ -56,7 +56,7 @@ describe('ZchButton', () => {
     wrapper.destroy()
   })
   it('按钮 disabled', () => {
-    const wrapper = mount(ZchButton, {
+    const wrapper = shallowMount(ZchButton, {
       propsData: {
         disabled: true
       }
@@ -68,7 +68,7 @@ describe('ZchButton', () => {
     expect(hasAttributeDisabled).to.eq(true)
   })
   it('按钮 round', () => {
-    const wrapper = mount(ZchButton, {
+    const wrapper = shallowMount(ZchButton, {
       propsData: {
         round: true
       }
@@ -78,7 +78,7 @@ describe('ZchButton', () => {
     expect(hasClassRound).to.eq(true)
   })
   it('按钮 square', () => {
-    const wrapper = mount(ZchButton, {
+    const wrapper = shallowMount(ZchButton, {
       propsData: {
         square: true
       }
@@ -88,7 +88,7 @@ describe('ZchButton', () => {
     expect(hasClassSquare).to.eq(true)
   })
   it('按钮 circle', () => {
-    const wrapper = mount(ZchButton, {
+    const wrapper = shallowMount(ZchButton, {
       propsData: {
         circle: true
       }
@@ -99,7 +99,7 @@ describe('ZchButton', () => {
   })
   it('按钮 nativeType', () => {
     const nativeType = 'submit'
-    const wrapper = mount(ZchButton, {
+    const wrapper = shallowMount(ZchButton, {
       propsData: {
         nativeType
       }
@@ -107,7 +107,7 @@ describe('ZchButton', () => {
     expect(wrapper.attributes('type')).to.eq(nativeType)
   })
   it('按钮 可以被点击', () => {
-    const wrapper = mount(ZchButton)
+    const wrapper = shallowMount(ZchButton)
     const callback = sinon.fake()
     wrapper.vm.$on('click', callback)
     wrapper.vm.$el.click()
@@ -116,7 +116,7 @@ describe('ZchButton', () => {
   describe('测试 size', () => {
     ['large', 'mini'].map(size => {
       it(size, () => {
-        const wrapper = mount(ZchButton, {
+        const wrapper = shallowMount(ZchButton, {
           propsData: {
             size
           }
@@ -128,7 +128,7 @@ describe('ZchButton', () => {
   describe('测试 type', () => {
     ['primary', 'success', 'info', 'warning', 'error'].map(type => {
       it(type, () => {
-        const wrapper = mount(ZchButton, {
+        const wrapper = shallowMount(ZchButton, {
           propsData: {
             type
           }
