@@ -67,7 +67,7 @@ describe('zchRow', () => {
   it('测试 justify-center ', () => {
     const wrapper = shallowMount(zchRow, {
       propsData: {
-        justify: 'justify-center'
+        justify: 'center'
       }
     })
     const hasJustifyContent = wrapper.classes().includes('is-justify-center')
