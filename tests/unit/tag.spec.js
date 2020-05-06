@@ -78,7 +78,6 @@ describe('ZchTag', () => {
         closeable: true,
       }
     })
-    console.log(wrapper.element)
     const iconCallback = sinon.fake()
     const tagCallback = sinon.fake()
     wrapper.vm.$on('close', iconCallback)

@@ -1,113 +1,97 @@
-const expect = chai.expect;
-import Vue from 'vue'
-import ZchToast from '../src/components/toast'
-
-Vue.config.productionTip = false
-Vue.config.devtools = false
+import chai, { expect } from 'chai'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+import {shallowMount, mount} from '@vue/test-utils'
+import ZchToast from '@/components/toast'
+chai.use(sinonChai)
 
 describe('ZchToast', () => {
-  const RowConstructor = Vue.extend(ZchToast)
   it('存在', () => {
     expect(ZchToast).to.be.exist
   })
   it('测试 message => String', () => {
     const message = 'zch233333333333'
-    const vm = new RowConstructor({
+    const wrapper = shallowMount(ZchToast, {
       propsData: {
         message
-      },
-    }).$mount()
-    const toastElement = vm.$el.querySelector('.zchToast-content')
-    expect(toastElement.innerText).to.eq(message)
-    vm.$el.remove()
-    vm.$destroy()
+      }
+    })
+    const toastElement = wrapper.find('.zchToast-content')
+    expect(toastElement.text()).to.eq(message)
   })
   it('测试 message => HTML', () => {
     const message = '<h1>zch233333333333</h1>'
-    const vm = new RowConstructor({
+    const wrapper = shallowMount(ZchToast, {
       propsData: {
         message,
         enabledHTML: true,
-      },
-    }).$mount()
-    const toastElement = vm.$el.querySelector('.zchToast-content')
-    expect(toastElement.innerHTML).to.eq(message)
-    vm.$el.remove()
-    vm.$destroy()
+      }
+    })
+    const toastElement = wrapper.find('.zchToast-content')
+    expect(toastElement.html()).to.eq(message)
   })
   describe('测试 type', () => {
     ['default', 'success', 'info', 'warning', 'error'].map(type => {
       it(type, () => {
-        const vm = new RowConstructor({
+        const wrapper = shallowMount(ZchToast, {
           propsData: {
-            type
-          },
-        }).$mount()
-        const toastElement = vm.$el.querySelector('.zchToast-wrapper')
-        expect(toastElement.classList.contains(`zchToast-wrapper-${type}`)).to.eq(true)
-        vm.$el.remove()
-        vm.$destroy()
+            type,
+          }
+        })
+        const toastElement = wrapper.find('.zchToast-wrapper')
+        expect(toastElement.classes().includes(`zchToast-wrapper-${type}`)).to.eq(true)
       })
     })
   })
   describe('测试 position', () => {
     ['top', 'middle', 'bottom'].map(position => {
       it(position, () => {
-        const vm = new RowConstructor({
+        const wrapper = shallowMount(ZchToast, {
           propsData: {
-            position
-          },
-        }).$mount()
-        const toastElement = vm.$el.querySelector('.zchToast-wrapper')
-        expect(toastElement.classList.contains(`zchToast-wrapper-${position}`)).to.eq(true)
-        vm.$el.remove()
-        vm.$destroy()
+            position,
+          }
+        })
+        const toastElement = wrapper.find('.zchToast-wrapper')
+        expect(toastElement.classes().includes(`zchToast-wrapper-${position}`)).to.eq(true)
       })
     })
   })
   it('测试 showClose 且 调用beforeClose 且 click后关闭', () => {
     const beforeClose = sinon.fake()
-    const vm = new RowConstructor({
+    const wrapper = shallowMount(ZchToast, {
       propsData: {
         showClose: true,
         beforeClose,
         duration: 100
-      },
-    }).$mount()
-    const svgElement = vm.$el.querySelector('.zchToast-icon')
-    expect(svgElement.querySelector('use').getAttribute('xlink:href')).to.eq('#icon-close')
-    const event = new Event('click')
-    svgElement.dispatchEvent(event)
-    expect(document.body.contains(vm.$el)).to.eq(false)
+      }
+    })
+    const svgElement = wrapper.find('.zchToast-icon')
+    expect(svgElement.find('use').attributes('href')).to.eq('#icon-close')
+    svgElement.trigger('click')
+    expect(document.body.contains(svgElement.element)).to.eq(false)
     expect(beforeClose).to.have.been.called
-    vm.$el.remove()
-    vm.$destroy()
   })
   it('测试 showClose 且 调用beforeClose 且 自动关闭', (done) => {
     const beforeClose = sinon.fake()
-    const vm = new RowConstructor({
+    const wrapper = shallowMount(ZchToast, {
       propsData: {
         beforeClose,
         duration: 100
-      },
-    }).$mount()
+      }
+    })
     setTimeout(() => {
-      expect(document.body.contains(vm.$el)).to.eq(false)
+      expect(document.body.contains(wrapper.element)).to.eq(false)
       expect(beforeClose).to.have.been.called
-      vm.$el.remove()
-      vm.$destroy()
       done()
     }, 1000)
   })
   it('测试 center', () => {
-    const vm = new RowConstructor({
+    const wrapper = shallowMount(ZchToast, {
       propsData: {
         center: true,
-      },
-    }).$mount()
-    const contentElement = vm.$el.querySelector('.zchToast-content')
-    expect(contentElement.classList.contains('zchToast-content-center')).to.eq(true)
-    vm.$el.remove()
-    vm.$destroy()
+      }
+    })
+    const contentElement = wrapper.find('.zchToast-content')
+    expect(contentElement.classes().includes('zchToast-content-center')).to.eq(true)
   })
 })
