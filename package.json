@@ -1,8 +1,8 @@
 {
   "name": "zch-gulu",
   "version": "0.1.0",
+  "main": "dist/gulu.umd.min.js",
   "repository": "git@github.com:zch233/zch-ui.git",
-  "private": true,
   "bugs": {
     "url": "https://github.com/zch233/zch-ui/issues"
   },
@@ -13,9 +13,10 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "start": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test": "karma start --single-run",
-    "test:unit": "vue-cli-service test:unit"
+    "build": "vue-cli-service build --target lib --name gulu src/index.js",
+    "test": "cross-env BABEL_ENV=test karma start --single-run",
+    "test:unit": "cross-env BABEL_ENV=test karma start",
+    "test:unit:old": "vue-cli-service test:unit"
   },
   "dependencies": {
     "velocity-animate": "^1.5.2",
@@ -29,10 +30,13 @@
     "@vuepress/plugin-active-header-links": "^1.4.1",
     "@vuepress/plugin-back-to-top": "^1.4.1",
     "@vuepress/plugin-nprogress": "^1.4.1",
+    "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
+    "cross-env": "^7.0.2",
     "highlight.js": "^10.0.0",
     "karma": "^5.0.2",
     "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "^2.0.2",
     "karma-mocha": "^2.0.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "^0.0.32",

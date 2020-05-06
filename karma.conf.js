@@ -14,7 +14,17 @@ module.exports = function (config) {
 
     webpack: webpackConfig,
 
-    reporters: ['spec'],
+    reporters: ['spec', 'coverage'],
+
+    coverageReporter: {
+      dir: './coverage',
+      reporters: [
+        { type: 'lcov', subdir: '.' },
+        { type: 'text-summary' }
+      ]
+    },
+
+    autoWatch: true,
 
     browsers: ['ChromeHeadless']
   })

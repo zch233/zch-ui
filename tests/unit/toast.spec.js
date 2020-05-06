@@ -28,7 +28,7 @@ describe('ZchToast', () => {
       }
     })
     const toastElement = wrapper.find('.zchToast-content')
-    expect(toastElement.html()).to.eq(message)
+    expect(toastElement.element.innerHTML).to.eq(message)
   })
   describe('测试 type', () => {
     ['default', 'success', 'info', 'warning', 'error'].map(type => {
@@ -58,7 +58,7 @@ describe('ZchToast', () => {
   })
   it('测试 showClose 且 调用beforeClose 且 click后关闭', () => {
     const beforeClose = sinon.fake()
-    const wrapper = shallowMount(ZchToast, {
+    const wrapper = mount(ZchToast, {
       propsData: {
         showClose: true,
         beforeClose,
@@ -73,7 +73,7 @@ describe('ZchToast', () => {
   })
   it('测试 showClose 且 调用beforeClose 且 自动关闭', (done) => {
     const beforeClose = sinon.fake()
-    const wrapper = shallowMount(ZchToast, {
+    const wrapper = mount(ZchToast, {
       propsData: {
         beforeClose,
         duration: 100
