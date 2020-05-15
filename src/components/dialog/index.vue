@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
-    <div v-if="value" ref="zchDialogWrapper" class="zch-dialog-wrapper" @click="wrapperClose">
-      <div class="zch-dialog">
+    <div v-if="realValue" ref="zchDialogWrapper" class="zch-dialog-wrapper" :class="[position && `position-${position}`]" @click="wrapperClose">
+      <div class="zch-dialog ani" v-show="value">
         <slot></slot>
         <button @click="close">关闭</button>
       </div>
@@ -16,19 +16,41 @@ export default {
     value: {
       require: true,
       type: Boolean,
+    },
+    position: String
+  },
+  data () {
+    return {
+      realValue: false,
     }
   },
-  mounted () {
-    document.body.style.overflow = 'hidden'
+  watch: {
+    value () {
+      if (this.value) {
+        document.body.style.overflow = 'hidden'
+        this.$nextTick(() => {
+          setTimeout(() => {
+            this.realValue = true
+          }, 200)
+        })
+      } else {
+        this.realValue = false
+        this.$nextTick(() => {
+          document.body.style.overflow = 'auto'
+        })
+      }
+    },
   },
-  destroyed () {
-    document.body.style.overflow = 'auto'
-  },
+  // mounted () {
+  //   document.body.style.overflow = 'hidden'
+  // },
+  // destroyed () {
+  //   document.body.style.overflow = 'auto'
+  // },
   methods: {
     wrapperClose (e) {
-      const { zchDialogWrapper } = this.$refs
-      if (e.target !== zchDialogWrapper) return
-      this.$emit('input', false)
+      if (e.target !== this.$refs.zchDialogWrapper) return
+      this.close()
     },
     close () {
       this.$emit('input', false)
@@ -39,11 +61,26 @@ export default {
 
 <style lang="scss" scoped>
   .fade-enter-active, .fade-leave-active {
-    transition: all .2s;
+    transition: opacity .3s;
   }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  .fade-enter, .fade-leave-to {
     opacity: 0;
-    transform: translateY(-10px);
+  }
+  @keyframes slideBottom {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(0); }
+  }
+  @keyframes slideTop {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(0); }
+  }
+  @keyframes slideRight {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+  }
+  @keyframes slideLeft {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0); }
   }
   .zch-dialog-wrapper {
     position: fixed;
@@ -56,10 +93,40 @@ export default {
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, .3);
+    box-sizing: border-box;
     z-index: 11;
     .zch-dialog {
       background-color: #fff;
-      padding: 120px;;
+      padding: 120px;
+      box-sizing: border-box;
+    }
+  }
+  .zch-dialog-wrapper.position-top {
+    align-items: flex-start;
+    .zch-dialog {
+      width: 100%;
+      animation: slideBottom .3s;
+    }
+  }
+  .zch-dialog-wrapper.position-bottom {
+    align-items: flex-end;
+    .zch-dialog {
+      width: 100%;
+      animation: slideTop .3s;
+    }
+  }
+  .zch-dialog-wrapper.position-left {
+    justify-content: flex-start;
+    .zch-dialog {
+      height: 100vh;
+      animation: slideRight .3s;
+    }
+  }
+  .zch-dialog-wrapper.position-right {
+    justify-content: flex-end;
+    .zch-dialog {
+      height: 100vh;
+      animation: slideLeft .3s;
     }
   }
 </style>

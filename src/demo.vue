@@ -2,8 +2,16 @@
   <div>
     <div class="dialog">
       <h1>dialog：</h1>
-      <zch-dialog v-model="dialogVisible">132</zch-dialog>
-      <zch-button @click="dialogVisible=!dialogVisible">主要按钮</zch-button>
+      <zch-dialog v-model="dialogVisible">center</zch-dialog>
+      <zch-dialog v-model="dialogVisibleTop" position="top">top</zch-dialog>
+      <zch-dialog v-model="dialogVisibleBottom" position="bottom">bottom</zch-dialog>
+      <zch-dialog v-model="dialogVisibleLeft" position="left">left</zch-dialog>
+      <zch-dialog v-model="dialogVisibleRight" position="right">right</zch-dialog>
+      <zch-button @click="dialogVisible=!dialogVisible">center</zch-button>
+      <zch-button @click="dialogVisibleTop=!dialogVisibleTop">top</zch-button>
+      <zch-button @click="dialogVisibleBottom=!dialogVisibleBottom">bottom</zch-button>
+      <zch-button @click="dialogVisibleLeft=!dialogVisibleLeft">left</zch-button>
+      <zch-button @click="dialogVisibleRight=!dialogVisibleRight">left</zch-button>
     </div>
     <div class="tag">
       <h1>tag：</h1>
@@ -191,6 +199,10 @@
         activeTab: 'title2',
         activeCollapse: [],
         dialogVisible: false,
+        dialogVisibleTop: false,
+        dialogVisibleBottom: false,
+        dialogVisibleLeft: false,
+        dialogVisibleRight: false,
       };
     },
     methods: {
