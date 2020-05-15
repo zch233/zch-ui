@@ -1,5 +1,10 @@
 <template>
   <div>
+    <div class="dialog">
+      <h1>dialog：</h1>
+      <zch-dialog v-model="dialogVisible">132</zch-dialog>
+      <zch-button @click="dialogVisible=!dialogVisible">主要按钮</zch-button>
+    </div>
     <div class="tag">
       <h1>tag：</h1>
       <zch-tag closeable>232323kjlkjk</zch-tag>
@@ -133,8 +138,10 @@
     </div>
   </div>
 </template>
+
 <script>
   import Vue from 'vue'
+  import zchDialog from './components/dialog'
   import zchButton from './components/button'
   import zchButtonGroup from './components/button-group'
   import zchIcon from './components/icon'
@@ -175,13 +182,15 @@
       zchCollapse,
       zchCollapseItem,
       zchTag,
+      zchDialog,
     },
     data () {
       return {
         message: '',
         password: '',
         activeTab: 'title2',
-        activeCollapse: []
+        activeCollapse: [],
+        dialogVisible: false,
       };
     },
     methods: {
