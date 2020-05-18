@@ -3,15 +3,18 @@
     <transition :name="`slide-${position}`">
       <div class="zch-dialog" v-show="contentVisible">
         <slot></slot>
-        <button @click="close">关闭</button>
+        <zch-icon class="close-icon" v-if="closeable" icon="close1" @click="close"></zch-icon>
       </div>
     </transition>
   </div>
 </template>
 
 <script>
+import ZchIcon from '../icon'
+
 export default {
   name: 'ZchDialog',
+  components: { ZchIcon },
   props: {
     value: {
       require: true,
@@ -24,7 +27,8 @@ export default {
       validator (value) {
         return ['middle', 'top', 'right', 'bottom', 'left'].indexOf(value) >= 0
       }
-    }
+    },
+    closeable: Boolean,
   },
   data () {
     return {
@@ -85,6 +89,15 @@ export default {
       background-color: #fff;
       padding: 120px;
       box-sizing: border-box;
+      position: relative;
+      .close-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: #72767b;
+        font-size: 12px;
+        cursor: pointer;
+      }
     }
   }
   .zch-dialog-wrapper.position-top {
