@@ -33,16 +33,20 @@ export default {
     }
   },
   watch: {
-    value () {
-      if (this.value) {
-        this.wrapperVisible = true
-        document.body.style.overflow = 'hidden'
-        this.$nextTick(() => {
-          this.contentVisible = true
-        })
-      } else {
-        this.contentVisible = false
-        this.$el.addEventListener('transitionend', this.destroyEle)
+    value: {
+      immediate: true,
+      handler () {
+        if (this.value) {
+          this.wrapperVisible = true
+          document.body.style.overflow = 'hidden'
+          this.$nextTick(() => {
+            this.contentVisible = true
+          })
+        } else {
+          if (!this.wrapperVisible) return
+          this.contentVisible = false
+          this.$el.addEventListener('transitionend', this.destroyEle)
+        }
       }
     },
   },
@@ -64,41 +68,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .slide-middle-enter-active, .slide-middle-leave-active {
-    transition: all .3s;
-  }
-  .slide-middle-enter, .slide-middle-leave-to {
-    opacity: 0;
-    transform: scale(0);
-  }
-  .slide-top-enter-active, .slide-top-leave-active {
-    transition: all .3s;
-  }
-  .slide-top-enter, .slide-top-leave-to {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-  .slide-right-enter-active, .slide-right-leave-active {
-    transition: all .3s;
-  }
-  .slide-right-enter, .slide-right-leave-to {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  .slide-bottom-enter-active, .slide-bottom-leave-active {
-    transition: all .3s;
-  }
-  .slide-bottom-enter, .slide-bottom-leave-to {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  .slide-left-enter-active, .slide-left-leave-active {
-    transition: all .3s;
-  }
-  .slide-left-enter, .slide-left-leave-to {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
   .zch-dialog-wrapper {
     position: fixed;
     top: 0;
@@ -141,5 +110,40 @@ export default {
     .zch-dialog {
       height: 100vh;
     }
+  }
+  .slide-middle-enter-active, .slide-middle-leave-active {
+    transition: all .3s;
+  }
+  .slide-middle-enter, .slide-middle-leave-to {
+    opacity: 0;
+    transform: scale(0);
+  }
+  .slide-top-enter-active, .slide-top-leave-active {
+    transition: all .3s;
+  }
+  .slide-top-enter, .slide-top-leave-to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  .slide-right-enter-active, .slide-right-leave-active {
+    transition: all .3s;
+  }
+  .slide-right-enter, .slide-right-leave-to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  .slide-bottom-enter-active, .slide-bottom-leave-active {
+    transition: all .3s;
+  }
+  .slide-bottom-enter, .slide-bottom-leave-to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  .slide-left-enter-active, .slide-left-leave-active {
+    transition: all .3s;
+  }
+  .slide-left-enter, .slide-left-leave-to {
+    opacity: 0;
+    transform: translateX(-100%);
   }
 </style>
