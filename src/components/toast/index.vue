@@ -1,6 +1,6 @@
 <template>
   <transition :name="`slide-${position}`">
-    <div class="zchToast" v-if="visible" :class="[`zchToast-${position}`]" :style="`margin: ${offset}px 0`">
+    <div class="zchToast" v-show="visible" :class="[`zchToast-${position}`]" :style="`margin: ${offset}px 0`">
       <div class="zchToast-wrapper" :class="[`zchToast-wrapper-${type}`]">
         <p v-if="enabledHTML" class="zchToast-content" v-html="message"></p>
         <p v-else class="zchToast-content" :class="[center && 'zchToast-content-center']">{{ message }}</p>

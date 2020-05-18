@@ -13,7 +13,7 @@ describe('ZchToast', () => {
     const message = 'zch233333333333'
     const wrapper = mount(ZchToast, {
       propsData: {
-        message
+        message,
       }
     })
     const toastElement = wrapper.find('.zchToast-content')
@@ -51,8 +51,8 @@ describe('ZchToast', () => {
             position,
           }
         })
-        const toastElement = wrapper.find('.zchToast-wrapper')
-        expect(toastElement.classes().includes(`zchToast-wrapper-${position}`)).to.eq(true)
+        const toastElement = wrapper.find('.zchToast')
+        expect(toastElement.classes().includes(`zchToast-${position}`)).to.eq(true)
       })
     })
   })
