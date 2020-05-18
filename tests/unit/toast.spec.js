@@ -11,7 +11,7 @@ describe('ZchToast', () => {
   })
   it('测试 message => String', () => {
     const message = 'zch233333333333'
-    const wrapper = shallowMount(ZchToast, {
+    const wrapper = mount(ZchToast, {
       propsData: {
         message
       }
@@ -21,7 +21,7 @@ describe('ZchToast', () => {
   })
   it('测试 message => HTML', () => {
     const message = '<h1>zch233333333333</h1>'
-    const wrapper = shallowMount(ZchToast, {
+    const wrapper = mount(ZchToast, {
       propsData: {
         message,
         enabledHTML: true,
