@@ -19,6 +19,7 @@ export default {
       }).$mount();
       instance.$toast.default = [options.message]
       document.body.appendChild(instance.$el)
+      instance.visible = true
     }
   }
 }

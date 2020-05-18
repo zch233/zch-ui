@@ -122,8 +122,8 @@ export default {
       const { left, top, width, height } = this.$refs.userContent.getBoundingClientRect()
       const { width: popoverContentWidth, height: popoverContentHeight } = this.$refs.popoverContent.getBoundingClientRect()
       const map = {
-        top: { top: top + scrollY, left: left + scrollX - (popoverContentWidth - width) / 2 },
-        left: { top: top + scrollY - (popoverContentHeight - height) / 2, left: left + scrollX },
+        top: { top: top + scrollY - popoverContentHeight, left: left + scrollX - (popoverContentWidth - width) / 2 },
+        left: { top: top + scrollY - (popoverContentHeight - height) / 2, left: left + scrollX - popoverContentWidth },
         bottom: { top:top + scrollY + height, left: left + scrollX - (popoverContentWidth - width) / 2 },
         right: { top: top + scrollY - (popoverContentHeight - height) / 2, left: left + scrollX + width },
       }
@@ -147,7 +147,7 @@ export default {
 $gap: 14px;
 $arrowWidth: 1.3px;
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .3s;
+  transition: all .3s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
@@ -159,11 +159,9 @@ $arrowWidth: 1.3px;
     z-index: 1000;
     filter: drop-shadow(0 2px 9px rgba(0,0,0,.1));
     &-top {
-      transform: translateY(-100%);
       padding-bottom: $gap;
     }
     &-left {
-      transform: translateX(-100%);
       padding-right: $gap;
     }
     &-bottom {

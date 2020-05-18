@@ -1,11 +1,13 @@
 <template>
-  <div class="zchToast" :class="[`zchToast-${position}`]">
-    <div class="zchToast-wrapper" :class="[`zchToast-wrapper-${position}`, `zchToast-wrapper-${type}`]">
-      <p v-if="enabledHTML" class="zchToast-content" v-html="message"></p>
-      <p v-else class="zchToast-content" :class="[center && 'zchToast-content-center']">{{ message }}</p>
-      <zch-icon class="zchToast-icon" v-if="showClose" @click="close" icon="close"></zch-icon>
+  <transition :name="`slide-${position}`">
+    <div class="zchToast" v-if="visible" :class="[`zchToast-${position}`]" :style="`margin: ${offset}px 0`">
+      <div class="zchToast-wrapper" :class="[`zchToast-wrapper-${type}`]">
+        <p v-if="enabledHTML" class="zchToast-content" v-html="message"></p>
+        <p v-else class="zchToast-content" :class="[center && 'zchToast-content-center']">{{ message }}</p>
+        <zch-icon class="zchToast-icon" v-if="showClose" @click="close" icon="close"></zch-icon>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -27,6 +29,7 @@ export default {
     showClose: Boolean,
     center: Boolean,
     enabledHTML: Boolean,
+    offset: Number,
     position: {
       default: 'top',
       type: String,
@@ -39,12 +42,22 @@ export default {
       type: Number,
     },
   },
+  data () {
+    return {
+      visible: false,
+    }
+  },
   methods: {
     close () {
       this.beforeClose && this.beforeClose(this)
       this.$emit('click', this)
+      this.visible = false
+      this.$el.addEventListener('transitionend', this.destroyEle);
+    },
+    destroyEle () {
+      this.$el.removeEventListener('transitionend', this.destroyEle);
       this.$el.remove()
-      this.$destroy()
+      this.$destroy();
     },
     keydown(e) {
       if (e.keyCode === 27) { // esc关闭消息
@@ -70,18 +83,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-@keyframes slide-down {
-  0% { opacity: 0; transform: translateY(-100%); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-@keyframes slide-up {
-  0% { opacity: 0; transform: translateY(100%); }
-  100% { opacity: 1; transform: translateY(0); }
-}
 .zchToast {
   line-height: 1;
   position: fixed;
@@ -92,9 +93,6 @@ export default {
     top: 0;
     border-top-right-radius: 0;
     border-top-left-radius: 0;
-    &:nth-child(n + 1) {
-      top: 10px;
-    }
   }
   &-bottom {
     bottom: 0;
@@ -159,5 +157,25 @@ export default {
   &-icon {
     cursor: pointer;
   }
+}
+.slide-top-enter-active, .slide-top-leave-active {
+  transition: all .3s;
+}
+.slide-top-enter, .slide-top-leave-to {
+  opacity: 0;
+  transform: translateY(-100%) translateX(-50%);
+}
+.slide-middle-enter-active, .slide-middle-leave-active {
+  transition: all .3s;
+}
+.slide-middle-enter, .slide-middle-leave-to {
+  opacity: 0;
+}
+.slide-bottom-enter-active, .slide-bottom-leave-active {
+  transition: all .3s;
+}
+.slide-bottom-enter, .slide-bottom-leave-to {
+  opacity: 0;
+  transform: translateY(100%) translateX(-50%);
 }
 </style>
