@@ -11,7 +11,7 @@
       <zch-button @click="dialogVisibleTop=!dialogVisibleTop">top</zch-button>
       <zch-button @click="dialogVisibleBottom=!dialogVisibleBottom">bottom</zch-button>
       <zch-button @click="dialogVisibleLeft=!dialogVisibleLeft">left</zch-button>
-      <zch-button @click="dialogVisibleRight=!dialogVisibleRight">left</zch-button>
+      <zch-button @click="dialogVisibleRight=!dialogVisibleRight">right</zch-button>
     </div>
     <div class="tag">
       <h1>tag：</h1>
