@@ -1,5 +1,20 @@
 <template>
   <div>
+    <div class="link">
+      <h1>Link：</h1>
+      <zch-link>默认链接</zch-link>
+      <zch-link type="primary">主要链接</zch-link>
+      <zch-link type="success">成功链接</zch-link>
+      <zch-link type="warning">警告链接</zch-link>
+      <zch-link type="danger">危险链接</zch-link>
+      <zch-link underline type="info">信息链接</zch-link>
+      <zch-link disabled>默认链接</zch-link>
+      <zch-link disabled type="primary">主要链接</zch-link>
+      <zch-link disabled type="success">成功链接</zch-link>
+      <zch-link disabled type="warning">警告链接</zch-link>
+      <zch-link disabled type="danger">危险链接</zch-link>
+      <zch-link disabled type="info">信息链接</zch-link>
+    </div>
     <div class="dialog">
       <h1>dialog：</h1>
       <zch-dialog v-model="dialogVisible">center</zch-dialog>
@@ -168,6 +183,7 @@
   import zchCollapse from './components/collapse/collapse'
   import zchCollapseItem from './components/collapse/collapse-item'
   import zchTag from './components/tag'
+  import zchLink from './components/link'
   Vue.use(zchToast)
 
   export default {
@@ -191,6 +207,7 @@
       zchCollapseItem,
       zchTag,
       zchDialog,
+      zchLink,
     },
     data () {
       return {
