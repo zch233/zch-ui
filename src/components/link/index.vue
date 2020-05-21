@@ -1,5 +1,5 @@
 <template>
-  <div class="zchLink" :class="[type, underline && 'underline', disabled && 'disabled']">
+  <div class="zchLink" :class="[type, underline && 'underline', disabled && 'disabled']" @click="handleClick">
     <span @click="goTo"><slot></slot></span>
   </div>
 </template>
@@ -11,12 +11,27 @@ export default {
     url: String,
     to: String || Object,
     replace: Boolean,
-    type: Boolean,
+    type: String,
     underline: Boolean,
     disabled: Boolean,
   },
   methods: {
-    goTo () {},
+    goTo () {
+      if (this.disabled) return
+      const URL = this.url
+      const TO = this.to
+      const router = this.parent && this.parent.$router
+      if (TO && router) {
+        router[this.replace ? 'replace' : 'push'](TO)
+      } else if (URL) {
+        this.replace ? window.location.replace(URL) : (window.location.href = URL)
+      }
+    },
+    handleClick(event) {
+      if (!this.disabled) {
+        this.$emit('click', event);
+      }
+    }
   }
 }
 </script>

@@ -5,8 +5,10 @@
       <zch-link>默认链接</zch-link>
       <zch-link type="primary">主要链接</zch-link>
       <zch-link type="success">成功链接</zch-link>
-      <zch-link type="warning">警告链接</zch-link>
-      <zch-link type="danger">危险链接</zch-link>
+      <zch-link to="/home" type="warning">警告链接</zch-link>
+      <zch-link url="https://www.baidu.com" type="danger">危险链接</zch-link>
+      <zch-link replace to="/home" type="warning">replace</zch-link>
+      <zch-link replace url="https://www.baidu.com" type="danger">replace</zch-link>
       <zch-link underline type="info">信息链接</zch-link>
       <zch-link disabled>默认链接</zch-link>
       <zch-link disabled type="primary">主要链接</zch-link>
