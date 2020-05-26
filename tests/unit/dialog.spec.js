@@ -41,7 +41,6 @@ describe('ZchDialog', () => {
         value: true,
       }
     })
-    console.log(wrapper.find('.close-icon').attributes())
     expect(wrapper.find('.close-icon use').attributes('href')).to.eq('#icon-close1')
   })
   it('Click Icon', () => {
