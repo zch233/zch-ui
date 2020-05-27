@@ -1,5 +1,5 @@
 <template>
-  <div class="zchLink" :class="[type, underline && 'underline', disabled && 'disabled']" @click="handleClick">
+  <div class="zchLink" :data-url="url" :class="[type, underline && 'underline', disabled && 'disabled']" @click="handleClick">
     <span @click="goTo"><slot></slot></span>
   </div>
 </template>
