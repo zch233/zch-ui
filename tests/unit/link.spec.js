@@ -12,11 +12,18 @@ describe('zchLink', () => {
   it('测试 url', () => {
     const url = 'https://www.baidu.com'
     const wrapper = shallowMount(zchLink, {
-      attachToDocument: true,
       propsData: {
         url
       }
     })
     expect(wrapper.attributes('data-url')).to.eq(url)
+  })
+  it('测试 underline', () => {
+    const wrapper = shallowMount(zchLink, {
+      propsData: {
+        underline: true,
+      }
+    })
+    expect(wrapper.classes().includes('underline')).to.eq(true)
   })
 })
