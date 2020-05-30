@@ -26,4 +26,12 @@ describe('zchLink', () => {
     })
     expect(wrapper.classes().includes('underline')).to.eq(true)
   })
+  it('测试 disabled', () => {
+    const wrapper = shallowMount(zchLink, {
+      propsData: {
+        disabled: true,
+      }
+    })
+    expect(wrapper.classes().includes('disabled')).to.eq(true)
+  })
 })
