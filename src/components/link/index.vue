@@ -1,6 +1,6 @@
 <template>
   <div class="zchLink" :data-url="url" :class="[type, underline && 'underline', disabled && 'disabled']" @click="handleClick">
-    <span @click="goTo"><slot></slot></span>
+    <span class="zchLink-link" @click="goTo"><slot></slot></span>
   </div>
 </template>
 
@@ -28,9 +28,8 @@ export default {
       }
     },
     handleClick(event) {
-      if (!this.disabled) {
-        this.$emit('click', event);
-      }
+      if (this.disabled) return
+      this.$emit('click', event);
     }
   }
 }
