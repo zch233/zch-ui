@@ -18,6 +18,15 @@ describe('zchLink', () => {
     })
     expect(wrapper.attributes('data-url')).to.eq(url)
   })
+  it('测试 to', () => {
+    const to = '/user/login'
+    const wrapper = shallowMount(zchLink, {
+      propsData: {
+        to
+      }
+    })
+    expect(wrapper.attributes('data-to')).to.eq(to)
+  })
   it('测试 underline', () => {
     const wrapper = shallowMount(zchLink, {
       propsData: {
