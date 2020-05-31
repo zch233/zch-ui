@@ -34,4 +34,16 @@ describe('zchLink', () => {
     })
     expect(wrapper.classes().includes('disabled')).to.eq(true)
   })
+  describe('测试 type', () => {
+    ['primary', 'success', 'warning', 'danger', 'info'].map(type => {
+      it(type, () => {
+        const wrapper = shallowMount(zchLink, {
+          propsData: {
+            type,
+          }
+        })
+        expect(wrapper.classes().includes(type)).to.eq(true)
+      })
+    })
+  })
 })
