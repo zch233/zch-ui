@@ -67,4 +67,25 @@ describe('zchLink', () => {
     wrapper2.find('.zchLink').trigger('click')
     expect(callback2).to.have.been.called
   })
+  it('测试 Link Click', () => {
+    const callback1 = sinon.fake()
+    const wrapper1 = shallowMount(zchLink, {
+      propsData: {
+        disabled: true,
+      }
+    })
+    wrapper1.vm.$on('click', callback1)
+    wrapper1.find('.zchLink-link').trigger('click')
+    expect(callback1).to.not.have.been.called
+
+    const callback2 = sinon.fake()
+    const wrapper2 = shallowMount(zchLink, {
+      propsData: {
+        disabled: false,
+      }
+    })
+    wrapper2.vm.$on('click', callback2)
+    wrapper2.find('.zchLink-link').trigger('click')
+    expect(callback2).to.have.been.called
+  })
 })
