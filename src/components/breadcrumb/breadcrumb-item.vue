@@ -17,6 +17,7 @@ export default {
   inject: ['separator'],
   methods: {
     handleClick () {
+      this.$emit('click')
       const { to, $router } = this;
       if (!to || !$router) return;
       this.replace ? $router.replace(to) : $router.push(to);
