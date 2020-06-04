@@ -1,5 +1,14 @@
 <template>
   <div>
+    <div class="breadcrumb">
+      <h1>Breadcrumb：</h1>
+      <zch-breadcrumb separator="/">
+        <zch-breadcrumb-item to="/home">首页</zch-breadcrumb-item>
+        <zch-breadcrumb-item><a href="/">活动管理</a></zch-breadcrumb-item>
+        <zch-breadcrumb-item>活动列表</zch-breadcrumb-item>
+        <zch-breadcrumb-item>活动详情</zch-breadcrumb-item>
+      </zch-breadcrumb>
+    </div>
     <div class="link">
       <h1>Link：</h1>
       <zch-link>默认链接</zch-link>
@@ -186,6 +195,8 @@
   import zchCollapseItem from './components/collapse/collapse-item'
   import zchTag from './components/tag'
   import zchLink from './components/link'
+  import zchBreadcrumb from './components/breadcrumb/breadcrumb'
+  import zchBreadcrumbItem from './components/breadcrumb/breadcrumb-item'
   Vue.use(zchToast)
 
   export default {
@@ -210,6 +221,8 @@
       zchTag,
       zchDialog,
       zchLink,
+      zchBreadcrumb,
+      zchBreadcrumbItem,
     },
     data () {
       return {
