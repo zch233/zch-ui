@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="breadcrumb">
-      <h1>Breadcrumb：</h1>
+      <h1 v-loading="loading">Breadcrumb：</h1>
       <zch-breadcrumb separator="/">
         <zch-breadcrumb-item to="/home">首页</zch-breadcrumb-item>
         <zch-breadcrumb-item><a href="/">活动管理</a></zch-breadcrumb-item>
-        <zch-breadcrumb-item>活动列表</zch-breadcrumb-item>
+        <zch-breadcrumb-item @click="switchLoading">活动列表</zch-breadcrumb-item>
         <zch-breadcrumb-item>活动详情</zch-breadcrumb-item>
       </zch-breadcrumb>
     </div>
@@ -197,6 +197,7 @@
   import zchLink from './components/link'
   import zchBreadcrumb from './components/breadcrumb/breadcrumb'
   import zchBreadcrumbItem from './components/breadcrumb/breadcrumb-item'
+  import loading from './directive/loading'
   Vue.use(zchToast)
 
   export default {
@@ -235,6 +236,7 @@
         dialogVisibleBottom: false,
         dialogVisibleLeft: false,
         dialogVisibleRight: false,
+        loading: true,
       };
     },
     methods: {
@@ -246,6 +248,9 @@
       },
       hChange(e) {
         console.log(e, 'change')
+      },
+      switchLoading () {
+        this.loading = !this.loading
       },
       xxx (position) {
         this.$toast({
