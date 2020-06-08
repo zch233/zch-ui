@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div class="radio">
+      <h1>Radio：</h1>
+      <zch-radio v-model="radio" label="1">选项一</zch-radio>
+      <zch-radio v-model="radio" label="2">选项二</zch-radio>
+      <zch-radio v-model="radio" label="3">选项三</zch-radio>
+    </div>
     <div class="breadcrumb">
       <h1 v-loading="loading">Breadcrumb：</h1>
       <zch-breadcrumb separator="/">
@@ -196,6 +202,7 @@
   import zchTag from './components/tag'
   import zchLink from './components/link'
   import zchBreadcrumb from './components/breadcrumb/breadcrumb'
+  import zchRadio from './components/radio'
   import zchBreadcrumbItem from './components/breadcrumb/breadcrumb-item'
   import loading from './directive/loading'
   Vue.use(zchToast)
@@ -224,6 +231,7 @@
       zchLink,
       zchBreadcrumb,
       zchBreadcrumbItem,
+      zchRadio,
     },
     data () {
       return {
@@ -237,6 +245,7 @@
         dialogVisibleLeft: false,
         dialogVisibleRight: false,
         loading: true,
+        radio: '1',
       };
     },
     methods: {
