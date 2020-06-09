@@ -1,11 +1,12 @@
 <template>
-  <label class="zchRadio" :class="[disabled && 'disabled']">
+  <label class="zchRadio" :class="[disabled && 'disabled']" role="radio">
     <span class="zchRadio-radioWrapper">
       <input
         class="zchRadio-radio"
+        :disabled="disabled"
         :value="label"
         type="radio"
-        :name="name || 'asdf'"
+        :name="name"
       >
     </span>
     <span class="zchRadio-textWrapper"><slot></slot></span>
@@ -26,5 +27,10 @@ export default {
 
 
 <style lang="scss" scoped>
-
+.zchRadio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
 </style>
