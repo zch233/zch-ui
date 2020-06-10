@@ -245,7 +245,7 @@
         dialogVisibleLeft: false,
         dialogVisibleRight: false,
         loading: true,
-        radio: '1',
+        radio: '2',
       };
     },
     methods: {

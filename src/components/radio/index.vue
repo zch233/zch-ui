@@ -1,5 +1,5 @@
 <template>
-  <label class="zchRadio" :class="[disabled && 'disabled', label === model && 'checked']" role="radio">
+  <label class="zchRadio" :class="[label === model && 'checked', disabled && 'disabled']" role="radio">
     <span class="zchRadio-radioWrapper">
       <input
         class="zchRadio-radio"
@@ -52,10 +52,6 @@ export default {
   justify-content: center;
   cursor: pointer;
   margin-right: 30px;
-  &.disabled {
-    color: #c0c4cc;
-    cursor: not-allowed;
-  }
   &.checked {
     color: #409eff;
     .zchRadio-radioWrapper {
@@ -63,6 +59,18 @@ export default {
       background-color: #409eff;
       &::after {
         transform: translate(-50%,-50%) scale(1);
+      }
+    }
+  }
+  &.disabled {
+    color: #c0c4cc;
+    cursor: not-allowed;
+    .zchRadio-radioWrapper {
+      background-color: #f5f7fa;
+      border-color: #e4e7ed;
+      cursor: not-allowed;
+      &::after {
+        background-color: #c0c4cc;
       }
     }
   }
