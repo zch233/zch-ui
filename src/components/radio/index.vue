@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'ZcRadio',
+  name: 'ZchRadio',
   props: {
     label: String || Number,
     disabled: Boolean,

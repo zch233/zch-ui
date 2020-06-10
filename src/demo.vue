@@ -5,6 +5,12 @@
       <zch-radio @change="xxxx" v-model="radio" label="1">选项一</zch-radio>
       <zch-radio @change="xxxx" v-model="radio" disabled label="2">选项二</zch-radio>
       <zch-radio @change="xxxx" v-model="radio" label="3">选项三</zch-radio>
+      <zch-radio-group v-model="radioGroup">
+        <zch-radio label="1">选项一</zch-radio>
+        <zch-radio disabled label="2">选项二</zch-radio>
+        <zch-radio label="3">选项三</zch-radio>
+        <zch-link type="primary">主要链接</zch-link>
+      </zch-radio-group>
     </div>
     <div class="breadcrumb">
       <h1 v-loading="loading">Breadcrumb：</h1>
@@ -203,6 +209,7 @@
   import zchLink from './components/link'
   import zchBreadcrumb from './components/breadcrumb/breadcrumb'
   import zchRadio from './components/radio'
+  import zchRadioGroup from './components/radio-group'
   import zchBreadcrumbItem from './components/breadcrumb/breadcrumb-item'
   import loading from './directive/loading'
   Vue.use(zchToast)
@@ -232,6 +239,7 @@
       zchBreadcrumb,
       zchBreadcrumbItem,
       zchRadio,
+      zchRadioGroup,
     },
     data () {
       return {
@@ -246,6 +254,7 @@
         dialogVisibleRight: false,
         loading: true,
         radio: '2',
+        radioGroup: '2',
       };
     },
     methods: {
