@@ -2,9 +2,9 @@
   <div>
     <div class="radio">
       <h1>Radio：</h1>
-      <zch-radio v-model="radio" label="1">选项一</zch-radio>
-      <zch-radio v-model="radio" label="2">选项二</zch-radio>
-      <zch-radio v-model="radio" label="3">选项三</zch-radio>
+      <zch-radio @change="xxxx" v-model="radio" label="1">选项一</zch-radio>
+      <zch-radio @change="xxxx" v-model="radio" disabled label="2">选项二</zch-radio>
+      <zch-radio @change="xxxx" v-model="radio" label="3">选项三</zch-radio>
     </div>
     <div class="breadcrumb">
       <h1 v-loading="loading">Breadcrumb：</h1>
@@ -260,6 +260,9 @@
       },
       switchLoading () {
         this.loading = !this.loading
+      },
+      xxxx (val) {
+        console.log(val)
       },
       xxx (position) {
         this.$toast({
