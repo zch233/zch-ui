@@ -37,4 +37,13 @@ describe('ZchRadio', () => {
     })
     expect(wrapper.find('.zchRadio-radio').attributes('name')).to.eq(name)
   })
+  it('测试 label ', () => {
+    const label = 'zch'
+    const wrapper = shallowMount(ZchRadio, {
+      propsData: {
+        label
+      }
+    })
+    expect(wrapper.find('.zchRadio-radio').attributes('value')).to.eq(label)
+  })
 })
