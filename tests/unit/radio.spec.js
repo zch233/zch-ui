@@ -28,12 +28,13 @@ describe('ZchRadio', () => {
     await wrapper.vm.$nextTick()
     expect(wrapper.findAll('.zchRadio').at(1).classes().includes('checked')).to.eq(true)
   })
-  it('测试 disabled ', () => {
+  it('测试 name ', () => {
+    const name = 'zch'
     const wrapper = shallowMount(ZchRadio, {
       propsData: {
-        disabled: true
+        name
       }
     })
-    expect(wrapper.classes().includes('disabled')).to.eq(true)
+    expect(wrapper.find('.zchRadio-radio').attributes('name')).to.eq(name)
   })
 })
