@@ -1,8 +1,8 @@
 <template>
   <div class="zch-switch" :class="[disabled && 'disabled']">
-    <div class="zch-switch-leftText" :class="[!active && 'active']" :style="leftTextStyle" v-if="$slots.leftText || leftText" @click="handleClick"><slot name="left-text">{{ leftText }}</slot></div>
+    <div class="zch-switch-leftText" :class="[!active && 'active']" :style="textStyle('left')" v-if="$slots.leftText || leftText" @click="handleClick"><slot name="left-text">{{ leftText }}</slot></div>
     <div class="zch-switch-main" :class="[active && 'active']" :style="mainStyle" @click="handleClick"></div>
-    <div class="zch-switch-rightText" :class="[active && 'active']" :style="rightTextStyle" v-if="$slots.rightText || rightText" @click="handleClick"><slot name="right-text">{{ rightText }}</slot></div>
+    <div class="zch-switch-rightText" :class="[active && 'active']" :style="textStyle('right')" v-if="$slots.rightText || rightText" @click="handleClick"><slot name="right-text">{{ rightText }}</slot></div>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
     rightText: String,
     activeColor: String,
     inactiveColor: String,
-    width: Number,
+    width: Number | String,
     disabled: Boolean,
     value: Boolean | String | Number,
     activeValue: Boolean | String | Number,
@@ -22,50 +22,41 @@ export default {
   },
   computed: {
     active () {
-      if (this.activeValue && this.inactiveValue) {
+      if (this.activeValue !== undefined && this.inactiveValue !== undefined) {
         return this.value === this.activeValue ? true : false
       } else {
         return this.value
       }
     },
-    _value () {
-      if (this.activeValue && this.inactiveValue) {
+    reverseValue () {
+      if (this.activeValue !== undefined && this.inactiveValue !== undefined) {
         return this.value === this.activeValue ? this.inactiveValue : this.activeValue
       } else {
-        return this.value
-      }
-    },
-    leftTextStyle () {
-      if (this.active) {
-        return this.inactiveColor ? `color: ${this.inactiveColor}` : undefined
-      } else {
-        return this.activeColor ? `color: ${this.activeColor}` : undefined
-      }
-    },
-    rightTextStyle () {
-      if (this.active) {
-        return this.activeColor ? `color: ${this.activeColor}` : undefined
-      } else {
-        return this.inactiveColor ? `color: ${this.inactiveColor}` : undefined
+        return !this.value
       }
     },
     mainStyle () {
-      let styles = ''
-      styles =  this.width ? `width: ${this.width}px` : ''
-      if (this.active) {
-        styles += this.activeColor ? `background-color: ${this.activeColor}; border-color: ${this.activeColor}` : ''
-      } else {
-        styles += this.inactiveColor ? `background-color: ${this.inactiveColor}; border-color: ${this.inactiveColor}` : ''
-      }
-      return styles
+      const widthStyles = this.width && `width: ${parseInt(this.width)}px`
+      const color = this.active ? this.activeColor : this.inactiveColor
+      const colorStyles = `background-color: ${color}; border-color: ${color}`
+      return widthStyles && colorStyles ? widthStyles + colorStyles : (widthStyles || colorStyles)
     }
   },
   methods: {
+    textStyle (position) {
+      const inactiveStyle = this.inactiveColor && `color: ${this.inactiveColor}`
+      const activeStyle = this.activeColor && `color: ${this.activeColor}`
+      const map = {
+        left: () => this.active ? inactiveStyle : activeStyle,
+        right: () => this.active ? activeStyle : inactiveStyle
+      }
+      return map[position] && map[position]()
+    },
     handleClick () {
       if (this.disabled) return
-      this.$emit('input', this._value)
-      this.$emit('click', this._value)
-      this.$emit('change', this._value)
+      this.$emit('input', this.reverseValue)
+      this.$emit('click', this.reverseValue)
+      this.$emit('change', this.reverseValue)
     }
   },
 }
