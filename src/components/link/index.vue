@@ -9,7 +9,7 @@ export default {
   name: 'zchLink',
   props: {
     url: String,
-    to: String || Object,
+    to: String | Object,
     replace: Boolean,
     type: String,
     underline: Boolean,

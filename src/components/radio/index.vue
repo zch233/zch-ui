@@ -19,10 +19,10 @@
 export default {
   name: 'ZchRadio',
   props: {
-    label: String || Number,
+    label: String | Number,
     disabled: Boolean,
     name: String,
-    value: String || Number || Boolean,
+    value: String | Number | Boolean,
   },
   computed: {
     model: {

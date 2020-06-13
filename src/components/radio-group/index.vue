@@ -9,7 +9,7 @@ export default {
   name: "ZchRadioGroup",
   props: {
     disabled: Boolean,
-    value: String || Number || Boolean,
+    value: String | Number | Boolean,
   },
   mounted () {
     console.log(this)

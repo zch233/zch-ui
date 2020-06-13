@@ -10,7 +10,7 @@ export default {
   name: 'ZchBreadcrumbItem',
   props: {
     to: {
-      type: String || Object
+      type: String | Object
     },
     replace: Boolean
   },
