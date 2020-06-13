@@ -1,5 +1,12 @@
 <template>
   <div>
+    <div class="switch">
+      <h1>Switch：</h1>
+      <div><zch-switch v-model="switchModel1" :width="140"></zch-switch></div>
+      <div><zch-switch v-model="switchModel2" left-text="关闭" right-text="开启"></zch-switch></div>
+      <div><zch-switch v-model="switchModel2" active-color="blue" inactive-color="#000" left-text="关闭" right-text="开启"></zch-switch></div>
+      <div><zch-switch v-model="switchModel2" disabled left-text="关闭" right-text="开启"></zch-switch></div>
+    </div>
     <div class="radio">
       <h1>Radio：</h1>
       <zch-radio @change="xxxx" v-model="radio" label="1">选项一</zch-radio>
@@ -209,6 +216,7 @@
   import zchLink from './components/link'
   import zchBreadcrumb from './components/breadcrumb/breadcrumb'
   import zchRadio from './components/radio'
+  import zchSwitch from './components/switch'
   import zchRadioGroup from './components/radio-group'
   import zchBreadcrumbItem from './components/breadcrumb/breadcrumb-item'
   import loading from './directive/loading'
@@ -240,6 +248,7 @@
       zchBreadcrumbItem,
       zchRadio,
       zchRadioGroup,
+      zchSwitch,
     },
     data () {
       return {
@@ -255,6 +264,8 @@
         loading: true,
         radio: '2',
         radioGroup: '2',
+        switchModel1: false,
+        switchModel2: false,
       };
     },
     methods: {
