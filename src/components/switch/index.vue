@@ -1,8 +1,8 @@
 <template>
   <div class="zch-switch" :class="[disabled && 'disabled']">
-    <div class="zch-switch-leftText" :class="[!value && 'active']" :style="leftTextStyle" v-if="$slots.leftText || leftText" @click="handleClick"><slot name="left-text">{{ leftText }}</slot></div>
-    <div class="zch-switch-main" :class="[value && 'active']" :style="mainStyle" @click="handleClick"></div>
-    <div class="zch-switch-rightText" :class="[value && 'active']" :style="rightTextStyle" v-if="$slots.rightText || rightText" @click="handleClick"><slot name="right-text">{{ rightText }}</slot></div>
+    <div class="zch-switch-leftText" :class="[!active && 'active']" :style="leftTextStyle" v-if="$slots.leftText || leftText" @click="handleClick"><slot name="left-text">{{ leftText }}</slot></div>
+    <div class="zch-switch-main" :class="[active && 'active']" :style="mainStyle" @click="handleClick"></div>
+    <div class="zch-switch-rightText" :class="[active && 'active']" :style="rightTextStyle" v-if="$slots.rightText || rightText" @click="handleClick"><slot name="right-text">{{ rightText }}</slot></div>
   </div>
 </template>
 
@@ -16,20 +16,34 @@ export default {
     inactiveColor: String,
     width: Number,
     disabled: Boolean,
-    value: Boolean || String || Number,
-    activeValue: Boolean || String || Number,
-    inactiveValue:  Boolean || String || Number,
+    value: Boolean | String | Number,
+    activeValue: Boolean | String | Number,
+    inactiveValue:  Boolean | String | Number,
   },
   computed: {
+    active () {
+      if (this.activeValue && this.inactiveValue) {
+        return this.value === this.activeValue ? true : false
+      } else {
+        return this.value
+      }
+    },
+    _value () {
+      if (this.activeValue && this.inactiveValue) {
+        return this.value === this.activeValue ? this.inactiveValue : this.activeValue
+      } else {
+        return this.value
+      }
+    },
     leftTextStyle () {
-      if (this.value) {
+      if (this.active) {
         return this.inactiveColor ? `color: ${this.inactiveColor}` : undefined
       } else {
         return this.activeColor ? `color: ${this.activeColor}` : undefined
       }
     },
     rightTextStyle () {
-      if (this.value) {
+      if (this.active) {
         return this.activeColor ? `color: ${this.activeColor}` : undefined
       } else {
         return this.inactiveColor ? `color: ${this.inactiveColor}` : undefined
@@ -38,7 +52,7 @@ export default {
     mainStyle () {
       let styles = ''
       styles =  this.width ? `width: ${this.width}px` : ''
-      if (this.value) {
+      if (this.active) {
         styles += this.activeColor ? `background-color: ${this.activeColor}; border-color: ${this.activeColor}` : ''
       } else {
         styles += this.inactiveColor ? `background-color: ${this.inactiveColor}; border-color: ${this.inactiveColor}` : ''
@@ -49,9 +63,9 @@ export default {
   methods: {
     handleClick () {
       if (this.disabled) return
-      this.$emit('input', !this.value)
-      this.$emit('change', !this.value)
-      this.$emit('click', !this.value)
+      this.$emit('input', this._value)
+      this.$emit('click', this._value)
+      this.$emit('change', this._value)
     }
   },
 }

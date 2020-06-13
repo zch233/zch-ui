@@ -3,7 +3,7 @@
     <div class="switch">
       <h1>Switch：</h1>
       <div><zch-switch v-model="switchModel1" :width="140"></zch-switch></div>
-      <div><zch-switch v-model="switchModel2" left-text="关闭" right-text="开启"></zch-switch></div>
+      <div><zch-switch v-model="switchModel3" @change="hChange" active-value="0" inactive-value="10" left-text="关闭" right-text="开启"></zch-switch></div>
       <div><zch-switch v-model="switchModel2" active-color="blue" inactive-color="#000" left-text="关闭" right-text="开启"></zch-switch></div>
       <div><zch-switch v-model="switchModel2" disabled left-text="关闭" right-text="开启"></zch-switch></div>
     </div>
@@ -266,6 +266,7 @@
         radioGroup: '2',
         switchModel1: false,
         switchModel2: false,
+        switchModel3: '10',
       };
     },
     methods: {
