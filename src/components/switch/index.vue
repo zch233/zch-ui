@@ -36,7 +36,7 @@ export default {
       }
     },
     mainStyle () {
-      const widthStyles = this.width && `width: ${parseInt(this.width)}px`
+      const widthStyles = this.width && `width: ${parseInt(this.width)}px;`
       const color = this.active ? this.activeColor : this.inactiveColor
       const colorStyles = `background-color: ${color}; border-color: ${color}`
       return widthStyles && colorStyles ? widthStyles + colorStyles : (widthStyles || colorStyles)
