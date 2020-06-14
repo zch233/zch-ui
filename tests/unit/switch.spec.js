@@ -9,4 +9,13 @@ describe('zchSwitch', () => {
   it('存在', () => {
     expect(zchSwitch).to.be.exist
   })
+  it('测试 leftText', () => {
+    const leftText = 'zch233'
+    const wrapper = mount(zchSwitch, {
+      propsData: {
+        leftText,
+      }
+    })
+    expect(wrapper.find('.zch-switch-leftText').text()).to.eq(leftText)
+  })
 })
