@@ -18,4 +18,13 @@ describe('zchSwitch', () => {
     })
     expect(wrapper.find('.zch-switch-leftText').text()).to.eq(leftText)
   })
+  it('测试 rightText', () => {
+    const rightText = 'zch233'
+    const wrapper = mount(zchSwitch, {
+      propsData: {
+        rightText,
+      }
+    })
+    expect(wrapper.find('.zch-switch-rightText').text()).to.eq(rightText)
+  })
 })
