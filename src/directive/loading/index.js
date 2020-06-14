@@ -5,7 +5,6 @@ const ToastConstructor = Vue.extend(loading);
 const zchLoading = new ToastConstructor({}).$mount()
 Vue.directive('loading', {
   bind (el ,binding) {
-    console.log('bind')
     const { position } = window.getComputedStyle(el)
     if (position === 'absolute' || position === 'relative') {
       el.style.position = position

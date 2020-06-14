@@ -11,10 +11,6 @@ export default {
     disabled: Boolean,
     value: String | Number | Boolean,
   },
-  mounted () {
-    console.log(this)
-    console.log(this.$children.filter(v => v.$options.name === 'ZchRadio'))
-  }
 };
 </script>
 
