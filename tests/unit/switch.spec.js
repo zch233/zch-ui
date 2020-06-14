@@ -27,4 +27,12 @@ describe('zchSwitch', () => {
     })
     expect(wrapper.find('.zch-switch-rightText').text()).to.eq(rightText)
   })
+  it('测试 disabled', () => {
+    const wrapper = mount(zchSwitch, {
+      propsData: {
+        disabled: true,
+      }
+    })
+    expect(wrapper.classes().includes('disabled')).to.eq(true)
+  })
 })
