@@ -96,7 +96,7 @@ describe('zchInput', () => {
   describe('事件', () => {
     const wrapper = mount(zchInput);
     const inputElement = wrapper.find('.zch-input');
-    ['keydown', 'keyup', 'input', 'change', 'focus', 'blur'].map(eventName => {
+    ['click', 'keydown', 'keyup', 'input', 'change', 'focus', 'blur'].map(eventName => {
       it(`支持 ${eventName} 事件`, () => {
         const callback = sinon.fake()
         wrapper.vm.$on(eventName, callback)
