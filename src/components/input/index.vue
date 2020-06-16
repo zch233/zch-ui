@@ -12,6 +12,7 @@
       :rows="rows"
       :cols="cols"
       v-bind="$attrs"
+      @click="click"
       @keydown="keydown"
       @keyup="keyup"
       @input="input"
@@ -33,6 +34,7 @@
         :type="isPassword"
         :aria-label="label"
         v-bind="$attrs"
+        @click="click"
         @keydown="keydown"
         @keyup="keyup"
         @input="input"
@@ -89,6 +91,9 @@ export default {
     }
   },
   methods: {
+    click (event) {
+      this.$emit('click', event.target.value, event)
+    },
     keydown(event) {
       this.$emit('keydown', event.target.value, event)
     },
@@ -147,7 +152,7 @@ export default {
 %readonly {
   border-color: #e4e7ed;
   color: #c0c4cc;
-  cursor: auto;
+  cursor: pointer;
 }
 %hover {
   border-color: #c0c4cc;
@@ -166,8 +171,8 @@ export default {
     @extend %theSameStyle;
     -webkit-appearance: none;
     display: inline-block;
-    height: 2.9em;
-    line-height: 2.9em;
+    height: 2.7em;
+    line-height: 2.7em;
     outline: none;
     padding: 0 15px;
     &:hover {
