@@ -1,5 +1,12 @@
 <template>
   <div>
+    <div class="select">
+      <h1>Select：</h1>
+      <zch-select v-model="selectValue">
+        <zch-option value="0" label="男"></zch-option>
+        <zch-option value="1" label="女"></zch-option>
+      </zch-select>
+    </div>
     <div class="switch">
       <h1>Switch：</h1>
       <div><zch-switch v-model="switchModel1" :width="140"></zch-switch></div>
@@ -16,7 +23,6 @@
         <zch-radio label="1">选项一</zch-radio>
         <zch-radio disabled label="2">选项二</zch-radio>
         <zch-radio label="3">选项三</zch-radio>
-        <zch-link type="primary">主要链接</zch-link>
       </zch-radio-group>
     </div>
     <div class="breadcrumb">
@@ -109,19 +115,19 @@
     </div>
     <div class="popover" style="padding-left: 150px;padding-top: 150px;">
       <h1>popover(hover)：</h1>
-      <zch-popover trigger="hover" position="left">
+      <zch-popover trigger="click" position="left">
         <template slot="content">这是一段浮层</template>
         <zch-button>left</zch-button>
       </zch-popover>
-      <zch-popover trigger="hover">
+      <zch-popover trigger="click">
         <template slot="content">这是一段浮层</template>
         <zch-button>top</zch-button>
       </zch-popover>
-      <zch-popover trigger="hover" position="bottom">
+      <zch-popover trigger="click" position="bottom">
         <template slot="content">这是一段浮层</template>
         <zch-button>bottom</zch-button>
       </zch-popover>
-      <zch-popover trigger="hover" position="right">
+      <zch-popover trigger="click" position="right">
         <template slot="content">这是一段浮层</template>
         <zch-button>right</zch-button>
       </zch-popover>
@@ -217,6 +223,8 @@
   import zchBreadcrumb from './components/breadcrumb/breadcrumb'
   import zchRadio from './components/radio'
   import zchSwitch from './components/switch'
+  import zchSelect from './components/select'
+  import zchOption from './components/option'
   import zchRadioGroup from './components/radio-group'
   import zchBreadcrumbItem from './components/breadcrumb/breadcrumb-item'
   import loading from './directive/loading'
@@ -249,6 +257,8 @@
       zchRadio,
       zchRadioGroup,
       zchSwitch,
+      zchSelect,
+      zchOption,
     },
     data () {
       return {
@@ -267,6 +277,7 @@
         switchModel1: false,
         switchModel2: false,
         switchModel3: '10',
+        selectValue: '',
       };
     },
     methods: {
