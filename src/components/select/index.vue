@@ -41,7 +41,7 @@ export default {
       const { width, height, top, left } = this.$refs.input.$el.getBoundingClientRect()
       const { width:optionWidth } = this.$refs.optionWrapper.getBoundingClientRect()
       this.$refs.optionWrapper.style.minWidth = width + 'px'
-      this.$refs.optionWrapper.style.top = top + height + 14 + 'px'
+      this.$refs.optionWrapper.style.top = top + height + 12 + 'px'
       this.$refs.optionWrapper.style.left = left + Math.abs(optionWidth > width ? optionWidth : width - width) / 2 + 'px'
     }
   },
@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  $gap: 14px;
+  $gap: 12px;
   $arrowWidth: 1.3px;
   .fade-enter-active, .fade-leave-active {
     transition: all .3s;
