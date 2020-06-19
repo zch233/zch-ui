@@ -1,6 +1,6 @@
 <template>
   <div class="zch-select">
-    <zch-input ref="input" :value="value" readonly @click="xxx"></zch-input>
+    <zch-input ref="input" :value="value" readonly @click="handleClick"></zch-input>
     <transition name="fade">
       <div ref="optionWrapper" class="zch-select-optionWrapper" v-if="optionVisible">
         <ul class="zch-select-option"><slot></slot></ul>
@@ -28,7 +28,7 @@ export default {
     }
   },
   methods: {
-    xxx () {
+    handleClick () {
       this.optionVisible = !this.optionVisible
       if (this.optionVisible === true) {
         this.$nextTick(() => {
