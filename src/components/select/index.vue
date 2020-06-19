@@ -33,13 +33,23 @@ export default {
   },
   methods: {
     handleClick () {
-      this.optionVisible = !this.optionVisible
       if (this.optionVisible === true) {
-        this.$nextTick(() => {
+        this.optionVisible = false
+        document.removeEventListener('click', this.clickDocument)
+      } else {
+        this.optionVisible = true
+        setTimeout(() => {
           this.setPopoverPosition()
           document.body.appendChild(this.$refs.optionWrapper)
+          document.addEventListener('click', this.clickDocument)
         })
       }
+    },
+    clickDocument (e) {
+      if (this.$refs.optionWrapper.contains(e.target)) return
+      if (this.$refs.input.$el.contains(e.target)) return
+      this.optionVisible = false
+      document.removeEventListener('click', this.clickDocument)
     },
     setPopoverPosition () {
       const { width, height, top, left } = this.$refs.input.$el.getBoundingClientRect()
