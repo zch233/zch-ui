@@ -1,6 +1,6 @@
 <template>
   <div class="zch-select">
-    <zch-input ref="input" :value="value" readonly @click="handleClick"></zch-input>
+    <zch-input ref="input" :value="value" readonly @click="handleClick" :placeholder="placeholder"></zch-input>
     <transition name="fade">
       <div ref="optionWrapper" class="zch-select-optionWrapper" v-if="optionVisible">
         <ul class="zch-select-option"><slot></slot></ul>
@@ -20,6 +20,10 @@ export default {
     value: {
       require: true,
       type: Boolean | String | Number,
+    },
+    placeholder: {
+      type: String,
+      default: '请选择',
     }
   },
   data () {
@@ -41,7 +45,7 @@ export default {
       const { width, height, top, left } = this.$refs.input.$el.getBoundingClientRect()
       const { width:optionWidth } = this.$refs.optionWrapper.getBoundingClientRect()
       this.$refs.optionWrapper.style.minWidth = width + 'px'
-      this.$refs.optionWrapper.style.top = top + height + 12 + 'px'
+      this.$refs.optionWrapper.style.top = top + height + scrollY + 12 + 'px'
       this.$refs.optionWrapper.style.left = left + Math.abs(optionWidth > width ? optionWidth : width - width) / 2 + 'px'
     }
   },
