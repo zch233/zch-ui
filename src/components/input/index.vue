@@ -131,6 +131,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+::placeholder{color:#c0c4cc}
 %theSameStyle {
   background-color: #fff;
   background-image: none;
